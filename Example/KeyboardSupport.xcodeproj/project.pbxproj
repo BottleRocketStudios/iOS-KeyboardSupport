@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		03EA08CD625F337558B43D45 /* Pods_KeyboardSupport_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6EB4A3ED871637BFA7C167 /* Pods_KeyboardSupport_Tests.framework */; };
 		07ADD6240ED2734CCAA4A543 /* Pods_KeyboardSupport_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F9582C6DEBA7CEF08B9DB6 /* Pods_KeyboardSupport_Example.framework */; };
+		0ED60A6E1FEB18B500A9209B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A691FEB18B400A9209B /* CollectionViewCell.swift */; };
+		0ED60A6F1FEB18B500A9209B /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6A1FEB18B400A9209B /* ViewControllerB.swift */; };
+		0ED60A701FEB18B500A9209B /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6B1FEB18B500A9209B /* ViewControllerA.swift */; };
+		0ED60A711FEB18B500A9209B /* ViewControllerC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6C1FEB18B500A9209B /* ViewControllerC.swift */; };
+		0ED60A721FEB18B500A9209B /* KeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6D1FEB18B500A9209B /* KeyboardToolbar.swift */; };
+		0ED60A731FEB191200A9209B /* KeyboardSupportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A611FEB189200A9209B /* KeyboardSupportTests.swift */; };
+		0ED60A761FEB197E00A9209B /* CONTRIBUTING.md in Resources */ = {isa = PBXBuildFile; fileRef = 0ED60A741FEB197D00A9209B /* CONTRIBUTING.md */; };
+		0ED60A771FEB197E00A9209B /* NOTICE in Resources */ = {isa = PBXBuildFile; fileRef = 0ED60A751FEB197D00A9209B /* NOTICE */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,25 +34,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0ED60A611FEB189200A9209B /* KeyboardSupportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSupportTests.swift; sourceTree = "<group>"; };
+		0ED60A691FEB18B400A9209B /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		0ED60A6A1FEB18B400A9209B /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
+		0ED60A6B1FEB18B500A9209B /* ViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerA.swift; sourceTree = "<group>"; };
+		0ED60A6C1FEB18B500A9209B /* ViewControllerC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerC.swift; sourceTree = "<group>"; };
+		0ED60A6D1FEB18B500A9209B /* KeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardToolbar.swift; sourceTree = "<group>"; };
+		0ED60A741FEB197D00A9209B /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = ../CONTRIBUTING.md; sourceTree = "<group>"; };
+		0ED60A751FEB197D00A9209B /* NOTICE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NOTICE; path = ../NOTICE; sourceTree = "<group>"; };
 		5028449C46A8EDD024507464 /* Pods-KeyboardSupport_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardSupport_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardSupport_Example/Pods-KeyboardSupport_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		5FA53790496CABDAB06A9BBC /* Pods-KeyboardSupport_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardSupport_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardSupport_Tests/Pods-KeyboardSupport_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* KeyboardSupport_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardSupport_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* KeyboardSupport_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardSupport_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		661C5D6AF93AF536B2909377 /* Pods-KeyboardSupport_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardSupport_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardSupport_Tests/Pods-KeyboardSupport_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		669BA161F3C0582B2F71BB72 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		669BA161F3C0582B2F71BB72 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		75B592080C6E1EF1230ECA4F /* Pods-KeyboardSupport_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardSupport_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardSupport_Example/Pods-KeyboardSupport_Example.release.xcconfig"; sourceTree = "<group>"; };
-		83E84B4F4D69BBF7DE99F524 /* KeyboardSupport.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = KeyboardSupport.podspec; path = ../KeyboardSupport.podspec; sourceTree = "<group>"; };
+		83E84B4F4D69BBF7DE99F524 /* KeyboardSupport.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KeyboardSupport.podspec; path = ../KeyboardSupport.podspec; sourceTree = "<group>"; };
 		AC6EB4A3ED871637BFA7C167 /* Pods_KeyboardSupport_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyboardSupport_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8F9582C6DEBA7CEF08B9DB6 /* Pods_KeyboardSupport_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyboardSupport_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2D9BCE03B968EB7AD5ADDD0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		E2D9BCE03B968EB7AD5ADDD0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +117,11 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				0ED60A691FEB18B400A9209B /* CollectionViewCell.swift */,
+				0ED60A6D1FEB18B500A9209B /* KeyboardToolbar.swift */,
+				0ED60A6B1FEB18B500A9209B /* ViewControllerA.swift */,
+				0ED60A6A1FEB18B400A9209B /* ViewControllerB.swift */,
+				0ED60A6C1FEB18B500A9209B /* ViewControllerC.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -126,7 +142,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				0ED60A611FEB189200A9209B /* KeyboardSupportTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -146,6 +162,8 @@
 				83E84B4F4D69BBF7DE99F524 /* KeyboardSupport.podspec */,
 				669BA161F3C0582B2F71BB72 /* README.md */,
 				E2D9BCE03B968EB7AD5ADDD0 /* LICENSE */,
+				0ED60A741FEB197D00A9209B /* CONTRIBUTING.md */,
+				0ED60A751FEB197D00A9209B /* NOTICE */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -248,8 +266,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ED60A771FEB197E00A9209B /* NOTICE in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				0ED60A761FEB197E00A9209B /* CONTRIBUTING.md in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,8 +393,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				0ED60A711FEB18B500A9209B /* ViewControllerC.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				0ED60A6F1FEB18B500A9209B /* ViewControllerB.swift in Sources */,
+				0ED60A701FEB18B500A9209B /* ViewControllerA.swift in Sources */,
+				0ED60A6E1FEB18B500A9209B /* CollectionViewCell.swift in Sources */,
+				0ED60A721FEB18B500A9209B /* KeyboardToolbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				0ED60A731FEB191200A9209B /* KeyboardSupportTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +587,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyboardSupport_Example.app/KeyboardSupport_Example";
 			};
 			name = Debug;
 		};
@@ -580,6 +605,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyboardSupport_Example.app/KeyboardSupport_Example";
 			};
 			name = Release;
 		};

@@ -1,0 +1,16 @@
+PODS:
+  - KeyboardSupport (0.1.0)
+
+DEPENDENCIES:
+  - KeyboardSupport (from `../`)
+
+EXTERNAL SOURCES:
+  KeyboardSupport:
+    :path: ../
+
+SPEC CHECKSUMS:
+  KeyboardSupport: 7de923def84fdcec2184d33276caa0f77b09c780
+
+PODFILE CHECKSUM: 84a47293f5f735c13f9b086661ea65591818a35c
+
+COCOAPODS: 1.4.0.beta.2

@@ -7,36 +7,21 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'KeyboardSupport'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of KeyboardSupport.'
+s.name             = 'KeyboardSupport'
+s.version          = '0.1.0'
+s.summary          = 'Makes dealing with common keyboard tasks simpler and easier.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+s.description      = <<-DESC
+KeyboardSupport provides easy navigation between text fields via your custom views and/or with the keyboard's "Return" key. Protocols are provided for easy keyboard dismissal and scrolling when using a UIScrollView.
+                        DESC
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+s.homepage         = 'https://github.com/BottleRocketStudios/iOS-KeyboardSupport'
+s.license          = { :type => 'Apache', :file => 'LICENSE' }
+s.author           = { 'Bottle Rocket Studios' => 'earl.gaspard@bottlerocketstudios.com' }
+s.source           = { :git => 'https://github.com/bottlerocketstudios/iOS-KeyboardSupport.git', :tag => s.version.to_s }
 
-  s.homepage         = 'https://github.com/wmcginty/KeyboardSupport'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'wmcginty' => 'will.mcginty@bottlerocketstudios.com' }
-  s.source           = { :git => 'https://github.com/wmcginty/KeyboardSupport.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+s.ios.deployment_target = '9.0'
+s.source_files = 'KeyboardSupport/Classes/**/*'
+s.frameworks = 'Foundation', 'UIKit'
 
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'KeyboardSupport/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'KeyboardSupport' => ['KeyboardSupport/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
