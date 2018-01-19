@@ -14,7 +14,6 @@
 		0ED60A701FEB18B500A9209B /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6B1FEB18B500A9209B /* ViewControllerA.swift */; };
 		0ED60A711FEB18B500A9209B /* ViewControllerC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6C1FEB18B500A9209B /* ViewControllerC.swift */; };
 		0ED60A721FEB18B500A9209B /* KeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6D1FEB18B500A9209B /* KeyboardToolbar.swift */; };
-		0ED60A731FEB191200A9209B /* KeyboardSupportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A611FEB189200A9209B /* KeyboardSupportTests.swift */; };
 		0ED60A761FEB197E00A9209B /* CONTRIBUTING.md in Resources */ = {isa = PBXBuildFile; fileRef = 0ED60A741FEB197D00A9209B /* CONTRIBUTING.md */; };
 		0ED60A771FEB197E00A9209B /* NOTICE in Resources */ = {isa = PBXBuildFile; fileRef = 0ED60A751FEB197D00A9209B /* NOTICE */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -34,7 +33,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0ED60A611FEB189200A9209B /* KeyboardSupportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSupportTests.swift; sourceTree = "<group>"; };
 		0ED60A691FEB18B400A9209B /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		0ED60A6A1FEB18B400A9209B /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 		0ED60A6B1FEB18B500A9209B /* ViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerA.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				0ED60A611FEB189200A9209B /* KeyboardSupportTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -406,7 +403,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0ED60A731FEB191200A9209B /* KeyboardSupportTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

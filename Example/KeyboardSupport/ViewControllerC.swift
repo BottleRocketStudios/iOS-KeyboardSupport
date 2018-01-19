@@ -2,47 +2,31 @@
 //  ViewControllerC.swift
 //  KeyboardSupport_Example
 //
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 
 import UIKit
 import KeyboardSupport
 
-/// Demonstrates that a collection view can use KeyboardRespondable.
-class ViewControllerC: UIViewController, KeyboardRespondable {
+/// Demonstrates that a collection view with text fields can use KeyboardSupport. However not all configurations are supported.
+class ViewControllerC: KeyboardSupportViewController {
 
     // MARK: - Properties
     
     @IBOutlet private var collectionView: UICollectionView!
-    
-    // MARK: - KeyboardRespondable
-    
-    var keyboardScrollableScrollView: UIScrollView?
-    var keyboardWillShowObserver: NSObjectProtocol?
-    var keyboardWillHideObserver: NSObjectProtocol?
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        keyboardScrollableScrollView = collectionView
-        setupKeyboardRespondable()
         collectionView.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupKeyboardObservers()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeKeyboardObservers()
+        configureKeyboardSupport(with: [], scrollView: collectionView, bottomConstraint: nil, usesDismissalView: true, usesKeyboardNextButtons: false)
     }
 }
 
 // MARK: - UICollectionViewDataSource
+
 extension ViewControllerC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

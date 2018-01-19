@@ -8,9 +8,8 @@
 import UIKit
 import KeyboardSupport
 
-/// Demonstrates using KeyboardManager with a custom input accessory view while not using the keyboard's return keys.
-/// Conforms to KeyboardRespondable to allow for dismissing the keyboard by tapping outside a text field and for adjusting scrolling in a UIScrollView.
-class ViewControllerA: UIViewController, KeyboardRespondable {
+/// Demonstrates using a custom input accessory view and using the keyboard's return keys.
+class ViewControllerA: KeyboardSupportViewController {
     
     // MARK: - Properties
     
@@ -23,44 +22,24 @@ class ViewControllerA: UIViewController, KeyboardRespondable {
     @IBOutlet private var textField6: UITextField!
     @IBOutlet private var textField7: UITextField!
     @IBOutlet private var textField8: UITextField!
-    private var keyboardManager: KeyboardManager?
-    
-    // MARK: - KeyboardRespondable
-    
-    var keyboardScrollableScrollView: UIScrollView?
-    var keyboardWillShowObserver: NSObjectProtocol?
-    var keyboardWillHideObserver: NSObjectProtocol?
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        keyboardScrollableScrollView = scrollView
-        setupKeyboardRespondable()
-        
-        // KeyboardManager setup
+        let textFields: [UITextField] = [textField1, textField2, textField3, textField4, textField5, textField6, textField7, textField8]
         let keyboardToolbar = KeyboardToolbar()
-        keyboardManager = KeyboardManager(textFields: [textField1, textField2, textField3, textField4, textField5, textField6, textField7, textField8], inputAccessoryView: keyboardToolbar, returnKeyNavigationEnabled: false)
-        keyboardManager?.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupKeyboardObservers()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeKeyboardObservers()
+        configureKeyboardSupport(with: textFields, scrollView: scrollView, bottomConstraint: nil, usesDismissalView: true, usesKeyboardNextButtons: true, keyboardInputAccessoryView: keyboardToolbar)
+        keyboardSupportDelegate = self
     }
 }
 
-// MARK: - KeyboardManagerDelegate
-
-extension ViewControllerA: KeyboardManagerDelegate {
+// MARK: - KeyboardSupportDelegate
+extension ViewControllerA: KeyboardSupportDelegate {
     
-    func keyboardManagerDidTapDone(_ manager: KeyboardManager) {
-        print("Done was tapped in ViewControllerA.")
+    func didTapDoneButton() {
+        // Execute code for "Done" button tap such as validation or login.
+        print("Done button tapped")
     }
 }
