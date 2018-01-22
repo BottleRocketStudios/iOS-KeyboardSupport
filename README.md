@@ -1,4 +1,8 @@
 # KeyboardSupport
+[![CI Status](http://img.shields.io/travis/BottleRocketStudios/iOS-KeyboardSupport.svg?style=flat)](https://travis-ci.org/BottleRocketStudios/iOS-KeyboardSupport)
+[![Version](https://img.shields.io/cocoapods/v/KeyboardSupport.svg?style=flat)](http://cocoapods.org/pods/KeyboardSupport)
+[![License](https://img.shields.io/cocoapods/l/KeyboardSupport.svg?style=flat)](http://cocoapods.org/pods/KeyboardSupport)
+[![Platform](https://img.shields.io/cocoapods/p/KeyboardSupport.svg?style=flat)](http://cocoapods.org/pods/KeyboardSupport)
 
 ## Purpose
 This library provides conveniences for dealing with common keyboard tasks. There are a few main goals:
@@ -10,8 +14,8 @@ This library provides conveniences for dealing with common keyboard tasks. There
 
 ## Key Concepts
 * KeyboardInputAccessory - A protocol your custom view conforms to that gets callbacks for "back", "next", and "done" when moving between text fields.
-* KeyboardSupportViewController - A sublcass of UIViewController which handles different keyboard support options. You can pick and choose the options you want.
-  Options include:
+* KeyboardSupportViewController - A sublcass of UIViewController which handles different keyboard support options.
+* KeyboardSupportConfiguration - A struct composed of different options which include:
         * Auto scrollling when keyboard appears by passing in your UIScrollView
         * Moving a view when keyboard appears by passing in a bottom constraint and constraint offest if necessary
         * Easy dismissal of the keyboard by tapping outside a text field
@@ -36,7 +40,9 @@ class ViewController: KeyboardSupportViewController {
         super.viewDidLoad()
         
         let textFields: [UITextField] = [textField1, textField2]
-        configureKeyboardSupport(with: textFields, scrollView: scrollView, bottomConstraint: nil, usesDismissalView: true, usesKeyboardNextButtons: true)
+        
+        let configuration = KeyboardSupportConfiguration(textFields: textFields, scrollView: scrollView, usesDismissalView: true, usesKeyboardNextButtons: true)
+        configureKeyboardSupport(with: configuration)
     }
 }
 ```
@@ -52,7 +58,8 @@ class ViewController: KeyboardSupportViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureKeyboardSupport(with: [], scrollView: nil, bottomConstraint: bottomConstraint, constraintOffset: 49, usesDismissalView: true, usesKeyboardNextButtons: false)
+        let configuration = KeyboardSupportConfiguration(bottomConstraint: bottomConstraint, constraintOffset: 49, usesDismissalView: true)
+        configureKeyboardSupport(with: configuration)
     }
 }
 ```
@@ -60,13 +67,17 @@ class ViewController: KeyboardSupportViewController {
 3. Supporting dismissal of the keyboard by tapping outside a text field.
     Make sure usesDismissalView is set to true.
 ``` swift
-configureKeyboardSupport(with: [], scrollView: nil, bottomConstraint: nil, usesDismissalView: true, usesKeyboardNextButtons: false)
+var configuration = KeyboardSupportConfiguration()
+configuration.usesDismissalView = true
+configureKeyboardSupport(with: configuration)
 ```
 
 4. Supporting the keyboard's "Return" key to navigate linearly from one text field to the next.
     Make sure usesKeyboardNextButtons is set to true.
 ``` swift
-configureKeyboardSupport(with: [], scrollView: nil, bottomConstraint: nil, usesDismissalView: false, usesKeyboardNextButtons: true)
+var configuration = KeyboardSupportConfiguration()
+configuration.usesKeyboardNextButtons = true
+configureKeyboardSupport(with: configuration)
 ```
 
 5. Supporting your custom toolbar above the keyboard.
@@ -83,8 +94,9 @@ class ViewController: KeyboardSupportViewController {
     
         let textFields: [UITextField] = [textField1, textField2]
         let keyboardToolbar = KeyboardToolbar() // A custom view conforming to KeyboardInputAccessory
-    
-        configureKeyboardSupport(with: textFields, scrollView: nil, bottomConstraint: nil, usesDismissalView: true, usesKeyboardNextButtons: true, keyboardInputAccessoryView: keyboardToolbar)
+        
+        let configuration = KeyboardSupportConfiguration(textFields: textFields, usesDismissalView: true, usesKeyboardNextButtons: true, keyboardInputAccessoryView: keyboardToolbar)
+        configureKeyboardSupport(with: configuration)
     }
 }
 ```
@@ -101,13 +113,14 @@ class ViewController: KeyboardSupportViewController {
         super.viewDidLoad()
 
         let textFields: [UITextField] = [textField1, textField2]
-        configureKeyboardSupport(with: textFields, scrollView: nil, bottomConstraint: nil, usesDismissalView: true, usesKeyboardNextButtons: true)
+        
+        let configuration = KeyboardSupportConfiguration(textFields: textFields, usesDismissalView: true, usesKeyboardNextButtons: true)
+        configureKeyboardSupport(with: configuration)
         keyboardSupportDelegate = self
     }
 }
 
 extension ViewController: KeyboardSupportDelegate {
-
     func didTapDoneButton() {
         // Execute code for "Done" button tap such as validation or login.
     }

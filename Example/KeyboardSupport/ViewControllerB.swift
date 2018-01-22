@@ -20,6 +20,7 @@ class ViewControllerB: KeyboardSupportViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureKeyboardSupport(with: [], scrollView: nil, bottomConstraint: bottomConstraint, constraintOffset: 49, usesDismissalView: true, usesKeyboardNextButtons: false)
+        let configuration = KeyboardSupportConfiguration(bottomConstraint: bottomConstraint, constraintOffset: 49, usesDismissalView: true)
+        configureKeyboardSupport(with: configuration)
     }
 }

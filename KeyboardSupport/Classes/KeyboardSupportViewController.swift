@@ -12,19 +12,34 @@ public protocol KeyboardSupportDelegate: class {
     func didTapDoneButton()
 }
 
+/// A model composed of different options for supporting the keyboard.
+public struct KeyboardSupportConfiguration {
+    public var textFields: [UITextField] = []
+    public var scrollView: UIScrollView?
+    public var bottomConstraint: NSLayoutConstraint?
+    public var constraintOffset: CGFloat = 0
+    public var usesDismissalView: Bool = false
+    public var usesKeyboardNextButtons: Bool = false
+    public var keyboardInputAccessoryView: KeyboardInputAccessoryView?
+    
+    public init(textFields: [UITextField] = [], scrollView: UIScrollView? = nil, bottomConstraint: NSLayoutConstraint? = nil, constraintOffset: CGFloat = 0, usesDismissalView: Bool = false, usesKeyboardNextButtons: Bool = false, keyboardInputAccessoryView: KeyboardInputAccessoryView? = nil) {
+        self.textFields = textFields
+        self.scrollView = scrollView
+        self.bottomConstraint = bottomConstraint
+        self.constraintOffset = constraintOffset
+        self.usesDismissalView = usesDismissalView
+        self.usesKeyboardNextButtons = usesKeyboardNextButtons
+        self.keyboardInputAccessoryView = keyboardInputAccessoryView
+    }
+}
+
 /// A subclass of UIViewController for making keyboard interactions easier.
 open class KeyboardSupportViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var textFields: [UITextField] = []
-    private var scrollView: UIScrollView?
-    private var bottomConstraint: NSLayoutConstraint?
-    private var constraintOffset: CGFloat = 0
-    private var usesDismissalView: Bool = false
-    private var usesKeyboardNextButtons: Bool = false
-    private var keyboardInputAccessoryView: KeyboardInputAccessoryView?
-    private var currentTextField: UITextField?
+    public private(set) var configuration = KeyboardSupportConfiguration()
+    public private(set) var currentTextField: UITextField?
     public weak var keyboardSupportDelegate: KeyboardSupportDelegate?
     
     // MARK: - Lifecycle
@@ -43,37 +58,20 @@ open class KeyboardSupportViewController: UIViewController {
     
     // MARK: - Public
     
-    /// Configures different types of support for the keyboard.
-    ///
-    /// - Parameters:
-    ///   - textFields: UITextfields whose order matters for navigating from first to last.
-    ///   - scrollView: A UIScrollView whose contentInset is updated so the current text field is not hidden. Optional.
-    ///   - bottomConstraint: An NSLayoutConstraint to move a view above the keyboard. Optional.
-    ///   - constraintOffset: A value to offset the bottomConstraint.
-    ///   - usesDismissalView: Allows the keyboard to be dismissed by tapping outside a text field. Default is false.
-    ///   - usesKeyboardNextButtons: Allows the keyboard's "return" key to be used to navigate between text fields. Default is false.
-    ///   - keyboardInputAccessoryView: A KeyboardInputAccessoryView to show above the keyboard to navigate between text fields. Optional.
-    final public func configureKeyboardSupport(with textFields: [UITextField], scrollView: UIScrollView?, bottomConstraint: NSLayoutConstraint?, constraintOffset: CGFloat = 0, usesDismissalView: Bool, usesKeyboardNextButtons: Bool, keyboardInputAccessoryView: KeyboardInputAccessoryView? = nil) {
-        self.textFields = textFields
-        self.scrollView = scrollView
-        self.bottomConstraint = bottomConstraint
-        self.constraintOffset = constraintOffset
-        self.usesDismissalView = usesDismissalView
-        self.usesKeyboardNextButtons = usesKeyboardNextButtons
-        self.keyboardInputAccessoryView = keyboardInputAccessoryView
-        
+    final public func configureKeyboardSupport(with configuration: KeyboardSupportConfiguration) {
+        self.configuration = configuration
         setupTextFields()
         setupKeyboardDismissalView()
     }
     
     final public func moveToNextTextField() {
-        guard let currentTextField = currentTextField, let index = textFields.index(of: currentTextField), index < textFields.count - 1 else { return }
-        textFields[index + 1].becomeFirstResponder()
+        guard let currentTextField = currentTextField, let index = configuration.textFields.index(of: currentTextField), index < configuration.textFields.count - 1 else { return }
+        configuration.textFields[index + 1].becomeFirstResponder()
     }
     
     final public func moveToPreviousTextField() {
-        guard let currentTextField = currentTextField, let index = textFields.index(of: currentTextField), index > 0 else { return }
-        textFields[index - 1].becomeFirstResponder()
+        guard let currentTextField = currentTextField, let index = configuration.textFields.index(of: currentTextField), index > 0 else { return }
+        configuration.textFields[index - 1].becomeFirstResponder()
     }
     
     final public func resignCurrentTextField() {
@@ -89,15 +87,15 @@ private extension KeyboardSupportViewController {
     @objc func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo, let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect, let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
         
-        if let scrollView = scrollView {
+        if let scrollView = configuration.scrollView {
             var contentInset = scrollView.contentInset
             contentInset.bottom = keyboardFrame.height
             scrollView.contentInset = contentInset
             scrollView.scrollIndicatorInsets = contentInset
         }
         
-        if let bottomConstraint = bottomConstraint {
-            bottomConstraint.constant = keyboardFrame.height - constraintOffset
+        if let bottomConstraint = configuration.bottomConstraint {
+            bottomConstraint.constant = keyboardFrame.height - configuration.constraintOffset
             UIView.animate(withDuration: duration, animations: {
                 self.view.layoutIfNeeded()
             })
@@ -107,12 +105,12 @@ private extension KeyboardSupportViewController {
     @objc func keyboardWillHide(notification: Notification) {
         guard let userInfo = notification.userInfo, let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
         
-        if let scrollView = scrollView {
+        if let scrollView = configuration.scrollView {
             scrollView.contentInset = .zero
             scrollView.scrollIndicatorInsets = .zero
         }
         
-        if let bottomConstraint = bottomConstraint {
+        if let bottomConstraint = configuration.bottomConstraint {
             bottomConstraint.constant = 0
             UIView.animate(withDuration: duration, animations: {
                 self.view.layoutIfNeeded()
@@ -126,24 +124,24 @@ private extension KeyboardSupportViewController {
 private extension KeyboardSupportViewController {
     
     func setupTextFields() {
-        textFields.forEach {
+        configuration.textFields.forEach {
             $0.addTarget(self, action: #selector(textFieldEditingDidBegin(_:)), for: .editingDidBegin)
             $0.addTarget(self, action: #selector(textFieldEditingDidEndOnExit(_:)), for: .editingDidEndOnExit)
         }
         
-        if usesKeyboardNextButtons {
-            textFields.forEach { $0.returnKeyType = .next }
-            textFields.last?.returnKeyType = .done
+        if configuration.usesKeyboardNextButtons {
+            configuration.textFields.forEach { $0.returnKeyType = .next }
+            configuration.textFields.last?.returnKeyType = .done
         }
         
-        if let keyboardInputAccessoryView = keyboardInputAccessoryView {
+        if let keyboardInputAccessoryView = configuration.keyboardInputAccessoryView {
             keyboardInputAccessoryView.keyboardInputAccessoryDelegate = self
-            textFields.forEach { $0.inputAccessoryView = keyboardInputAccessoryView }
+            configuration.textFields.forEach { $0.inputAccessoryView = keyboardInputAccessoryView }
         }
     }
     
     func setupKeyboardDismissalView() {
-        guard usesDismissalView else { return }
+        guard configuration.usesDismissalView else { return }
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardDismissalViewTapped))
         tapGestureRecognizer.cancelsTouchesInView = false
@@ -159,7 +157,7 @@ private extension KeyboardSupportViewController {
     }
     
     @objc func textFieldEditingDidEndOnExit(_ textField: UITextField) {
-        if usesKeyboardNextButtons {
+        if configuration.usesKeyboardNextButtons {
             switch textField.returnKeyType {
             case .next:
                 moveToNextTextField()
@@ -177,11 +175,11 @@ private extension KeyboardSupportViewController {
 extension KeyboardSupportViewController: KeyboardInputAccessoryDelegate {
     
     public func keyboardInputAccessoryDidTapBack(_ inputAccessory: UIView) {
-        moveToNextTextField()
+        moveToPreviousTextField()
     }
     
     public func keyboardInputAccessoryDidTapNext(_ inputAccessory: UIView) {
-        moveToPreviousTextField()
+        moveToNextTextField()
     }
     
     public func keyboardInputAccessoryDidTapDone(_ inputAccessory: UIView) {

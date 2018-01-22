@@ -30,7 +30,8 @@ class ViewControllerA: KeyboardSupportViewController {
         
         let textFields: [UITextField] = [textField1, textField2, textField3, textField4, textField5, textField6, textField7, textField8]
         let keyboardToolbar = KeyboardToolbar()
-        configureKeyboardSupport(with: textFields, scrollView: scrollView, bottomConstraint: nil, usesDismissalView: true, usesKeyboardNextButtons: true, keyboardInputAccessoryView: keyboardToolbar)
+        let configuration = KeyboardSupportConfiguration(textFields: textFields, scrollView: scrollView, usesDismissalView: true, usesKeyboardNextButtons: true, keyboardInputAccessoryView: keyboardToolbar)
+        configureKeyboardSupport(with: configuration)
         keyboardSupportDelegate = self
     }
 }
