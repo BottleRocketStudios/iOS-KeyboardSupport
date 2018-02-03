@@ -18,11 +18,11 @@ public struct KeyboardSupportConfiguration {
     public var scrollView: UIScrollView?
     public var bottomConstraint: NSLayoutConstraint?
     public var constraintOffset: CGFloat = 0
-    public var usesDismissalView: Bool = false
-    public var usesKeyboardNextButtons: Bool = false
+    public var usesDismissalView = true
+    public var usesKeyboardNextButtons = true
     public var keyboardInputAccessoryView: KeyboardInputAccessoryView?
     
-    public init(textFields: [UITextField] = [], scrollView: UIScrollView? = nil, bottomConstraint: NSLayoutConstraint? = nil, constraintOffset: CGFloat = 0, usesDismissalView: Bool = false, usesKeyboardNextButtons: Bool = false, keyboardInputAccessoryView: KeyboardInputAccessoryView? = nil) {
+    public init(textFields: [UITextField] = [], scrollView: UIScrollView? = nil, bottomConstraint: NSLayoutConstraint? = nil, constraintOffset: CGFloat = 0, usesDismissalView: Bool = true, usesKeyboardNextButtons: Bool = true, keyboardInputAccessoryView: KeyboardInputAccessoryView? = nil) {
         self.textFields = textFields
         self.scrollView = scrollView
         self.bottomConstraint = bottomConstraint
@@ -44,14 +44,14 @@ open class KeyboardSupportViewController: UIViewController {
     
     // MARK: - Lifecycle
     
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
     
-    deinit {
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
@@ -82,9 +82,9 @@ open class KeyboardSupportViewController: UIViewController {
 
 // MARK: - Notifications
 
-private extension KeyboardSupportViewController {
+extension KeyboardSupportViewController {
     
-    @objc func keyboardWillShow(notification: Notification) {
+    @objc open func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo, let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect, let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
         
         if let scrollView = configuration.scrollView {
@@ -102,7 +102,7 @@ private extension KeyboardSupportViewController {
         }
     }
     
-    @objc func keyboardWillHide(notification: Notification) {
+    @objc open func keyboardWillHide(notification: Notification) {
         guard let userInfo = notification.userInfo, let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
         
         if let scrollView = configuration.scrollView {

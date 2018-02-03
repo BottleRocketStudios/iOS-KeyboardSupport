@@ -17,7 +17,7 @@ class KeyboardSupportViewControllerTests: XCTestCase {
         super.setUp()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         viewControllerA = storyboard.instantiateViewController(withIdentifier: "ViewControllerA") as? ViewControllerA
-        _ = viewControllerA?.view
+        viewControllerA?.loadViewIfNeeded()
     }
 
     override func tearDown() {

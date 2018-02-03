@@ -21,8 +21,8 @@ class KeyboardSupportConfigurationTests: XCTestCase {
         XCTAssertNil(configuration.scrollView)
         XCTAssertNil(configuration.bottomConstraint)
         XCTAssertEqual(configuration.constraintOffset, 0)
-        XCTAssertFalse(configuration.usesDismissalView)
-        XCTAssertFalse(configuration.usesKeyboardNextButtons)
+        XCTAssertTrue(configuration.usesDismissalView)
+        XCTAssertTrue(configuration.usesKeyboardNextButtons)
         XCTAssertNil(configuration.keyboardInputAccessoryView)
     }
     
@@ -31,8 +31,8 @@ class KeyboardSupportConfigurationTests: XCTestCase {
         let scrollView = UIScrollView()
         let bottomConstraint = NSLayoutConstraint()
         let constraintOffest: CGFloat = 44
-        let usesDismissalView = true
-        let usesKeyboardNextButtons = true
+        let usesDismissalView = false
+        let usesKeyboardNextButtons = false
         let keyboardInputAccessoryView = MockKeyboardToolbar()
         let configuration = KeyboardSupportConfiguration(textFields: textFields, scrollView: scrollView, bottomConstraint: bottomConstraint, constraintOffset: constraintOffest, usesDismissalView: usesDismissalView, usesKeyboardNextButtons: usesKeyboardNextButtons, keyboardInputAccessoryView: keyboardInputAccessoryView)
         
@@ -40,8 +40,8 @@ class KeyboardSupportConfigurationTests: XCTestCase {
         XCTAssertEqual(configuration.scrollView, scrollView)
         XCTAssertEqual(configuration.bottomConstraint, bottomConstraint)
         XCTAssertEqual(configuration.constraintOffset, constraintOffest)
-        XCTAssertTrue(configuration.usesDismissalView)
-        XCTAssertTrue(configuration.usesKeyboardNextButtons)
+        XCTAssertFalse(configuration.usesDismissalView)
+        XCTAssertFalse(configuration.usesKeyboardNextButtons)
         XCTAssertEqual(configuration.keyboardInputAccessoryView, keyboardInputAccessoryView)
     }
 }

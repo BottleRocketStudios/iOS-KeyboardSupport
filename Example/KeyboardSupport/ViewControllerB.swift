@@ -20,7 +20,8 @@ class ViewControllerB: KeyboardSupportViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let configuration = KeyboardSupportConfiguration(bottomConstraint: bottomConstraint, constraintOffset: 49, usesDismissalView: true)
+        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
+        let configuration = KeyboardSupportConfiguration(bottomConstraint: bottomConstraint, constraintOffset: tabBarHeight, usesKeyboardNextButtons: false)
         configureKeyboardSupport(with: configuration)
     }
 }

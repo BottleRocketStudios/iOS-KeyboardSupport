@@ -21,7 +21,7 @@ class ViewControllerC: KeyboardSupportViewController {
         super.viewDidLoad()
         
         collectionView.dataSource = self
-        let configuration = KeyboardSupportConfiguration(scrollView: collectionView, usesDismissalView: true)
+        let configuration = KeyboardSupportConfiguration(scrollView: collectionView, usesKeyboardNextButtons: false)
         configureKeyboardSupport(with: configuration)
     }
 }

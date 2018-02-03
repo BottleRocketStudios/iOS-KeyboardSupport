@@ -41,7 +41,7 @@ class ViewController: KeyboardSupportViewController {
         
         let textFields: [UITextField] = [textField1, textField2]
         
-        let configuration = KeyboardSupportConfiguration(textFields: textFields, scrollView: scrollView, usesDismissalView: true, usesKeyboardNextButtons: true)
+        let configuration = KeyboardSupportConfiguration(textFields: textFields, scrollView: scrollView)
         configureKeyboardSupport(with: configuration)
     }
 }
@@ -58,30 +58,31 @@ class ViewController: KeyboardSupportViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let configuration = KeyboardSupportConfiguration(bottomConstraint: bottomConstraint, constraintOffset: 49, usesDismissalView: true)
+        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
+        let configuration = KeyboardSupportConfiguration(bottomConstraint: bottomConstraint, constraintOffset: tabBarHeight, usesKeyboardNextButtons: false)
         configureKeyboardSupport(with: configuration)
     }
 }
 ```
 
-3. Supporting dismissal of the keyboard by tapping outside a text field.
-    Make sure usesDismissalView is set to true.
+3. Supporting dismissal of the keyboard by tapping outside a text field is the default behavior.
+    To opt out, set usesDismissalView to false.
 ``` swift
 var configuration = KeyboardSupportConfiguration()
-configuration.usesDismissalView = true
+configuration.usesDismissalView = false
 configureKeyboardSupport(with: configuration)
 ```
 
-4. Supporting the keyboard's "Return" key to navigate linearly from one text field to the next.
-    Make sure usesKeyboardNextButtons is set to true.
+4. Supporting the keyboard's "Return" key to navigate linearly from one text field to the next is the default behavior.
+    To opt out, set usesKeyboardNextButtons to false.
 ``` swift
 var configuration = KeyboardSupportConfiguration()
-configuration.usesKeyboardNextButtons = true
+configuration.usesKeyboardNextButtons = false
 configureKeyboardSupport(with: configuration)
 ```
 
-5. Supporting your custom toolbar above the keyboard.
-    Create your custom view and conform to KeyboardInputAccessory. Pass it in.
+5. Supporting a custom toolbar above the keyboard.
+Create a custom UIToolbar or UIView that conforms to KeyboardInputAccessory. Then pass or set keyboardInputAccessoryView with this custom toolbar.
 ``` swift
 import KeyboardSupport
     
@@ -95,11 +96,12 @@ class ViewController: KeyboardSupportViewController {
         let textFields: [UITextField] = [textField1, textField2]
         let keyboardToolbar = KeyboardToolbar() // A custom view conforming to KeyboardInputAccessory
         
-        let configuration = KeyboardSupportConfiguration(textFields: textFields, usesDismissalView: true, usesKeyboardNextButtons: true, keyboardInputAccessoryView: keyboardToolbar)
+        let configuration = KeyboardSupportConfiguration(textFields: textFields, keyboardInputAccessoryView: keyboardToolbar)
         configureKeyboardSupport(with: configuration)
     }
 }
 ```
+<img src="https://raw.githubusercontent.com/BottleRocketStudios/iOS-KeyboardSupport/master/Screenshots/KeyboardToolbar.png" width="320px" />
 
 6. Get callbacks when the "Done" button is tapped through delegation.
 ``` swift
@@ -114,7 +116,7 @@ class ViewController: KeyboardSupportViewController {
 
         let textFields: [UITextField] = [textField1, textField2]
         
-        let configuration = KeyboardSupportConfiguration(textFields: textFields, usesDismissalView: true, usesKeyboardNextButtons: true)
+        let configuration = KeyboardSupportConfiguration(textFields: textFields)
         configureKeyboardSupport(with: configuration)
         keyboardSupportDelegate = self
     }
