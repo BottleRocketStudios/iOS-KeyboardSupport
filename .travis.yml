@@ -30,6 +30,8 @@ script:
   - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
     fi
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 # references:
 # * http://www.objc.io/issue-6/travis-ci.html
