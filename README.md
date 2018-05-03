@@ -11,140 +11,132 @@
 This library provides conveniences for dealing with common keyboard tasks. There are a few main goals:
 
 * Make it easy to auto-dismiss the keyboard via tap on screen.
-* Auto-scrolling to the active text field/view.
-* Make navigation between text views worry free with your own view.
-* Allow keyboard "return" key to navigate between text fields.
+* Auto-scrolling to the active text field.
+* Make navigation between text fields worry free with your own view.
+* Allow keyboard "Return" key to navigate between text fields.
 
 ## Key Concepts
-* KeyboardManager - Handles navigaton between text fields by providing your custom view or using the keyboard's return key.
-* KeyboardInputAccessory - Your custom view conforms to this protocol to get callbacks for "back", "next", and "done" for moving between text fields.
-* KeyboardDismissable - A protocol that enables automatic keyboard dismissal via tapping the screen when the keyboard is displayed.
-* KeyboardScrollable - A protocol that enables scrolling views to the first responder when a keyboard is shown. Must be used with a UIScrollView or one of its subclasses.
-* KeyboardRespondable - Inherits from both KeyboardDismissable and KeyboardScrollable for convenience.
-
+* KeyboardInputAccessory - A protocol your custom view conforms to that gets callbacks for "back", "next", and "done" when moving between text fields.
+* KeyboardSupportViewController - A sublcass of UIViewController which handles different keyboard support options.
+* KeyboardSupportConfiguration - A struct composed of different options which include:
+        * Auto scrollling when keyboard appears by passing in your UIScrollView
+        * Moving a view when keyboard appears by passing in a bottom constraint and constraint offest if necessary
+        * Easy dismissal of the keyboard by tapping outside a text field
+        * Use of the keyboard's "Return" key to navigate between text fields
+        * Use of your custom keyboard toolbar to navigate between text fields
+        * Callback when the "Done" button of your custom toolbar or keyboard "Return" button is tapped
+        
 ## Usage
-### KeyboardManager for using "Return" key.
-Create a KeyboardManager. Pass in your UITextFields. Make sure returnKeyNavigationEnabled is set to `true`. The order of the text fields determines the navigation order for traversing from one to the next.
+### KeyboardSupportViewController can be configured with different options.
+
+1. Supporting a UIScrollView or one of its subclasses.
 ``` swift
-class ViewController: UIViewController {
+import KeyboardSupport
+
+class ViewController: KeyboardSupportViewController {
+    @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var textField1: UITextField!
     @IBOutlet private var textField2: UITextField!
-    private var keyboardManager: KeyboardManager?
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let textFields: [UITextField] = [textField1, textField2]
+        
+        let configuration = KeyboardSupportConfiguration(textFields: textFields, scrollView: scrollView)
+        configureKeyboardSupport(with: configuration)
+    }
+}
+```
+
+2. Supporting a bottom constraint of a view.
+    Passing a constraint offset can be useful when dealing with tab bars.
+``` swift
+import KeyboardSupport
+
+class ViewController: KeyboardSupportViewController {
+    @IBOutlet private var bottomConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        keyboardManager = KeyboardManager(textFields: [textField1, textField2], returnKeyNavigationEnabled: true)
+        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
+        let configuration = KeyboardSupportConfiguration(bottomConstraint: bottomConstraint, constraintOffset: tabBarHeight, usesKeyboardNextButtons: false)
+        configureKeyboardSupport(with: configuration)
     }
 }
 ```
 
-You can also set the delegate of the KeyboardManager to get a callback when "Done" is tapped on the keyboard.
+3. Supporting dismissal of the keyboard by tapping outside a text field is the default behavior.
+    To opt out, set usesDismissalView to false.
 ``` swift
-override func viewDidLoad() {
-    super.viewDidLoad()
-
-    keyboardManager = KeyboardManager(textFields: [textField1, textField2], configuresReturnKeys: true)
-    keyboardManager?.delegate = self
-}
+var configuration = KeyboardSupportConfiguration()
+configuration.usesDismissalView = false
+configureKeyboardSupport(with: configuration)
 ```
 
+4. Supporting the keyboard's "Return" key to navigate linearly from one text field to the next is the default behavior.
+    To opt out, set usesKeyboardNextButtons to false.
 ``` swift
-extension ViewController: KeyboardManagerDelegate {
-    func keyboardManagerDidTapDone(_ manager: KeyboardManager) {
-        // Handle "Done" tap
-    }
-}
+var configuration = KeyboardSupportConfiguration()
+configuration.usesKeyboardNextButtons = false
+configureKeyboardSupport(with: configuration)
 ```
 
-### KeyboardManager with custom view above the keyboard.
-Create a custom class that is a subclass of UIView or one of its subclasses to pass to the KeyboardManager. Your custom class can conform to KeyboardInputAccessory so the KeyboardManager handles navigation between text fields. Otherwise, your view controller can handle navigation callbacks.
+5. Supporting a custom toolbar above the keyboard.
+Create a custom UIToolbar or UIView that conforms to KeyboardInputAccessory. Then pass or set keyboardInputAccessoryView with this custom toolbar.
 ``` swift
-class KeyboardToolbar: UIToolbar, KeyboardInputAccessory {
-    // Use the delegate
-    weak var keyboardInputAccessoryDelegate: KeyboardInputAccessoryDelegate?
-
-    // Example button actions
-    @IBAction func backButtonTapped(_ sender: UIButton) {
-        keyboardInputAccessoryDelegate?.keyboardInputAccessoryDidTapBack(self)
-    }
-
-    @IBAction func nextButtonTapped(_ sender: UIButton) {
-        keyboardInputAccessoryDelegate?.keyboardInputAccessoryDidTapNext(self)
-    }
-
-    @IBAction func doneButtonTapped(_ sender: UIButton) {
-        keyboardInputAccessoryDelegate?.keyboardInputAccessoryDidTapDone(self)
+import KeyboardSupport
+    
+class ViewController: KeyboardSupportViewController {
+    @IBOutlet private var textField1: UITextField!
+    @IBOutlet private var textField2: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        let textFields: [UITextField] = [textField1, textField2]
+        let keyboardToolbar = KeyboardToolbar() // A custom view conforming to KeyboardInputAccessory
+        
+        let configuration = KeyboardSupportConfiguration(textFields: textFields, keyboardInputAccessoryView: keyboardToolbar)
+        configureKeyboardSupport(with: configuration)
     }
 }
 ```
+<img src="https://raw.githubusercontent.com/BottleRocketStudios/iOS-KeyboardSupport/master/Screenshots/KeyboardToolbar.png" width="320px" />
 
-### KeyboardDismissable
-Conform to this protocol to enable keyboard dismissal via tapping the screen when the keyboard is displayed.
+6. Get callbacks when the "Done" button is tapped through delegation.
 ``` swift
-class ViewController: UIViewController, KeyboardDismissable {
+import KeyboardSupport
+
+class ViewController: KeyboardSupportViewController {
+    @IBOutlet private var textField1: UITextField!
+    @IBOutlet private var textField2: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupKeyboardDismissalView()
+
+        let textFields: [UITextField] = [textField1, textField2]
+        
+        let configuration = KeyboardSupportConfiguration(textFields: textFields)
+        configureKeyboardSupport(with: configuration)
+        keyboardSupportDelegate = self
+    }
+}
+
+extension ViewController: KeyboardSupportDelegate {
+    func didTapDoneButton() {
+        // Execute code for "Done" button tap such as validation or login.
     }
 }
 ```
 
-### KeyboardScrollable
-Conform to this protocol to enable scrolling to the first responder when the keyboard is shown. Must be used with a UIScrollView or one of its subclasses.
+7. If you need to invoke navigation yourself between text fields, use these provided methods.
 ``` swift
-class ViewController: UIViewController, KeyboardScrollable {
-
-    @IBOutlet private var scrollView: UIScrollView!
-    var keyboardScrollableScrollView: UIScrollView?
-    var keyboardWillShowObserver: NSObjectProtocol?
-    var keyboardWillHideObserver: NSObjectProtocol?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        keyboardScrollableScrollView = scrollView
-        setupKeyboardDismissalView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupKeyboardObservers()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeKeyboardObservers()
-    }
-}
-```
-
-### KeyboardRespondable
-Conform to this protocol to utilize both KeyboardDismissable and KeyboardScrollable.
-``` swift
-class ViewController: UIViewController, KeyboardRespondable {
-
-    @IBOutlet private var scrollView: UIScrollView!
-    var keyboardScrollableScrollView: UIScrollView?
-    var keyboardWillShowObserver: NSObjectProtocol?
-    var keyboardWillHideObserver: NSObjectProtocol?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        keyboardScrollableScrollView = scrollView
-        setupKeyboardRespondable()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupKeyboardObservers()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeKeyboardObservers()
-    }
-}
+moveToNextTextField()
+moveToPreviousTextField()
+resignCurrentTextField()
 ```
 
 ## Example

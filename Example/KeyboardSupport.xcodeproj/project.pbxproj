@@ -14,13 +14,14 @@
 		0ED60A701FEB18B500A9209B /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6B1FEB18B500A9209B /* ViewControllerA.swift */; };
 		0ED60A711FEB18B500A9209B /* ViewControllerC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6C1FEB18B500A9209B /* ViewControllerC.swift */; };
 		0ED60A721FEB18B500A9209B /* KeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A6D1FEB18B500A9209B /* KeyboardToolbar.swift */; };
-		0ED60A731FEB191200A9209B /* KeyboardSupportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED60A611FEB189200A9209B /* KeyboardSupportTests.swift */; };
 		0ED60A761FEB197E00A9209B /* CONTRIBUTING.md in Resources */ = {isa = PBXBuildFile; fileRef = 0ED60A741FEB197D00A9209B /* CONTRIBUTING.md */; };
 		0ED60A771FEB197E00A9209B /* NOTICE in Resources */ = {isa = PBXBuildFile; fileRef = 0ED60A751FEB197D00A9209B /* NOTICE */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		62080359201648270047BA3A /* KeyboardSupportConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62080358201648270047BA3A /* KeyboardSupportConfigurationTests.swift */; };
+		6208035B20164BD00047BA3A /* KeyboardSupportViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208035A20164BD00047BA3A /* KeyboardSupportViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0ED60A611FEB189200A9209B /* KeyboardSupportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSupportTests.swift; sourceTree = "<group>"; };
 		0ED60A691FEB18B400A9209B /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		0ED60A6A1FEB18B400A9209B /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 		0ED60A6B1FEB18B500A9209B /* ViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerA.swift; sourceTree = "<group>"; };
@@ -52,6 +52,8 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* KeyboardSupport_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardSupport_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62080358201648270047BA3A /* KeyboardSupportConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSupportConfigurationTests.swift; sourceTree = "<group>"; };
+		6208035A20164BD00047BA3A /* KeyboardSupportViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSupportViewControllerTests.swift; sourceTree = "<group>"; };
 		661C5D6AF93AF536B2909377 /* Pods-KeyboardSupport_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardSupport_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardSupport_Tests/Pods-KeyboardSupport_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		669BA161F3C0582B2F71BB72 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		75B592080C6E1EF1230ECA4F /* Pods-KeyboardSupport_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardSupport_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardSupport_Example/Pods-KeyboardSupport_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,7 +144,8 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				0ED60A611FEB189200A9209B /* KeyboardSupportTests.swift */,
+				62080358201648270047BA3A /* KeyboardSupportConfigurationTests.swift */,
+				6208035A20164BD00047BA3A /* KeyboardSupportViewControllerTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -237,7 +240,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0920;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -406,7 +409,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0ED60A731FEB191200A9209B /* KeyboardSupportTests.swift in Sources */,
+				62080359201648270047BA3A /* KeyboardSupportConfigurationTests.swift in Sources */,
+				6208035B20164BD00047BA3A /* KeyboardSupportViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +577,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5FA53790496CABDAB06A9BBC /* Pods-KeyboardSupport_Tests.debug.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -581,6 +587,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyboardSupport_Example.app/KeyboardSupport_Example";
@@ -591,6 +598,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 661C5D6AF93AF536B2909377 /* Pods-KeyboardSupport_Tests.release.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
