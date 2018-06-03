@@ -58,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		621033EB20C4716100473286 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEA6B20BC94840036D5A6 /* KeyboardSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardSupport.h; sourceTree = "<group>"; };
 		626DEA6C20BC94840036D5A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				626DEAC420BC96BC0036D5A6 /* README.md */,
+				621033EB20C4716100473286 /* CHANGELOG.md */,
 				626DEAA620BC95070036D5A6 /* Sources */,
 				626DEAA920BC951C0036D5A6 /* Examples */,
 				626DEAA720BC950E0036D5A6 /* Tests */,
@@ -221,6 +223,7 @@
 				626DEA6520BC94840036D5A6 /* Frameworks */,
 				626DEA6620BC94840036D5A6 /* Headers */,
 				626DEA6720BC94840036D5A6 /* Resources */,
+				621033EC20C472AB00473286 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -336,6 +339,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		621033EC20C472AB00473286 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		626DEA6420BC94840036D5A6 /* Sources */ = {

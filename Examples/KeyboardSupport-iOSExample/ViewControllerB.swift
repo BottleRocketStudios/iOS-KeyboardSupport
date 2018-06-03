@@ -36,7 +36,7 @@ class ViewControllerB: UIViewController {
 extension ViewControllerB: KeyboardManagerDelegate {
     
     func keyboardManagerDidTapDone(_ manager: KeyboardManager) {
-        print("Done was tapped in ViewControllerB.")
+        debugPrint("Done was tapped in ViewControllerB.")
     }
 }
 
@@ -44,6 +44,6 @@ extension ViewControllerB: KeyboardManagerDelegate {
 extension ViewControllerB: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("textField1 did begin editing")
+        debugPrint("textField1 did begin editing")
     }
 }

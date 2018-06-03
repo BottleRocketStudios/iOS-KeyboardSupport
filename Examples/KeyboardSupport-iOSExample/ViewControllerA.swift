@@ -62,6 +62,6 @@ class ViewControllerA: UIViewController, KeyboardRespondable {
 extension ViewControllerA: KeyboardManagerDelegate {
     
     func keyboardManagerDidTapDone(_ manager: KeyboardManager) {
-        print("Done was tapped in ViewControllerA.")
+        debugPrint("Done was tapped in ViewControllerA.")
     }
 }
