@@ -1,9 +1,0 @@
-use_frameworks!
-
-target 'KeyboardSupport_Example' do
-  pod 'KeyboardSupport', :path => '../'
-
-  target 'KeyboardSupport_Tests' do
-    inherit! :search_paths
-  end
-end
