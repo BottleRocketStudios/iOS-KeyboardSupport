@@ -6,7 +6,7 @@ osx_image: xcode9.3
 language: swift
 env:
   global:
-    - PROJECT=KeyboardSupport.xcodeproj
+    - WORKSPACE=KeyboardSupport.xcworkspace
     - IOS_FRAMEWORK_SCHEME=KeyboardSupport-iOS
   matrix:
     - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"
@@ -19,9 +19,9 @@ script:
 
   # Build Framework and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild test -project "$PROJECT" -scheme "$SCHEME" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES | xcpretty;
+      xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES | xcpretty;
     else
-      xcodebuild build -project "$PROJECT" -scheme "$SCHEME" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty;
+      xcodebuild build -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty;
     fi
 
   # Run `pod lib lint` if specified
