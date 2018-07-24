@@ -112,7 +112,11 @@ public extension KeyboardScrollable where Self: UIViewController {
         let keyboardSize = keyboardInfo.finalFrame.size
         
         var mutableInset = contentInset
-        mutableInset.bottom += keyboardSize.height
+        if #available(iOS 11.0, *) {
+            mutableInset.bottom += keyboardSize.height - view.safeAreaInsets.bottom
+        } else {
+            mutableInset.bottom += keyboardSize.height
+        }
         adjustScrollViewInset(mutableInset)
         
         // If active text field is hidden by keyboard, scroll so it's visible
