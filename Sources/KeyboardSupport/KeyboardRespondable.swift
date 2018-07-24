@@ -48,18 +48,25 @@ extension UIViewController {
 
 /// Stores info about the keyboard.
 struct KeyboardInfo {
-    let keyboardSize: CGSize
+    let initialFrame: CGRect
+    let finalFrame: CGRect
     let animationDuration: TimeInterval
     
     init?(notification: Notification) {
         guard let userInfo = notification.userInfo,
-            let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
+            let initialKeyboardFrame = userInfo[UIKeyboardFrameBeginUserInfoKey] as? CGRect,
+            let finalKeyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
             let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else {
                 return nil
         }
         
-        keyboardSize = keyboardFrame.size
+        initialFrame = initialKeyboardFrame
+        finalFrame = finalKeyboardFrame
         animationDuration = duration
+    }
+    
+    var isMoving: Bool {
+        return initialFrame.origin != finalFrame.origin
     }
 }
 
@@ -80,7 +87,7 @@ public extension KeyboardScrollable where Self: UIViewController {
     
     func setupKeyboardObservers() {
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
-            guard let keyboardInfo = KeyboardInfo(notification: notification), let activeField = self?.view.activeFirstResponder() else { return }
+            guard let keyboardInfo = KeyboardInfo(notification: notification), keyboardInfo.isMoving, let activeField = self?.view.activeFirstResponder() else { return }
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
         })
         keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
@@ -102,7 +109,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         guard let contentInset = keyboardScrollableScrollView?.contentInset else { return }
         
         // Adjust scroll view insets for keyboard height
-        let keyboardSize = keyboardInfo.keyboardSize
+        let keyboardSize = keyboardInfo.finalFrame.size
         
         var mutableInset = contentInset
         mutableInset.bottom += keyboardSize.height
