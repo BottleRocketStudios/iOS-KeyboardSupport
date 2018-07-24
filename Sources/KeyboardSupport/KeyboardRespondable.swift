@@ -114,9 +114,9 @@ public extension KeyboardScrollable where Self: UIViewController {
         var mutableInset = contentInset
         if #available(iOS 11.0, *) {
             print(view.safeAreaInsets.bottom)
-            mutableInset.bottom += 200
+            mutableInset.bottom += keyboardSize.height - view.safeAreaInsets.bottom
         } else {
-            mutableInset.bottom += 200
+            mutableInset.bottom += keyboardSize.height
         }
         adjustScrollViewInset(mutableInset)
         
