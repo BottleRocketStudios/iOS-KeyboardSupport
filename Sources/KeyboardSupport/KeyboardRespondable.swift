@@ -10,36 +10,27 @@ import UIKit
 
 // MARK: - KeyboardRespondable
 
-/// Inherits from both KeyboardDismissable and KeyboardScrollable for convenience.
-public protocol KeyboardRespondable: KeyboardDismissable, KeyboardScrollable {
-    /// Must be called during setup ('viewDidLoad') so keyboard dismissal and responsiveness can be enabled.
-    func setupKeyboardRespondable()
-}
-
-public extension KeyboardRespondable where Self: UIViewController {
-    func setupKeyboardRespondable() {
-        setupKeyboardDismissalView()
-    }
-}
+/// Inherits from both KeyboardDismissable and KeyboardScrollable.
+public protocol KeyboardRespondable: KeyboardDismissable, KeyboardScrollable {}
 
 // MARK: - KeyboardDismissable
 
 /// Enables automatic keyboard dismissal via tapping the screen when the keyboard is displayed.
 public protocol KeyboardDismissable: class {
-    /// Must be called once during setup ('viewDidLoad') to enable dismissal.
-    func setupKeyboardDismissalView()
+    /// Must be called in `viewDidLoad()` to enable dismissal.
+    func setupKeyboardDismissal()
 }
 
 public extension KeyboardDismissable where Self: UIViewController {
-    func setupKeyboardDismissalView() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardDismissalViewTapped))
+    func setupKeyboardDismissal() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGestureRecognizer.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGestureRecognizer)
     }
 }
 
 extension UIViewController {
-    @objc func keyboardDismissalViewTapped(_ sender: UITapGestureRecognizer) {
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
 }
@@ -48,25 +39,18 @@ extension UIViewController {
 
 /// Stores info about the keyboard.
 struct KeyboardInfo {
-    let initialFrame: CGRect
     let finalFrame: CGRect
     let animationDuration: TimeInterval
     
     init?(notification: Notification) {
         guard let userInfo = notification.userInfo,
-            let initialKeyboardFrame = userInfo[UIKeyboardFrameBeginUserInfoKey] as? CGRect,
-            let finalKeyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+            let finalFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else {
                 return nil
         }
-        
-        initialFrame = initialKeyboardFrame
-        finalFrame = finalKeyboardFrame
-        animationDuration = duration
-    }
-    
-    var isMoving: Bool {
-        return initialFrame.origin != finalFrame.origin
+
+        self.finalFrame = finalFrame
+        self.animationDuration = animationDuration
     }
 }
 
@@ -76,18 +60,18 @@ public protocol KeyboardScrollable: class {
     var keyboardWillShowObserver: NSObjectProtocol? { get set }
     var keyboardWillHideObserver: NSObjectProtocol? { get set }
     
-    /// Must be called during screen appearance ('viewWillAppear') to allow for keyboard notification observers to be registered.
-    func setupKeyboardObservers()
+    /// Must be called in `viewDidLoad()` to add keyboard notification observers.
+    func addKeyboardObservers()
     
-    /// Must be called during screen disappearance ('viewWillDisappear') to allow for keyboard notification observers to be unregistered.
+    /// Must be called in `deinit` to remove keyboard notification observers.
     func removeKeyboardObservers()
 }
 
 public extension KeyboardScrollable where Self: UIViewController {
     
-    func setupKeyboardObservers() {
+    func addKeyboardObservers() {
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
-            guard let keyboardInfo = KeyboardInfo(notification: notification), keyboardInfo.isMoving, let activeField = self?.view.activeFirstResponder() else { return }
+            guard let keyboardInfo = KeyboardInfo(notification: notification), let activeField = self?.view.activeFirstResponder() else { return }
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
         })
         keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
@@ -106,37 +90,30 @@ public extension KeyboardScrollable where Self: UIViewController {
     }
     
     private func adjustViewForKeyboardAppearance(with keyboardInfo: KeyboardInfo, firstResponder: UIView) {
-        guard let contentInset = keyboardScrollableScrollView?.contentInset else { return }
-        
         // Adjust scroll view insets for keyboard height
         let keyboardSize = keyboardInfo.finalFrame.size
-        
-        var mutableInset = contentInset
-        if #available(iOS 11.0, *) {
-            mutableInset.bottom += keyboardSize.height - view.safeAreaInsets.bottom
-        } else {
-            mutableInset.bottom += keyboardSize.height
-        }
-        adjustScrollViewInset(mutableInset)
-        
-        // If active text field is hidden by keyboard, scroll so it's visible
-        let keyboardMinY = view.bounds.height - keyboardSize.height
-        
-        let firstResponderConvertedFrame = firstResponder.convert(firstResponder.bounds, to: nil)
-        let firstResponderMaxY = firstResponderConvertedFrame.maxY
-        
-        if firstResponderMaxY > keyboardMinY {
-            keyboardScrollableScrollView?.scrollRectToVisible(firstResponder.frame, animated: true)
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        adjustScrollViewInset(contentInsets, animationDuration: 0)
+
+        // If active first responder is hidden by the keyboard, scroll it so it's visible
+        var aRect = firstResponder.frame
+        aRect.size.height -= keyboardSize.height
+        if !aRect.contains(firstResponder.frame.origin) {
+            UIView.animate(withDuration: keyboardInfo.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+                self.keyboardScrollableScrollView?.scrollRectToVisible(firstResponder.frame, animated: false)
+            }, completion: nil)
         }
     }
     
     private func resetViewForKeyboardDisappearance(with keyboardInfo: KeyboardInfo) {
-        adjustScrollViewInset(.zero)
+        adjustScrollViewInset(.zero, animationDuration: keyboardInfo.animationDuration)
     }
     
-    private func adjustScrollViewInset(_ inset: UIEdgeInsets) {
-        keyboardScrollableScrollView?.contentInset = inset
-        keyboardScrollableScrollView?.scrollIndicatorInsets = inset
+    private func adjustScrollViewInset(_ inset: UIEdgeInsets, animationDuration: TimeInterval) {
+        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+            self.keyboardScrollableScrollView?.contentInset = inset
+            self.keyboardScrollableScrollView?.scrollIndicatorInsets = inset
+        }, completion: nil)
     }
 }
 
