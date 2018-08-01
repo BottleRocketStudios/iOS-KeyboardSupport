@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Ac-tl-Mro">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Ac-tl-Mro">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,10 +14,6 @@
         <scene sceneID="mRQ-Ar-ISW">
             <objects>
                 <viewController id="A1G-Gj-CNW" customClass="ViewControllerB" customModule="KeyboardSupport_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7QB-dM-921"/>
-                        <viewControllerLayoutGuide type="bottom" id="4yQ-3U-Ugm"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AKA-kU-5YJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,10 +44,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.70390276631260262" green="1" blue="0.73439423259378389" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6dV-IN-p76" firstAttribute="leading" secondItem="AKA-kU-5YJ" secondAttribute="leading" constant="24" id="6ww-8Z-ZIA"/>
-                            <constraint firstAttribute="trailing" secondItem="6dV-IN-p76" secondAttribute="trailing" constant="24" id="SVc-Jf-cHQ"/>
-                            <constraint firstItem="6dV-IN-p76" firstAttribute="top" secondItem="7QB-dM-921" secondAttribute="bottom" constant="24" id="vwI-Ha-cJh"/>
+                            <constraint firstItem="6dV-IN-p76" firstAttribute="leading" secondItem="lwI-ZW-Wfm" secondAttribute="leading" constant="24" id="6ww-8Z-ZIA"/>
+                            <constraint firstItem="lwI-ZW-Wfm" firstAttribute="trailing" secondItem="6dV-IN-p76" secondAttribute="trailing" constant="24" id="SVc-Jf-cHQ"/>
+                            <constraint firstItem="6dV-IN-p76" firstAttribute="top" secondItem="lwI-ZW-Wfm" secondAttribute="top" constant="24" id="vwI-Ha-cJh"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="lwI-ZW-Wfm"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="tQ5-lA-HrI"/>
                     <connections>
@@ -67,10 +64,6 @@
         <scene sceneID="Jsv-yx-Sph">
             <objects>
                 <viewController id="dsx-ZF-yar" customClass="ViewControllerC" customModule="KeyboardSupport_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ics-OH-I3m"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Mh-Nl-NBv"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cnJ-nB-JVj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,11 +109,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.69990591298891747" blue="0.5984198674593606" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="1No-F7-vm3" firstAttribute="leading" secondItem="cnJ-nB-JVj" secondAttribute="leading" id="6Da-WF-YEx"/>
-                            <constraint firstItem="3Mh-Nl-NBv" firstAttribute="top" secondItem="1No-F7-vm3" secondAttribute="bottom" id="B87-3V-zBl"/>
-                            <constraint firstAttribute="trailing" secondItem="1No-F7-vm3" secondAttribute="trailing" id="YCs-FM-Xt0"/>
+                            <constraint firstItem="1No-F7-vm3" firstAttribute="leading" secondItem="BiX-73-jDA" secondAttribute="leading" id="6Da-WF-YEx"/>
+                            <constraint firstItem="BiX-73-jDA" firstAttribute="bottom" secondItem="1No-F7-vm3" secondAttribute="bottom" id="B87-3V-zBl"/>
+                            <constraint firstItem="BiX-73-jDA" firstAttribute="trailing" secondItem="1No-F7-vm3" secondAttribute="trailing" id="YCs-FM-Xt0"/>
                             <constraint firstItem="1No-F7-vm3" firstAttribute="top" secondItem="cnJ-nB-JVj" secondAttribute="top" id="zlC-d3-pem"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="BiX-73-jDA"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="wml-81-NqO"/>
                     <connections>
@@ -130,6 +124,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14H-zu-diD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2120.8000000000002" y="551.87406296851577"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="MAm-zC-gVQ">
+            <objects>
+                <viewController id="tjr-Yg-jhf" customClass="ViewControllerD" customModule="KeyboardSupport_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8rz-Xl-jqq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0U-YV-fFg">
+                                <rect key="frame" x="20" y="40" width="335" height="528"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">KeyboardSafeAreaAdjustable
+
+NOTE: </string>
+                                        <attributes>
+                                            <font key="NSFont" size="28" name=".SFNSDisplay-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="This only works on iOS 11+">
+                                        <attributes>
+                                            <font key="NSFont" size="28" name=".SFNSDisplay-Bold"/>
+                                            <font key="NSOriginalFont" size="28" name=".SFNSDisplay-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+Should adjust safe area bottom inset.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="28"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <mutableString key="content">
+Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="28"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.960946171796764" green="0.64137243588286708" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="7JG-jH-eF2" firstAttribute="trailing" secondItem="h0U-YV-fFg" secondAttribute="trailing" constant="20" id="JIe-JS-Wtc"/>
+                            <constraint firstItem="h0U-YV-fFg" firstAttribute="leading" secondItem="7JG-jH-eF2" secondAttribute="leading" constant="20" id="SsM-nl-G7C"/>
+                            <constraint firstItem="h0U-YV-fFg" firstAttribute="top" secondItem="7JG-jH-eF2" secondAttribute="top" constant="20" id="Ue9-uy-Esv"/>
+                            <constraint firstItem="7JG-jH-eF2" firstAttribute="bottom" secondItem="h0U-YV-fFg" secondAttribute="bottom" constant="50" id="wZi-xv-c4w"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7JG-jH-eF2"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="PFf-cM-Lpi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JTY-ze-cgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2121" y="1240"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wew-1C-Gdt">
@@ -144,6 +202,7 @@
                         <segue destination="BsZ-qO-8Ik" kind="relationship" relationship="viewControllers" id="Jmc-kv-KzL"/>
                         <segue destination="A1G-Gj-CNW" kind="relationship" relationship="viewControllers" id="kEk-jZ-lFZ"/>
                         <segue destination="dsx-ZF-yar" kind="relationship" relationship="viewControllers" id="oav-k6-mnd"/>
+                        <segue destination="tjr-Yg-jhf" kind="relationship" relationship="viewControllers" id="IRr-O4-zbK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wpj-BM-P2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
