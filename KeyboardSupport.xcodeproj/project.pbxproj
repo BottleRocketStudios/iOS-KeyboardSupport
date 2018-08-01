@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DB06E192107E9EF0087ADBE /* UIScrollView+Inset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB06E182107E9EF0087ADBE /* UIScrollView+Inset.swift */; };
+		1DE2F9C5211174D000681063 /* KeyboardSafeAreaAdjustable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */; };
 		626DEA7220BC94850036D5A6 /* KeyboardSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */; };
 		626DEA7920BC94850036D5A6 /* KeyboardSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 626DEA6B20BC94840036D5A6 /* KeyboardSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		626DEA8920BC94ED0036D5A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DEA8820BC94ED0036D5A6 /* AppDelegate.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		1DB06E182107E9EF0087ADBE /* UIScrollView+Inset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Inset.swift"; sourceTree = "<group>"; };
+		1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSafeAreaAdjustable.swift; sourceTree = "<group>"; };
 		621033EB20C4716100473286 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEA6B20BC94840036D5A6 /* KeyboardSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardSupport.h; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				626DEAAD20BC95A00036D5A6 /* KeyboardInputAccessory.swift */,
 				626DEAAB20BC95A00036D5A6 /* KeyboardManager.swift */,
 				626DEAAC20BC95A00036D5A6 /* KeyboardRespondable.swift */,
+				1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */,
 				1DB06E182107E9EF0087ADBE /* UIScrollView+Inset.swift */,
 			);
 			path = KeyboardSupport;
@@ -369,6 +372,7 @@
 				1DB06E192107E9EF0087ADBE /* UIScrollView+Inset.swift in Sources */,
 				626DEAAF20BC95A00036D5A6 /* KeyboardRespondable.swift in Sources */,
 				626DEAAE20BC95A00036D5A6 /* KeyboardManager.swift in Sources */,
+				1DE2F9C5211174D000681063 /* KeyboardSafeAreaAdjustable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
