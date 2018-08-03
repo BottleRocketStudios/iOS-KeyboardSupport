@@ -88,17 +88,17 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
     }
 }
 
-private extension KeyboardToolbar {
+public extension KeyboardToolbar {
     
-    @objc func backButtonTapped(_ sender: UIBarButtonItem) {
+    @objc public func backButtonTapped(_ sender: UIBarButtonItem) {
         keyboardAccessoryDelegate?.keyboardAccessoryDidTapBack(self)
     }
     
-    @objc func nextButtonTapped(_ sender: UIBarButtonItem) {
+    @objc public func nextButtonTapped(_ sender: UIBarButtonItem) {
         keyboardAccessoryDelegate?.keyboardAccessoryDidTapNext(self)
     }
     
-    @objc func doneButtonTapped(_ sender: UIBarButtonItem) {
+    @objc public func doneButtonTapped(_ sender: UIBarButtonItem) {
         keyboardAccessoryDelegate?.keyboardAccessoryDidTapDone(self)
     }
 }

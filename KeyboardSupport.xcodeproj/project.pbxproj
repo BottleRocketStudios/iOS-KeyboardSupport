@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		624324A52114F99F003FD0E3 /* KeyboardNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624324A42114F99F003FD0E3 /* KeyboardNavigatorTests.swift */; };
 		626DEA7220BC94850036D5A6 /* KeyboardSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */; };
 		626DEA7920BC94850036D5A6 /* KeyboardSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 626DEA6B20BC94840036D5A6 /* KeyboardSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		626DEA8920BC94ED0036D5A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DEA8820BC94ED0036D5A6 /* AppDelegate.swift */; };
 		626DEA9020BC94EE0036D5A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626DEA8F20BC94EE0036D5A6 /* Assets.xcassets */; };
 		626DEA9320BC94EE0036D5A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 626DEA9120BC94EE0036D5A6 /* LaunchScreen.storyboard */; };
-		626DEAB320BC95DA0036D5A6 /* KeyboardSupportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DEAB120BC95C10036D5A6 /* KeyboardSupportTests.swift */; };
 		626DEAC320BC96670036D5A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 626DEAC220BC96660036D5A6 /* Main.storyboard */; };
 		626DEACB20BC9D360036D5A6 /* KeyboardSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */; };
 		626DEACC20BC9D360036D5A6 /* KeyboardSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		627D19D12111173A00007ACE /* KeyboardToolbarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D19D02111173A00007ACE /* KeyboardToolbarTests.swift */; };
 		628219D6210F556200892667 /* KeyboardRespondable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628219D2210F556200892667 /* KeyboardRespondable.swift */; };
 		628219D7210F556200892667 /* KeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628219D3210F556200892667 /* KeyboardToolbar.swift */; };
 		628219D8210F556200892667 /* KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628219D4210F556200892667 /* KeyboardAccessory.swift */; };
@@ -38,6 +39,13 @@
 			remoteGlobalIDString = 626DEA6820BC94840036D5A6;
 			remoteInfo = "KeyboardSupport-iOS";
 		};
+		62EA1E1921113FB40080CD51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 626DEA4720BC94360036D5A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 626DEA8520BC94ED0036D5A6;
+			remoteInfo = "KeyboardSupport-iOSExample";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		621033EB20C4716100473286 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		624324A42114F99F003FD0E3 /* KeyboardNavigatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNavigatorTests.swift; sourceTree = "<group>"; };
 		626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEA6B20BC94840036D5A6 /* KeyboardSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardSupport.h; sourceTree = "<group>"; };
 		626DEA6C20BC94840036D5A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,10 +74,10 @@
 		626DEA8F20BC94EE0036D5A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		626DEA9220BC94EE0036D5A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		626DEA9420BC94EE0036D5A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		626DEAB120BC95C10036D5A6 /* KeyboardSupportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSupportTests.swift; sourceTree = "<group>"; };
 		626DEAC220BC96660036D5A6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		626DEAC420BC96BC0036D5A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		626DEAD520BCA2E20036D5A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		627D19D02111173A00007ACE /* KeyboardToolbarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardToolbarTests.swift; sourceTree = "<group>"; };
 		628219D2210F556200892667 /* KeyboardRespondable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardRespondable.swift; sourceTree = "<group>"; };
 		628219D3210F556200892667 /* KeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardToolbar.swift; sourceTree = "<group>"; };
 		628219D4210F556200892667 /* KeyboardAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessory.swift; sourceTree = "<group>"; };
@@ -150,7 +159,8 @@
 		626DEAA720BC950E0036D5A6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				626DEAB120BC95C10036D5A6 /* KeyboardSupportTests.swift */,
+				624324A42114F99F003FD0E3 /* KeyboardNavigatorTests.swift */,
+				627D19D02111173A00007ACE /* KeyboardToolbarTests.swift */,
 				626DEAD220BCA2540036D5A6 /* Supporting Files */,
 			);
 			path = Tests;
@@ -237,6 +247,7 @@
 			);
 			dependencies = (
 				626DEA7420BC94850036D5A6 /* PBXTargetDependency */,
+				62EA1E1A21113FB40080CD51 /* PBXTargetDependency */,
 			);
 			name = "KeyboardSupport-iOSTests";
 			productName = "KeyboardSupport-iOSTests";
@@ -364,7 +375,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				626DEAB320BC95DA0036D5A6 /* KeyboardSupportTests.swift in Sources */,
+				627D19D12111173A00007ACE /* KeyboardToolbarTests.swift in Sources */,
+				624324A52114F99F003FD0E3 /* KeyboardNavigatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +401,11 @@
 			isa = PBXTargetDependency;
 			target = 626DEA6820BC94840036D5A6 /* KeyboardSupport-iOS */;
 			targetProxy = 626DEACD20BC9D360036D5A6 /* PBXContainerItemProxy */;
+		};
+		62EA1E1A21113FB40080CD51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 626DEA8520BC94ED0036D5A6 /* KeyboardSupport-iOSExample */;
+			targetProxy = 62EA1E1921113FB40080CD51 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -528,7 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = AJSV2L9F8Q;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -559,7 +576,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = AJSV2L9F8Q;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -584,9 +601,9 @@
 		626DEA7E20BC94850036D5A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AJSV2L9F8Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -603,9 +620,9 @@
 		626DEA7F20BC94850036D5A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AJSV2L9F8Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
