@@ -8,12 +8,18 @@
 
 import UIKit
 
+@available(*, deprecated: 2.0, renamed: "KeyboardNavigatorDelegate")
+public typealias KeyboardManagerDelegate = KeyboardNavigatorDelegate
+
 /// Contains callbacks for `KeyboardNavigator` navigation options.
 public protocol KeyboardNavigatorDelegate: class {
     func keyboardNavigatorDidTapBack(_ navigator: KeyboardNavigator)
     func keyboardNavigatorDidTapNext(_ navigator: KeyboardNavigator)
     func keyboardNavigatorDidTapDone(_ navigator: KeyboardNavigator)
 }
+
+@available(*, deprecated: 2.0, renamed: "KeyboardNavigator")
+public typealias KeyboardManager = KeyboardNavigator
 
 /// An object for handling navigation between text inputs.
 open class KeyboardNavigator {
