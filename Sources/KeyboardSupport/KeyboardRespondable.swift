@@ -76,6 +76,8 @@ public protocol KeyboardScrollable: class {
     var keyboardWillShowObserver: NSObjectProtocol? { get set }
     var keyboardWillHideObserver: NSObjectProtocol? { get set }
     
+    var shouldPreserveContentInsetWhenKeyboardVisible: Bool { get }
+    
     /// Must be called during screen appearance ('viewWillAppear') to allow for keyboard notification observers to be registered.
     func setupKeyboardObservers()
     
@@ -84,6 +86,8 @@ public protocol KeyboardScrollable: class {
 }
 
 public extension KeyboardScrollable where Self: UIViewController {
+    
+    var shouldPreserveContentInsetWhenKeyboardVisible: Bool { return true }
     
     func setupKeyboardObservers() {
         keyboardScrollableScrollView?.originalContentInset = keyboardScrollableScrollView?.contentInset
@@ -108,12 +112,15 @@ public extension KeyboardScrollable where Self: UIViewController {
     }
     
     private func adjustViewForKeyboardAppearance(with keyboardInfo: KeyboardInfo, firstResponder: UIView) {
-        guard let originalContentInset = keyboardScrollableScrollView?.originalContentInset else { return }
+        var mutableInset: UIEdgeInsets
+        if shouldPreserveContentInsetWhenKeyboardVisible, let originalContentInset = keyboardScrollableScrollView?.originalContentInset {
+            mutableInset = originalContentInset
+        } else {
+            mutableInset = .zero
+        }
         
         // Adjust scroll view insets for keyboard height
         let keyboardSize = keyboardInfo.finalFrame.size
-        
-        var mutableInset = originalContentInset
         if #available(iOS 11.0, *) {
             mutableInset.bottom += keyboardSize.height - view.safeAreaInsets.bottom
         } else {
