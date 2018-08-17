@@ -37,9 +37,7 @@ fileprivate extension UIViewController {
         let safeAreaFrame = view.safeAreaLayoutGuide.layoutFrame.insetBy(dx: 0, dy: -additionalSafeAreaInsets.bottom)
         let intersection = safeAreaFrame.intersection(keyboardFrameInView)
         
-        let animationDuration: TimeInterval = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0
-        
-        UIView.animate(withDuration: animationDuration) {
+        UIView.animate(withDuration: keyboardInfo.animationDuration) {
             self.additionalSafeAreaInsets.bottom = intersection.height
             self.view.layoutIfNeeded()
         }
