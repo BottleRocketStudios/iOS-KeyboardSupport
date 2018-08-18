@@ -1,6 +1,15 @@
 ## Master
 
 ##### Enhancements
+ * None
+
+##### Bug Fixes
+
+ * None
+
+## 1.0.1 (2018-08-17)
+
+##### Enhancements
 
  * Adjusted project structure to better support Travis-CI. CI is fully up-and-running on all supported platforms.
   [Earl Gaspard](https://github.com/earlgaspard)
