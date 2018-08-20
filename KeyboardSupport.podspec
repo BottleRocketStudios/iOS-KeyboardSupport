@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'KeyboardSupport'
-s.version          = '1.0.0'
+s.version          = '1.0.1'
 s.summary          = 'Makes dealing with common keyboard tasks simpler and easier.'
 
 s.description      = <<-DESC
