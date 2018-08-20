@@ -53,12 +53,21 @@ struct KeyboardInfo {
     let animationDuration: TimeInterval
     
     init?(notification: Notification) {
+        #if swift(>=4.2)
+        guard let userInfo = notification.userInfo,
+            let initialKeyboardFrame = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect,
+            let finalKeyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+                return nil
+        }
+        #else
         guard let userInfo = notification.userInfo,
             let initialKeyboardFrame = userInfo[UIKeyboardFrameBeginUserInfoKey] as? CGRect,
             let finalKeyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
             let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else {
                 return nil
         }
+        #endif
         
         initialFrame = initialKeyboardFrame
         finalFrame = finalKeyboardFrame
@@ -91,12 +100,28 @@ public extension KeyboardScrollable where Self: UIViewController {
     
     func setupKeyboardObservers() {
         keyboardScrollableScrollView?.originalContentInset = keyboardScrollableScrollView?.contentInset
-        keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
+        
+        let keyboardWillShowNotificationName: Notification.Name = {
+            #if swift(>=4.2)
+            return UIResponder.keyboardWillShowNotification
+            #else
+            return .UIKeyboardWillShow
+            #endif
+        }()
+        let keyboardWillHideNotificationName: Notification.Name = {
+            #if swift(>=4.2)
+            return UIResponder.keyboardWillHideNotification
+            #else
+            return .UIKeyboardWillHide
+            #endif
+        }()
+        
+        keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: keyboardWillShowNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
             guard let keyboardInfo = KeyboardInfo(notification: notification), keyboardInfo.isMoving, let activeField = self?.view.activeFirstResponder() else { return }
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
         })
-        keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
-            guard let keyboardInfo = KeyboardInfo(notification: notification) else { return }
+        keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: keyboardWillHideNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
+        	guard let keyboardInfo = KeyboardInfo(notification: notification) else { return }
             self?.resetViewForKeyboardDisappearance(with: keyboardInfo)
         })
     }

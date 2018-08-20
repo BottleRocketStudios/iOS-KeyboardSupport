@@ -19,11 +19,19 @@ public protocol KeyboardSafeAreaAdjustable {
 extension KeyboardSafeAreaAdjustable where Self: UIViewController {
     
     public func setupKeyboardSafeAreaListener() {
+        #if swift(>=4.2)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        #else
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameWillChange(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
+        #endif
     }
     
     public func stopKeyboardSafeAreaListener() {
+        #if swift(>=4.2)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        #else
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+        #endif
     }
 }
 
