@@ -119,15 +119,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1DAC1AAF2138AC75001B922E /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1DB06E182107E9EF0087ADBE /* UIScrollView+Inset.swift */,
-				1DAC1AAD2138AC6F001B922E /* CGRect+Modifying.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		626DEA4620BC94360036D5A6 = {
 			isa = PBXGroup;
 			children = (
@@ -198,11 +189,12 @@
 		626DEAAA20BC952B0036D5A6 /* KeyboardSupport */ = {
 			isa = PBXGroup;
 			children = (
-				1DAC1AAF2138AC75001B922E /* Extensions */,
 				626DEAAD20BC95A00036D5A6 /* KeyboardInputAccessory.swift */,
 				626DEAAB20BC95A00036D5A6 /* KeyboardManager.swift */,
 				626DEAAC20BC95A00036D5A6 /* KeyboardRespondable.swift */,
 				1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */,
+				1DB06E182107E9EF0087ADBE /* UIScrollView+Inset.swift */,
+				1DAC1AAD2138AC6F001B922E /* CGRect+Modifying.swift */,
 			);
 			path = KeyboardSupport;
 			sourceTree = "<group>";
