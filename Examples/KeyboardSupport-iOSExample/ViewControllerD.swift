@@ -9,6 +9,7 @@
 import UIKit
 import KeyboardSupport
 
+/// Demonstrates that a collection view can use KeyboardSafeAreaAdjustable.
 class ViewControllerD: UIViewController, KeyboardSafeAreaAdjustable, KeyboardDismissable {
     
     override func viewDidLoad() {
