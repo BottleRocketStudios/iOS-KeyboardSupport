@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DAC1AAE2138AC6F001B922E /* CGRect+Modifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC1AAD2138AC6F001B922E /* CGRect+Modifying.swift */; };
 		1DB06E192107E9EF0087ADBE /* UIScrollView+Inset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB06E182107E9EF0087ADBE /* UIScrollView+Inset.swift */; };
+		1DCEB1AC2138976F00716ADD /* ViewControllerE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCEB1AB2138976F00716ADD /* ViewControllerE.swift */; };
 		1DE2F9C5211174D000681063 /* KeyboardSafeAreaAdjustable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */; };
 		1DE2F9C8211178D000681063 /* ViewControllerD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2F9C6211178AE00681063 /* ViewControllerD.swift */; };
 		626DEA7220BC94850036D5A6 /* KeyboardSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */; };
@@ -61,7 +63,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1DAC1AAD2138AC6F001B922E /* CGRect+Modifying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Modifying.swift"; sourceTree = "<group>"; };
 		1DB06E182107E9EF0087ADBE /* UIScrollView+Inset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Inset.swift"; sourceTree = "<group>"; };
+		1DCEB1AB2138976F00716ADD /* ViewControllerE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerE.swift; sourceTree = "<group>"; };
 		1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSafeAreaAdjustable.swift; sourceTree = "<group>"; };
 		1DE2F9C6211178AE00681063 /* ViewControllerD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerD.swift; sourceTree = "<group>"; };
 		621033EB20C4716100473286 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				626DEAB420BC960E0036D5A6 /* ViewControllerB.swift */,
 				626DEAB620BC960E0036D5A6 /* ViewControllerC.swift */,
 				1DE2F9C6211178AE00681063 /* ViewControllerD.swift */,
+				1DCEB1AB2138976F00716ADD /* ViewControllerE.swift */,
 			);
 			path = "KeyboardSupport-iOSExample";
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 				626DEAAC20BC95A00036D5A6 /* KeyboardRespondable.swift */,
 				1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */,
 				1DB06E182107E9EF0087ADBE /* UIScrollView+Inset.swift */,
+				1DAC1AAD2138AC6F001B922E /* CGRect+Modifying.swift */,
 			);
 			path = KeyboardSupport;
 			sourceTree = "<group>";
@@ -372,8 +378,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DAC1AAE2138AC6F001B922E /* CGRect+Modifying.swift in Sources */,
 				626DEAB020BC95A00036D5A6 /* KeyboardInputAccessory.swift in Sources */,
 				1DB06E192107E9EF0087ADBE /* UIScrollView+Inset.swift in Sources */,
+				1DCEB1AC2138976F00716ADD /* ViewControllerE.swift in Sources */,
 				626DEAAF20BC95A00036D5A6 /* KeyboardRespondable.swift in Sources */,
 				626DEAAE20BC95A00036D5A6 /* KeyboardManager.swift in Sources */,
 				1DE2F9C5211174D000681063 /* KeyboardSafeAreaAdjustable.swift in Sources */,
