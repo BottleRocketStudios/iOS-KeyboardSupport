@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Demonstrates that KeyboardRespondable scrolls to cursor on large UITextView's
 class ViewControllerE: UIViewController, KeyboardRespondable {
     
     // MARK: - Properties
