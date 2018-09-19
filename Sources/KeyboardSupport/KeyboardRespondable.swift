@@ -137,31 +137,50 @@ public extension KeyboardScrollable where Self: UIViewController {
     }
     
     private func adjustViewForKeyboardAppearance(with keyboardInfo: KeyboardInfo, firstResponder: UIView) {
+        guard let scrollView = keyboardScrollableScrollView else { return }
+        
         var mutableInset: UIEdgeInsets
-        if shouldPreserveContentInsetWhenKeyboardVisible, let originalContentInset = keyboardScrollableScrollView?.originalContentInset {
+        if shouldPreserveContentInsetWhenKeyboardVisible, let originalContentInset = scrollView.originalContentInset {
             mutableInset = originalContentInset
         } else {
             mutableInset = .zero
         }
         
         // Adjust scroll view insets for keyboard height
-        let keyboardSize = keyboardInfo.finalFrame.size
+        let keyboardHeight = keyboardInfo.finalFrame.height
         if #available(iOS 11.0, *) {
-            mutableInset.bottom += keyboardSize.height - view.safeAreaInsets.bottom
+            mutableInset.bottom += keyboardHeight - view.safeAreaInsets.bottom
         } else {
-            mutableInset.bottom += keyboardSize.height
+            mutableInset.bottom += keyboardHeight
         }
+        
         adjustScrollViewInset(mutableInset)
         
         // If active text field is hidden by keyboard, scroll so it's visible
-        let keyboardMinY = view.bounds.height - keyboardSize.height
-        
-        let firstResponderConvertedFrame = firstResponder.convert(firstResponder.bounds, to: nil)
-        let firstResponderMaxY = firstResponderConvertedFrame.maxY
-        
-        if firstResponderMaxY > keyboardMinY {
-            keyboardScrollableScrollView?.scrollRectToVisible(firstResponder.frame, animated: true)
+        if let textView = firstResponder as? UITextView {
+            scrollToSelectedText(for: textView, in: scrollView, keyboardHeight: keyboardHeight)
+        } else {
+            let contentRect = firstResponder.convert(firstResponder.bounds, to: scrollView)
+            scrollToContentRectIfNecessary(contentRect: contentRect, keyboardHeight: keyboardHeight)
         }
+    }
+    
+    private func scrollToSelectedText(for textView: UITextView, in scrollView: UIScrollView, keyboardHeight: CGFloat) {
+        // Get the frame of the cursor/selection to improve scrolling position for UITextView's
+        // DispatchQueue.async() is necessary because the selectedTextRange typically hasn't not been updated when UIResponder.keyboardWillShowNotification is posted
+        DispatchQueue.main.async {
+            guard let textRange = textView.selectedTextRange, let selectionRect = textView.selectionRects(for: textRange).first else { return }
+            // Set an arbitray width to the target CGRect in case the width is zero. Otherwise, scrollRectToVisible has no effect.
+            let contentRect = textView.convert(selectionRect.rect, to: scrollView).modifying(width: 30)
+            self.scrollToContentRectIfNecessary(contentRect: contentRect, keyboardHeight: keyboardHeight)
+        }
+    }
+    
+    private func scrollToContentRectIfNecessary(contentRect: CGRect, keyboardHeight: CGFloat) {
+        let keyboardMinY = view.bounds.height - keyboardHeight
+        guard let convertedTargetFrame = keyboardScrollableScrollView?.convert(contentRect, to: view), convertedTargetFrame.maxY > keyboardMinY else { return }
+        
+        keyboardScrollableScrollView?.scrollRectToVisible(convertedTargetFrame, animated: true)
     }
     
     private func resetViewForKeyboardDisappearance(with keyboardInfo: KeyboardInfo) {
