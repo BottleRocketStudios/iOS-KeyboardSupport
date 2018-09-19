@@ -158,17 +158,21 @@ public extension KeyboardScrollable where Self: UIViewController {
         
         // If active text field is hidden by keyboard, scroll so it's visible
         if let textView = firstResponder as? UITextView {
-            // Get the frame of the cursor/selection to improve scrolling position for UITextView's
-            // DispatchQueue.async() is necessary because the selectedTextRange typically hasn't not been updated when UIResponder.keyboardWillShowNotification is posted
-            DispatchQueue.main.async {
-                guard let textRange = textView.selectedTextRange, let selectionRect = textView.selectionRects(for: textRange).first else { return }
-                // Set an arbitray width to the target CGRect in case the width is zero. Otherwise, scrollRectToVisible has no effect.
-                let contentRect = textView.convert(selectionRect.rect, to: scrollView).modifying(width: 30)
-                self.scrollToContentRectIfNecessary(contentRect: contentRect, keyboardHeight: keyboardHeight)
-            }
+            scrollToSelectedText(for: textView, in: scrollView, keyboardHeight: keyboardHeight)
         } else {
             let contentRect = firstResponder.convert(firstResponder.bounds, to: scrollView)
             scrollToContentRectIfNecessary(contentRect: contentRect, keyboardHeight: keyboardHeight)
+        }
+    }
+    
+    private func scrollToSelectedText(for textView: UITextView, in scrollView: UIScrollView, keyboardHeight: CGFloat) {
+        // Get the frame of the cursor/selection to improve scrolling position for UITextView's
+        // DispatchQueue.async() is necessary because the selectedTextRange typically hasn't not been updated when UIResponder.keyboardWillShowNotification is posted
+        DispatchQueue.main.async {
+            guard let textRange = textView.selectedTextRange, let selectionRect = textView.selectionRects(for: textRange).first else { return }
+            // Set an arbitray width to the target CGRect in case the width is zero. Otherwise, scrollRectToVisible has no effect.
+            let contentRect = textView.convert(selectionRect.rect, to: scrollView).modifying(width: 30)
+            self.scrollToContentRectIfNecessary(contentRect: contentRect, keyboardHeight: keyboardHeight)
         }
     }
     
