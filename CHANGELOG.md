@@ -1,11 +1,34 @@
 ## Master
 
 ##### Enhancements
- * None
+
+* None
+
+##### Bug Fixes
+
+* None
+
+
+## 1.0.2 (2018-09-19)
+
+##### Enhancements
+
+ * Updated Travis-CI to Xcode 9.4 image.
+   [Tyler Milner](https://github.com/tylermilner)
+   [#21](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/21)
+   
+* On UITextView's, KeyboardRespondable now scrolls to cursor/selection.
+  [Cuong Leo Ngo ](https://github.com/cuongcngo)
+  [#23](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/23)
+
+* Updated project for Xcode 10.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#25](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/25)
 
 ##### Bug Fixes
 
  * None
+
 
 ## 1.0.1 (2018-08-20)
 
@@ -40,6 +63,7 @@
  * Add KeyboardSafeAreaAdjustable protocol, and KeyboardScrollable restores original content inset
  [Cuong Leo Ngo ](https://github.com/cuongcngo)
  [#16](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/16)
+ 
  
 ## 1.0.0 (2017-12-28)
 
