@@ -140,7 +140,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         guard let scrollView = keyboardScrollableScrollView else { return }
         
         var mutableInset: UIEdgeInsets
-        if shouldPreserveContentInsetWhenKeyboardVisible, let originalContentInset = scrollView.originalContentInset {
+        if preservesContentInsetWhenKeyboardVisible, let originalContentInset = scrollView.originalContentInset {
             mutableInset = originalContentInset
         } else {
             mutableInset = .zero
