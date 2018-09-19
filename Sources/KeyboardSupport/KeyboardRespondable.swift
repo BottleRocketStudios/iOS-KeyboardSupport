@@ -85,7 +85,7 @@ public protocol KeyboardScrollable: class {
     var keyboardWillShowObserver: NSObjectProtocol? { get set }
     var keyboardWillHideObserver: NSObjectProtocol? { get set }
     
-    var preservesContentInsetWhenKeyboardVisible: Bool { get } // TODO: Add CHANGELOG entry for rename.
+    var preservesContentInsetWhenKeyboardVisible: Bool { get }
     
     /// Must be called during screen appearance ('viewWillAppear') to allow for keyboard notification observers to be registered.
     func setupKeyboardObservers()
