@@ -1,7 +1,14 @@
 ## Master
 
 ##### Enhancements
- * None
+
+ * Updated Travis-CI to Xcode 9.4 image.
+   [Tyler Milner](https://github.com/tylermilner)
+   [#21](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/21)
+   
+* On UITextView's, KeyboardRespondable now scrolls to cursor/selection.
+  [Cuong Leo Ngo ](https://github.com/cuongcngo)
+  [#23](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/23)
 
 ##### Bug Fixes
 
