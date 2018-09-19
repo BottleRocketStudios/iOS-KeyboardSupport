@@ -85,7 +85,7 @@ public protocol KeyboardScrollable: class {
     var keyboardWillShowObserver: NSObjectProtocol? { get set }
     var keyboardWillHideObserver: NSObjectProtocol? { get set }
     
-    var shouldPreserveContentInsetWhenKeyboardVisible: Bool { get }
+    var preservesContentInsetWhenKeyboardVisible: Bool { get }
     
     /// Must be called during screen appearance ('viewWillAppear') to allow for keyboard notification observers to be registered.
     func setupKeyboardObservers()
@@ -96,7 +96,7 @@ public protocol KeyboardScrollable: class {
 
 public extension KeyboardScrollable where Self: UIViewController {
     
-    var shouldPreserveContentInsetWhenKeyboardVisible: Bool { return true }
+    var preservesContentInsetWhenKeyboardVisible: Bool { return true }
     
     func setupKeyboardObservers() {
         keyboardScrollableScrollView?.originalContentInset = keyboardScrollableScrollView?.contentInset
@@ -121,7 +121,7 @@ public extension KeyboardScrollable where Self: UIViewController {
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
         })
         keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: keyboardWillHideNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
-        	guard let keyboardInfo = KeyboardInfo(notification: notification) else { return }
+            guard let keyboardInfo = KeyboardInfo(notification: notification) else { return }
             self?.resetViewForKeyboardDisappearance(with: keyboardInfo)
         })
     }
@@ -140,7 +140,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         guard let scrollView = keyboardScrollableScrollView else { return }
         
         var mutableInset: UIEdgeInsets
-        if shouldPreserveContentInsetWhenKeyboardVisible, let originalContentInset = scrollView.originalContentInset {
+        if preservesContentInsetWhenKeyboardVisible, let originalContentInset = scrollView.originalContentInset {
             mutableInset = originalContentInset
         } else {
             mutableInset = .zero
