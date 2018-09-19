@@ -14,6 +14,7 @@
 
  * None
 
+
 ## 1.0.1 (2018-08-20)
 
 ##### Enhancements
@@ -47,6 +48,7 @@
  * Add KeyboardSafeAreaAdjustable protocol, and KeyboardScrollable restores original content inset
  [Cuong Leo Ngo ](https://github.com/cuongcngo)
  [#16](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/16)
+ 
  
 ## 1.0.0 (2017-12-28)
 
