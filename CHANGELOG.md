@@ -2,7 +2,7 @@
 
 ##### Enhancements
 
-* Renamed `KeyboardScrollable`'s `shouldPreserveContentInsetWhenKeyboardVisible` to `preservesContentInsetWhenKeyboardVisible` in order to fix a SwiftLint warning.
+* **[BREAKING]** Renamed `KeyboardScrollable`'s `shouldPreserveContentInsetWhenKeyboardVisible` to `preservesContentInsetWhenKeyboardVisible` in order to fix a SwiftLint warning.
   [Tyler Milner](https://github.com/tylermilner)
   [#26](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/26)
 
