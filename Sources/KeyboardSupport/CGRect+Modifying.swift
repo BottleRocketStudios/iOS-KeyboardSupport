@@ -10,7 +10,19 @@ import CoreGraphics
 
 extension CGRect {
     
-    func modifying(width: CGFloat) -> CGRect {
+    public func modifying(minX: CGFloat) -> CGRect {
+        return CGRect(x: minX, y: minY, width: width, height: height)
+    }
+    
+    public func modifying(minY: CGFloat) -> CGRect {
+        return CGRect(x: minX, y: minY, width: width, height: height)
+    }
+    
+    public func modifying(height: CGFloat) -> CGRect {
+        return CGRect(x: minX, y: minY, width: width, height: height)
+    }
+    
+    public func modifying(width: CGFloat) -> CGRect {
         return CGRect(x: minX, y: minY, width: width, height: height)
     }
 }
