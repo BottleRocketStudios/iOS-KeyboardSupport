@@ -13,9 +13,11 @@
 		476C0CCF21CD7F1000B6A48D /* Array+KeyboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CCE21CD7F1000B6A48D /* Array+KeyboardSupport.swift */; };
 		476C0CD121CD7FD700B6A48D /* UIView+KeyboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD021CD7FD700B6A48D /* UIView+KeyboardSupport.swift */; };
 		476C0CD321CD81C700B6A48D /* KeyboardAutoNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD221CD81C600B6A48D /* KeyboardAutoNavigator.swift */; };
-		476C0CD621CD830800B6A48D /* SingleFieldAutoNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD421CD830800B6A48D /* SingleFieldAutoNavViewController.swift */; };
-		476C0CD721CD830800B6A48D /* AutoNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD521CD830800B6A48D /* AutoNavigatorViewController.swift */; };
-		476C0CD921CD845200B6A48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476C0CD821CD845200B6A48D /* Main.storyboard */; };
+		47E9F37721CD92F2003ACA6A /* AutoNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD521CD830800B6A48D /* AutoNavigatorViewController.swift */; };
+		47E9F37821CD92F5003ACA6A /* SingleFieldAutoNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD421CD830800B6A48D /* SingleFieldAutoNavViewController.swift */; };
+		47E9F37921CD92F9003ACA6A /* AutoNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD521CD830800B6A48D /* AutoNavigatorViewController.swift */; };
+		47E9F37A21CD9301003ACA6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476C0CD821CD845200B6A48D /* Main.storyboard */; };
+		47E9F37B21CD9303003ACA6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476C0CD821CD845200B6A48D /* Main.storyboard */; };
 		626DEA7220BC94850036D5A6 /* KeyboardSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */; };
 		626DEA7920BC94850036D5A6 /* KeyboardSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 626DEA6B20BC94840036D5A6 /* KeyboardSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		626DEA8920BC94ED0036D5A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DEA8820BC94ED0036D5A6 /* AppDelegate.swift */; };
@@ -334,7 +336,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				476C0CD921CD845200B6A48D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E9F37A21CD9301003ACA6A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E9F37B21CD9303003ACA6A /* Main.storyboard in Resources */,
 				626DEA9320BC94EE0036D5A6 /* LaunchScreen.storyboard in Resources */,
 				626DEA9020BC94EE0036D5A6 /* Assets.xcassets in Resources */,
 			);
@@ -381,13 +384,11 @@
 				1DAC1AAE2138AC6F001B922E /* CGRect+Modifying.swift in Sources */,
 				476C0CD321CD81C700B6A48D /* KeyboardAutoNavigator.swift in Sources */,
 				626DEAB020BC95A00036D5A6 /* KeyboardIAccessory.swift in Sources */,
-				476C0CD621CD830800B6A48D /* SingleFieldAutoNavViewController.swift in Sources */,
 				476C0CD121CD7FD700B6A48D /* UIView+KeyboardSupport.swift in Sources */,
 				1DB06E192107E9EF0087ADBE /* UIScrollView+Inset.swift in Sources */,
 				627D632121CC3F6300C98F78 /* KeyboardToolbar.swift in Sources */,
 				626DEAAF20BC95A00036D5A6 /* KeyboardRespondable.swift in Sources */,
 				627D631F21CC3F5C00C98F78 /* KeyboardNavigator.swift in Sources */,
-				476C0CD721CD830800B6A48D /* AutoNavigatorViewController.swift in Sources */,
 				476C0CCF21CD7F1000B6A48D /* Array+KeyboardSupport.swift in Sources */,
 				1DE2F9C5211174D000681063 /* KeyboardSafeAreaAdjustable.swift in Sources */,
 			);
@@ -398,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				627D632E21CC52CE00C98F78 /* KeyboardToolbarTests.swift in Sources */,
+				47E9F37921CD92F9003ACA6A /* AutoNavigatorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +407,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E9F37821CD92F5003ACA6A /* SingleFieldAutoNavViewController.swift in Sources */,
+				47E9F37721CD92F2003ACA6A /* AutoNavigatorViewController.swift in Sources */,
 				627D632A21CC4F1600C98F78 /* ViewController.swift in Sources */,
 				626DEA8920BC94ED0036D5A6 /* AppDelegate.swift in Sources */,
 			);
