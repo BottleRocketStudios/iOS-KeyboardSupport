@@ -40,6 +40,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addBackButton(title: "Title")
 
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.backButton)
     }
     
     func test_KeyboardToolbar_AddBackButtonWithImage() {
@@ -47,6 +48,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addBackButton(image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.backButton)
     }
     
     func test_KeyboardToolbar_AddNextButtonWithTitle() {
@@ -54,6 +56,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addNextButton(title: "Title")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.nextButton)
     }
     
     func test_KeyboardToolbar_AddNextButtonWithImage() {
@@ -61,6 +64,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addNextButton(image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.nextButton)
     }
     
     func test_KeyboardToolbar_AddDoneButtonWithTitle() {
@@ -68,6 +72,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addDoneButton(title: "Title")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.doneButton)
     }
     
     func test_KeyboardToolbar_AddDoneButtonWithImage() {
@@ -75,6 +80,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addDoneButton(image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.doneButton)
     }
     
     func test_KeyboardToolbar_AddSystemDoneButton() {
@@ -82,6 +88,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addSystemDoneButton()
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.doneButton)
     }
     
     func test_KeyboardToolbar_AddFlexibleSpace() {

@@ -13,6 +13,10 @@
 		476C0CCF21CD7F1000B6A48D /* Array+KeyboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CCE21CD7F1000B6A48D /* Array+KeyboardSupport.swift */; };
 		476C0CD121CD7FD700B6A48D /* UIView+KeyboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD021CD7FD700B6A48D /* UIView+KeyboardSupport.swift */; };
 		476C0CD321CD81C700B6A48D /* KeyboardAutoNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD221CD81C600B6A48D /* KeyboardAutoNavigator.swift */; };
+		479627A421CDA3E7006B9FE7 /* KeyboardNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479627A021CDA3CF006B9FE7 /* KeyboardNavigatorTests.swift */; };
+		479627A521CDA3EE006B9FE7 /* MockKeyboardNavigatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479627A221CDA3D7006B9FE7 /* MockKeyboardNavigatorDelegate.swift */; };
+		479627A621CDA3EE006B9FE7 /* AutoPilotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4796279C21CDA3BF006B9FE7 /* AutoPilotTests.swift */; };
+		479627A721CDA3EE006B9FE7 /* AutoKeyboardNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4796279E21CDA3C7006B9FE7 /* AutoKeyboardNavigatorTests.swift */; };
 		47E9F37721CD92F2003ACA6A /* AutoNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD521CD830800B6A48D /* AutoNavigatorViewController.swift */; };
 		47E9F37821CD92F5003ACA6A /* SingleFieldAutoNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD421CD830800B6A48D /* SingleFieldAutoNavViewController.swift */; };
 		47E9F37921CD92F9003ACA6A /* AutoNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD521CD830800B6A48D /* AutoNavigatorViewController.swift */; };
@@ -74,6 +78,10 @@
 		476C0CD421CD830800B6A48D /* SingleFieldAutoNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFieldAutoNavViewController.swift; sourceTree = "<group>"; };
 		476C0CD521CD830800B6A48D /* AutoNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoNavigatorViewController.swift; sourceTree = "<group>"; };
 		476C0CD821CD845200B6A48D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4796279C21CDA3BF006B9FE7 /* AutoPilotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPilotTests.swift; sourceTree = "<group>"; };
+		4796279E21CDA3C7006B9FE7 /* AutoKeyboardNavigatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoKeyboardNavigatorTests.swift; sourceTree = "<group>"; };
+		479627A021CDA3CF006B9FE7 /* KeyboardNavigatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNavigatorTests.swift; sourceTree = "<group>"; };
+		479627A221CDA3D7006B9FE7 /* MockKeyboardNavigatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockKeyboardNavigatorDelegate.swift; sourceTree = "<group>"; };
 		621033EB20C4716100473286 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEA6B20BC94840036D5A6 /* KeyboardSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardSupport.h; sourceTree = "<group>"; };
@@ -170,6 +178,10 @@
 		626DEAA720BC950E0036D5A6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				479627A221CDA3D7006B9FE7 /* MockKeyboardNavigatorDelegate.swift */,
+				4796279C21CDA3BF006B9FE7 /* AutoPilotTests.swift */,
+				4796279E21CDA3C7006B9FE7 /* AutoKeyboardNavigatorTests.swift */,
+				479627A021CDA3CF006B9FE7 /* KeyboardNavigatorTests.swift */,
 				627D632321CC4E6F00C98F78 /* KeyboardToolbarTests.swift */,
 				626DEAD220BCA2540036D5A6 /* Supporting Files */,
 			);
@@ -398,8 +410,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				479627A721CDA3EE006B9FE7 /* AutoKeyboardNavigatorTests.swift in Sources */,
 				627D632E21CC52CE00C98F78 /* KeyboardToolbarTests.swift in Sources */,
+				479627A421CDA3E7006B9FE7 /* KeyboardNavigatorTests.swift in Sources */,
+				479627A621CDA3EE006B9FE7 /* AutoPilotTests.swift in Sources */,
 				47E9F37921CD92F9003ACA6A /* AutoNavigatorViewController.swift in Sources */,
+				479627A521CDA3EE006B9FE7 /* MockKeyboardNavigatorDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
