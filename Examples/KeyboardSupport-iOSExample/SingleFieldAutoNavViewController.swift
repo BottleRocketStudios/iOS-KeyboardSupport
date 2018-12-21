@@ -29,11 +29,11 @@ class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
         super.viewDidLoad()
         
         // KeyboardDismissable setup
-        setupKeyboardDismissal()
+        setupKeyboardDismissalView()
         
         // KeyboardScrollable setup
         keyboardScrollableScrollView = scrollView
-        addKeyboardObservers()
+        setupKeyboardObservers()
         
         // KeyboardToolbar setup
         let keyboardToolbar = KeyboardToolbar()
@@ -46,7 +46,13 @@ class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
         keyboardNavigator = KeyboardAutoNavigator(navigationContainer: scrollView, defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
     }
     
-    deinit {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupKeyboardObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         removeKeyboardObservers()
     }
 }
