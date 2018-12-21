@@ -29,5 +29,9 @@ public typealias KeyboardInputAccessory = KeyboardAccessory
 
 /// Represents something that has keyboard accessory navigation options.
 public protocol KeyboardAccessory: class {
+    var nextButton: UIBarButtonItem? { get set }
+    var backButton: UIBarButtonItem? { get set }
+    var doneButton: UIBarButtonItem? { get set }
+    
     var keyboardAccessoryDelegate: KeyboardAccessoryDelegate? { get set }
 }

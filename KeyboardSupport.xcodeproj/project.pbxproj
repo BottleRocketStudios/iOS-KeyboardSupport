@@ -12,6 +12,10 @@
 		1DE2F9C5211174D000681063 /* KeyboardSafeAreaAdjustable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */; };
 		476C0CCF21CD7F1000B6A48D /* Array+KeyboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CCE21CD7F1000B6A48D /* Array+KeyboardSupport.swift */; };
 		476C0CD121CD7FD700B6A48D /* UIView+KeyboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD021CD7FD700B6A48D /* UIView+KeyboardSupport.swift */; };
+		476C0CD321CD81C700B6A48D /* KeyboardAutoNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD221CD81C600B6A48D /* KeyboardAutoNavigator.swift */; };
+		476C0CD621CD830800B6A48D /* SingleFieldAutoNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD421CD830800B6A48D /* SingleFieldAutoNavViewController.swift */; };
+		476C0CD721CD830800B6A48D /* AutoNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476C0CD521CD830800B6A48D /* AutoNavigatorViewController.swift */; };
+		476C0CD921CD845200B6A48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476C0CD821CD845200B6A48D /* Main.storyboard */; };
 		626DEA7220BC94850036D5A6 /* KeyboardSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */; };
 		626DEA7920BC94850036D5A6 /* KeyboardSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 626DEA6B20BC94840036D5A6 /* KeyboardSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		626DEA8920BC94ED0036D5A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DEA8820BC94ED0036D5A6 /* AppDelegate.swift */; };
@@ -24,7 +28,6 @@
 		627D631F21CC3F5C00C98F78 /* KeyboardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D631E21CC3F5C00C98F78 /* KeyboardNavigator.swift */; };
 		627D632121CC3F6300C98F78 /* KeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D632021CC3F6300C98F78 /* KeyboardToolbar.swift */; };
 		627D632A21CC4F1600C98F78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D632621CC4EAC00C98F78 /* ViewController.swift */; };
-		627D632B21CC4F1B00C98F78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627D632721CC4EAC00C98F78 /* Main.storyboard */; };
 		627D632E21CC52CE00C98F78 /* KeyboardToolbarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D632321CC4E6F00C98F78 /* KeyboardToolbarTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +68,10 @@
 		1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSafeAreaAdjustable.swift; sourceTree = "<group>"; };
 		476C0CCE21CD7F1000B6A48D /* Array+KeyboardSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+KeyboardSupport.swift"; sourceTree = "<group>"; };
 		476C0CD021CD7FD700B6A48D /* UIView+KeyboardSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+KeyboardSupport.swift"; sourceTree = "<group>"; };
+		476C0CD221CD81C600B6A48D /* KeyboardAutoNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAutoNavigator.swift; sourceTree = "<group>"; };
+		476C0CD421CD830800B6A48D /* SingleFieldAutoNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFieldAutoNavViewController.swift; sourceTree = "<group>"; };
+		476C0CD521CD830800B6A48D /* AutoNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoNavigatorViewController.swift; sourceTree = "<group>"; };
+		476C0CD821CD845200B6A48D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		621033EB20C4716100473286 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEA6B20BC94840036D5A6 /* KeyboardSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardSupport.h; sourceTree = "<group>"; };
@@ -83,7 +90,6 @@
 		627D632021CC3F6300C98F78 /* KeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardToolbar.swift; sourceTree = "<group>"; };
 		627D632321CC4E6F00C98F78 /* KeyboardToolbarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardToolbarTests.swift; sourceTree = "<group>"; };
 		627D632621CC4EAC00C98F78 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		627D632721CC4EAC00C98F78 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,11 +145,13 @@
 			isa = PBXGroup;
 			children = (
 				626DEA8820BC94ED0036D5A6 /* AppDelegate.swift */,
+				627D632621CC4EAC00C98F78 /* ViewController.swift */,
+				476C0CD521CD830800B6A48D /* AutoNavigatorViewController.swift */,
+				476C0CD421CD830800B6A48D /* SingleFieldAutoNavViewController.swift */,
 				626DEA8F20BC94EE0036D5A6 /* Assets.xcassets */,
-				627D632721CC4EAC00C98F78 /* Main.storyboard */,
+				476C0CD821CD845200B6A48D /* Main.storyboard */,
 				626DEA9120BC94EE0036D5A6 /* LaunchScreen.storyboard */,
 				626DEA9420BC94EE0036D5A6 /* Info.plist */,
-				627D632621CC4EAC00C98F78 /* ViewController.swift */,
 			);
 			path = "KeyboardSupport-iOSExample";
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 			children = (
 				626DEAAD20BC95A00036D5A6 /* KeyboardIAccessory.swift */,
 				627D631E21CC3F5C00C98F78 /* KeyboardNavigator.swift */,
+				476C0CD221CD81C600B6A48D /* KeyboardAutoNavigator.swift */,
 				626DEAAC20BC95A00036D5A6 /* KeyboardRespondable.swift */,
 				1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */,
 				627D632021CC3F6300C98F78 /* KeyboardToolbar.swift */,
@@ -325,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				476C0CD921CD845200B6A48D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +349,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				627D632B21CC4F1B00C98F78 /* Main.storyboard in Resources */,
 				626DEA9320BC94EE0036D5A6 /* LaunchScreen.storyboard in Resources */,
 				626DEA9020BC94EE0036D5A6 /* Assets.xcassets in Resources */,
 			);
@@ -370,12 +379,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DAC1AAE2138AC6F001B922E /* CGRect+Modifying.swift in Sources */,
+				476C0CD321CD81C700B6A48D /* KeyboardAutoNavigator.swift in Sources */,
 				626DEAB020BC95A00036D5A6 /* KeyboardIAccessory.swift in Sources */,
+				476C0CD621CD830800B6A48D /* SingleFieldAutoNavViewController.swift in Sources */,
 				476C0CD121CD7FD700B6A48D /* UIView+KeyboardSupport.swift in Sources */,
 				1DB06E192107E9EF0087ADBE /* UIScrollView+Inset.swift in Sources */,
 				627D632121CC3F6300C98F78 /* KeyboardToolbar.swift in Sources */,
 				626DEAAF20BC95A00036D5A6 /* KeyboardRespondable.swift in Sources */,
 				627D631F21CC3F5C00C98F78 /* KeyboardNavigator.swift in Sources */,
+				476C0CD721CD830800B6A48D /* AutoNavigatorViewController.swift in Sources */,
 				476C0CCF21CD7F1000B6A48D /* Array+KeyboardSupport.swift in Sources */,
 				1DE2F9C5211174D000681063 /* KeyboardSafeAreaAdjustable.swift in Sources */,
 			);
