@@ -44,6 +44,12 @@ extension UIViewController {
     }
 }
 
+/// KeyboardScrollable will ask a TextInputView that conforms to this protocol for preferred distance between the field and the keyboard.
+/// It will be used if it is non-nil and greater than the KeyboardScrollable minimumPaddingBetweenInputAndKeyboard.
+@objc protocol KeyboardPaddingProviding {
+    @objc var inputPadding: UIEdgeInsets { get }
+}
+
 // MARK: - KeyboardInfo
 
 /// Stores info about the keyboard.
@@ -87,6 +93,8 @@ struct KeyboardInfo {
 
 /// Enables scrolling views to the first responder when a keyboard is shown. Must be used with a UIScrollView or one of its subclasses.
 public protocol KeyboardScrollable: class {
+    var minimumPaddingAroundInput: UIEdgeInsets { get }
+    
     var keyboardScrollableScrollView: UIScrollView? { get set }
     var keyboardWillShowObserver: NSObjectProtocol? { get set }
     var keyboardWillHideObserver: NSObjectProtocol? { get set }
@@ -119,6 +127,9 @@ extension KeyboardScrollable {
 public extension KeyboardScrollable where Self: UIViewController {
     
     // MARK: KeyboardScrollable Conformance
+    public var minimumPaddingAroundInput: UIEdgeInsets {
+        return .zero
+    }
     
     var preservesContentInsetWhenKeyboardVisible: Bool { return true }
     
@@ -194,30 +205,42 @@ public extension KeyboardScrollable where Self: UIViewController {
         
         // If active text field is hidden by keyboard, scroll so it's visible
         if let textView = firstResponder as? UITextView {
-            scrollToSelectedText(for: textView, in: scrollView, keyboardHeight: keyboardHeight, keyboardInfo: keyboardInfo)
+            scrollToSelectedText(for: textView, keyboardInfo: keyboardInfo)
         } else {
-            let contentRect = firstResponder.convert(firstResponder.bounds, to: scrollView)
-            scrollToContentRectIfNecessary(contentRect: contentRect, keyboardHeight: keyboardHeight, keyboardInfo: keyboardInfo)
+            scrollToRectIfNecessary(rect: firstResponder.frame, of: firstResponder, keyboardInfo: keyboardInfo)
         }
     }
     
-    private func scrollToSelectedText(for textView: UITextView, in scrollView: UIScrollView, keyboardHeight: CGFloat, keyboardInfo: KeyboardInfo) {
+    private func scrollToSelectedText(for textView: UITextView, keyboardInfo: KeyboardInfo) {
         // Get the frame of the cursor/selection to improve scrolling position for UITextView's
         // DispatchQueue.async() is necessary because the selectedTextRange typically hasn't not been updated when UIResponder.keyboardWillShowNotification is posted
         DispatchQueue.main.async {
             guard let textRange = textView.selectedTextRange, let selectionRect = textView.selectionRects(for: textRange).first else { return }
             // Set an arbitray width to the target CGRect in case the width is zero. Otherwise, scrollRectToVisible has no effect.
-            let contentRect = textView.convert(selectionRect.rect, to: scrollView).modifying(width: 30)
-            self.scrollToContentRectIfNecessary(contentRect: contentRect, keyboardHeight: keyboardHeight, keyboardInfo: keyboardInfo)
+            self.scrollToRectIfNecessary(rect: selectionRect.rect.modifying(width: 30), of: textView, keyboardInfo: keyboardInfo)
         }
     }
     
-    private func scrollToContentRectIfNecessary(contentRect: CGRect, keyboardHeight: CGFloat, keyboardInfo: KeyboardInfo) {
-        let keyboardMinY = view.bounds.height - keyboardHeight
-        guard let convertedTargetFrame = keyboardScrollableScrollView?.convert(contentRect, to: view), convertedTargetFrame.maxY > keyboardMinY else { return }
+    private func scrollToRectIfNecessary(rect: CGRect, of coordinateSpaceView: UIView, keyboardInfo: KeyboardInfo, preferredPaddingAroundInput: UIEdgeInsets? = nil) {
+        guard let scrollView = keyboardScrollableScrollView else { return }
         
-        UIView.animate(withDuration: keyboardInfo.animationDuration, delay: 0, options: [UIView.AnimationOptions(rawValue: keyboardInfo.animationCurve)], animations: {
-            self.keyboardScrollableScrollView?.scrollRectToVisible(convertedTargetFrame, animated: false)
+        // Determine padding
+        var paddingAroundInput: UIEdgeInsets = preferredPaddingAroundInput ?? .zero
+        paddingAroundInput = UIEdgeInsets(top: max(paddingAroundInput.top, minimumPaddingAroundInput.top),
+                                          left: max(paddingAroundInput.left, minimumPaddingAroundInput.left),
+                                          bottom: max(paddingAroundInput.bottom, minimumPaddingAroundInput.bottom),
+                                          right: max(paddingAroundInput.right, minimumPaddingAroundInput.right))
+        
+        //Inflate the frame being scrolled into view by the padding
+        let paddedFrameOfFirstResponder = rect.modifying(minY: rect.minY - paddingAroundInput.top)
+            .modifying(minX: rect.minX - paddingAroundInput.left)
+            .modifying(height: rect.height + paddingAroundInput.top + paddingAroundInput.bottom)
+            .modifying(width: rect.width + paddingAroundInput.left + paddingAroundInput.right)
+        
+        // Convert the padded rect to the scrollview coordinate space and scroll it into view
+        let paddedFrameOfFirstResponderInScrollView = coordinateSpaceView.convert(paddedFrameOfFirstResponder, to: scrollView)
+        UIView.animate(withDuration: keyboardInfo.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+            scrollView.scrollRectToVisible(paddedFrameOfFirstResponderInScrollView, animated: false)
         }, completion: nil)
     }
     
@@ -237,6 +260,14 @@ public extension KeyboardScrollable where Self: UIViewController {
 // MARK: - UIView Extensions
 
 extension UIView {
+    
+    /// Attempts to return the currentlyActiveFirstReponder
+    ///
+    /// - Returns: Result of resignFirstResponder() or false if active first responder can not be found.
+    @discardableResult
+    public func resignActiveFirstResponder() -> Bool {
+        return activeFirstResponder()?.resignFirstResponder() ?? false
+    }
     
     /// Returns the view that is the first responder
     func activeFirstResponder() -> UIView? {
