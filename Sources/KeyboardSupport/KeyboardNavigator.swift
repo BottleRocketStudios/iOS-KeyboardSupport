@@ -21,8 +21,15 @@ public protocol KeyboardNavigatorDelegate: class {
 @available(*, deprecated: 2.0, renamed: "KeyboardNavigator")
 public typealias KeyboardManager = KeyboardNavigator
 
+public typealias UITextInputView = UIView & UITextInput
+
+public protocol KeyboardNavigating {
+    var keyboardToolbar: KeyboardToolbar? { get }
+    var returnKeyNavigationEnabled: Bool { get }
+}
+
 /// An object for handling navigation between text inputs.
-open class KeyboardNavigator {
+open class KeyboardNavigator: KeyboardNavigating {
     
     // MARK: - Properties
     
