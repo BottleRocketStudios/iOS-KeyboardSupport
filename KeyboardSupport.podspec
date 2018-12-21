@@ -8,11 +8,11 @@
 
 Pod::Spec.new do |s|
 s.name             = 'KeyboardSupport'
-s.version          = '1.0.2'
+s.version          = '2.0.0'
 s.summary          = 'Makes dealing with common keyboard tasks simpler and easier.'
 
 s.description      = <<-DESC
-KeyboardSupport provides easy navigation between text fields via your custom views and/or with the keyboard's "Return" key. Protocols are provided for easy keyboard dismissal and scrolling when using a UIScrollView.
+KeyboardSupport provides easy navigation between text inputs via and/or with the keyboard's "Return" key. Protocols are provided for easy keyboard dismissal and automatic scrolling to the active text input.
                         DESC
 
 s.homepage         = 'https://github.com/BottleRocketStudios/iOS-KeyboardSupport'
