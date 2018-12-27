@@ -46,7 +46,7 @@ extension UIViewController {
 
 /// KeyboardScrollable will ask a TextInputView that conforms to this protocol for preferred distance between the field and the keyboard.
 /// It will be used if it is non-nil and greater than the KeyboardScrollable minimumPaddingBetweenInputAndKeyboard.
-@objc protocol KeyboardPaddingProviding {
+@objc public protocol KeyboardPaddingProviding {
     @objc var inputPadding: UIEdgeInsets { get }
 }
 
@@ -207,7 +207,9 @@ public extension KeyboardScrollable where Self: UIViewController {
         if let textView = firstResponder as? UITextView {
             scrollToSelectedText(for: textView, keyboardInfo: keyboardInfo)
         } else {
-            scrollToRectIfNecessary(rect: firstResponder.frame, of: firstResponder, keyboardInfo: keyboardInfo)
+            
+            let preferredPaddingAroundInput = (firstResponder as? KeyboardPaddingProviding)?.inputPadding
+            scrollToRectIfNecessary(rect: firstResponder.frame, of: firstResponder, keyboardInfo: keyboardInfo, preferredPaddingAroundInput: preferredPaddingAroundInput)
         }
     }
     
