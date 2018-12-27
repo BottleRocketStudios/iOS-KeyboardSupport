@@ -134,6 +134,8 @@ public extension KeyboardScrollable where Self: UIViewController {
     var preservesContentInsetWhenKeyboardVisible: Bool { return true }
     
     func setupKeyboardObservers() {
+        keyboardScrollableScrollView?.originalContentInset = keyboardScrollableScrollView?.contentInset
+        
         let keyboardWillShowNotificationName: Notification.Name = {
             #if swift(>=4.2)
             return UIResponder.keyboardWillShowNotification
@@ -150,7 +152,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         }()
         
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: keyboardWillShowNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
-            guard let keyboardInfo = KeyboardInfo(notification: notification), keyboardInfo.isMoving, let activeField = self?.view.activeFirstResponder() else { return }
+            guard let keyboardInfo = KeyboardInfo(notification: notification), let activeField = self?.view.activeFirstResponder() else { return }
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
             self?.keyboardWillShow()
         })
@@ -183,7 +185,6 @@ public extension KeyboardScrollable where Self: UIViewController {
     
     private func adjustViewForKeyboardAppearance(with keyboardInfo: KeyboardInfo, firstResponder: UIView) {
         guard let scrollView = keyboardScrollableScrollView else { return }
-         scrollView.originalContentInset = scrollView.contentInset
         
         var mutableInset: UIEdgeInsets
         if preservesContentInsetWhenKeyboardVisible, let originalContentInset = scrollView.originalContentInset {
@@ -244,7 +245,8 @@ public extension KeyboardScrollable where Self: UIViewController {
     }
     
     private func resetViewForKeyboardDisappearance(with keyboardInfo: KeyboardInfo) {
-        guard let originalContentInset = keyboardScrollableScrollView?.originalContentInset else { return }
+        guard let scrollView = keyboardScrollableScrollView else { return }
+        let originalContentInset = scrollView.originalContentInset ?? .zero
         adjustScrollViewInset(originalContentInset, keyboardInfo: keyboardInfo)
     }
     
