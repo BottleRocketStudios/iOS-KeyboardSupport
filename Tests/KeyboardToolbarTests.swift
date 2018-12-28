@@ -15,7 +15,6 @@ class KeyboardToolbarTests: XCTestCase {
         let keyboardToolbar = KeyboardToolbar()
         
         XCTAssertNotNil(keyboardToolbar)
-        XCTAssertEqual(keyboardToolbar.frame.height, 50)
         XCTAssertTrue((keyboardToolbar.items!.isEmpty))
     }
     
