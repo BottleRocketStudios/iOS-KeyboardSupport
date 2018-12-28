@@ -1,5 +1,17 @@
 ## Master
 
+## 2.1.0 (2018-12-28)
+
+##### Enhancements
+
+* Modified KeyboardToolbar to keep track of the next, back, and done buttons, so they can be enabled / disabled as needed. 
+* Added support to KeyboardScrollable to support an additional padding around a TextInputView when moving it into view
+* Added a `KeyboardAutoNavigator` that is initialized with a default toolbar that it will apply to all text inputs, unless those inputs provide their own via `KeyboardToolbarProviding`. The autonavigator will walk the view hiearchy and seek out text inputs to provide next field and previous field navigation via the keyboard toolbar. 
+
+##### Bug Fixes
+
+* None
+
 ## 2.0.0 (2018-12-21)
 
 ##### Enhancements

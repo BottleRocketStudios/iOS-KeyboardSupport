@@ -132,6 +132,41 @@ keyboardNavigator = KeyboardNavigator(textInputs: [textInput1, textInput2], retu
 }
 ```
 
+### KeyboardAutoNavigator - when using a KeyboardToolbar
+Create a KeyboardToolbar, configuring it with back/next/done buttons as appropriate. Then, create a KeyboardAutoNavigator, passing in your  toolbar. The position of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardAutoNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`.
+
+``` swift
+class ViewController: UIViewController {
+
+@IBOutlet private var textInput1: UITextField!
+@IBOutlet private var textInput2: UITextView!
+private var keyboardNavigator: KeyboardAutoNavigator?
+
+override func viewDidLoad() {
+super.viewDidLoad()
+
+let keyboardToolbar = KeyboardToolbar()
+keyboardNavigator = KeyboardAutoNavigator(navigationContainer: scrollView, defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
+keyboardNavigator?.delegate = self
+}
+}
+
+extension ViewController: KeyboardAutoNavigatorDelegate {
+
+func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
+// Your code here
+}
+
+func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
+// Your code here
+}
+
+func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
+// Your code here
+}
+}
+```
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.

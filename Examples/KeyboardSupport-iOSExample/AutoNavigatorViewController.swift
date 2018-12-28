@@ -36,7 +36,6 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
         
         // KeyboardScrollable setup
         keyboardScrollableScrollView = scrollView
-        setupKeyboardObservers()
         
         // KeyboardToolbar setup
         let keyboardToolbar = KeyboardToolbar()
@@ -47,6 +46,7 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
         
         // KeyboardNavigator setup
         keyboardNavigator = KeyboardAutoNavigator(navigationContainer: scrollView, defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
+        keyboardNavigator?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,17 +62,17 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
 
 // MARK: - KeyboardNavigatorDelegate
 
-extension AutoNavigatorViewController: KeyboardNavigatorDelegate {
+extension AutoNavigatorViewController: KeyboardAutoNavigatorDelegate {
     
-    func keyboardNavigatorDidTapBack(_ navigator: KeyboardNavigator) {
+    func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
         print("keyboardNavigatorDidTapBack")
     }
     
-    func keyboardNavigatorDidTapNext(_ navigator: KeyboardNavigator) {
+    func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
         print("keyboardNavigatorDidTapNext")
     }
     
-    func keyboardNavigatorDidTapDone(_ navigator: KeyboardNavigator) {
+    func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
         print("keyboardNavigatorDidTapDone")
     }
 }
