@@ -11,7 +11,7 @@ import Foundation
 // MARK: - UIView Array Extension
 extension Array where Element: UIView {
     
-    /// Sorts an array of Views arrenging them from left to right, top to bottom based on their minX and minY values.
+    /// Sorts an array of Views arranging them from left to right, top to bottom based on their minX and minY values.
     ///
     /// - Parameter container: Superview of all elements to be sorted by position.
     /// - Returns: Sorted array of UIView elements.
