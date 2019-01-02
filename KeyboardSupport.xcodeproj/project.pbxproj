@@ -28,7 +28,7 @@
 		626DEA9020BC94EE0036D5A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626DEA8F20BC94EE0036D5A6 /* Assets.xcassets */; };
 		626DEA9320BC94EE0036D5A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 626DEA9120BC94EE0036D5A6 /* LaunchScreen.storyboard */; };
 		626DEAAF20BC95A00036D5A6 /* KeyboardRespondable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DEAAC20BC95A00036D5A6 /* KeyboardRespondable.swift */; };
-		626DEAB020BC95A00036D5A6 /* KeyboardIAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DEAAD20BC95A00036D5A6 /* KeyboardIAccessory.swift */; };
+		626DEAB020BC95A00036D5A6 /* KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DEAAD20BC95A00036D5A6 /* KeyboardAccessory.swift */; };
 		626DEACB20BC9D360036D5A6 /* KeyboardSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */; };
 		626DEACC20BC9D360036D5A6 /* KeyboardSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 626DEA6920BC94840036D5A6 /* KeyboardSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		627D631F21CC3F5C00C98F78 /* KeyboardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D631E21CC3F5C00C98F78 /* KeyboardNavigator.swift */; };
@@ -93,7 +93,7 @@
 		626DEA9220BC94EE0036D5A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		626DEA9420BC94EE0036D5A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		626DEAAC20BC95A00036D5A6 /* KeyboardRespondable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardRespondable.swift; sourceTree = "<group>"; };
-		626DEAAD20BC95A00036D5A6 /* KeyboardIAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardIAccessory.swift; sourceTree = "<group>"; };
+		626DEAAD20BC95A00036D5A6 /* KeyboardAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAccessory.swift; sourceTree = "<group>"; };
 		626DEAC420BC96BC0036D5A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		626DEAD520BCA2E20036D5A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		627D631E21CC3F5C00C98F78 /* KeyboardNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNavigator.swift; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 		626DEAAA20BC952B0036D5A6 /* KeyboardSupport */ = {
 			isa = PBXGroup;
 			children = (
-				626DEAAD20BC95A00036D5A6 /* KeyboardIAccessory.swift */,
+				626DEAAD20BC95A00036D5A6 /* KeyboardAccessory.swift */,
 				627D631E21CC3F5C00C98F78 /* KeyboardNavigator.swift */,
 				476C0CD221CD81C600B6A48D /* KeyboardAutoNavigator.swift */,
 				626DEAAC20BC95A00036D5A6 /* KeyboardRespondable.swift */,
@@ -395,7 +395,7 @@
 			files = (
 				1DAC1AAE2138AC6F001B922E /* CGRect+Modifying.swift in Sources */,
 				476C0CD321CD81C700B6A48D /* KeyboardAutoNavigator.swift in Sources */,
-				626DEAB020BC95A00036D5A6 /* KeyboardIAccessory.swift in Sources */,
+				626DEAB020BC95A00036D5A6 /* KeyboardAccessory.swift in Sources */,
 				476C0CD121CD7FD700B6A48D /* UIView+KeyboardSupport.swift in Sources */,
 				1DB06E192107E9EF0087ADBE /* UIScrollView+Inset.swift in Sources */,
 				627D632121CC3F6300C98F78 /* KeyboardToolbar.swift in Sources */,
