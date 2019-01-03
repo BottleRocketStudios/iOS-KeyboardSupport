@@ -27,12 +27,7 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
     // MARK: - Init
     
     override public init(frame: CGRect) {
-        var aFrame = frame
-        if aFrame == .zero {
-            aFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44)
-        }
-        
-        super.init(frame: aFrame)
+        super.init(frame: frame)
         items = []
     }
     
