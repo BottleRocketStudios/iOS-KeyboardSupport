@@ -152,7 +152,10 @@ extension KeyboardAutoNavigator {
             applyToolbar(keyboardToolbar, toTextInput: inputView)
         }
         
-        // There's a chance that the TextInput gaining first responder will trigger a containing scroll view to scroll new textfields into view. We want to try to refresh our toolbar buttons after the scrollview has settled so those new views are taken into consideration. Using async here is a "best effort" approach. If your app has an opportunity to call this method at a more concrete time, such as in ScrollViewDidEndDragging, or ScrollViewDidEndDecelerating, do so for the best results. 
+        // There's a chance that the TextInput gaining first responder will trigger a containing scroll view to scroll new textfields into view.
+        // We want to try to refresh our toolbar buttons after the scrollview has settled so those new views are taken into consideration. Using
+        // async here is a "best effort" approach. If your app has an opportunity to call this method at a more concrete time, such as in
+        // ScrollViewDidEndDragging, or ScrollViewDidEndDecelerating, do so for the best results. 
         DispatchQueue.main.async {
             self.refreshCurrentToolbarButtonStates()
         }
