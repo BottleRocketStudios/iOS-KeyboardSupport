@@ -67,8 +67,8 @@ class ViewController: UIViewController, KeyboardScrollable {
 Create your own input accessory view for navigation between text inputs. Use the convenience methods to create back/next/done buttons or supply your own `UIBarButtonItem`s.
 ``` swift
 let keyboardToolbar = KeyboardToolbar()
-keyboardToolbar.addBackButton(title: "Back")
-keyboardToolbar.addNextButton(title: "Next")
+keyboardToolbar.addButton(type: .back, title: "Back")
+keyboardToolbar.addButton(type: .next, title: "Next")
 keyboardToolbar.addFlexibleSpace()
 keyboardToolbar.addSystemDoneButton()
 ```

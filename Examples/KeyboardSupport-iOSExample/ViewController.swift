@@ -38,8 +38,8 @@ class ViewController: UIViewController, KeyboardRespondable {
         
         // KeyboardToolbar setup
         let keyboardToolbar = KeyboardToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50))
-        keyboardToolbar.addBackButton(title: "Back")
-        keyboardToolbar.addNextButton(title: "Next")
+        keyboardToolbar.addButton(type: .back, title: "Back")
+        keyboardToolbar.addButton(type: .next, title: "Next")
         keyboardToolbar.addFlexibleSpace()
         keyboardToolbar.addSystemDoneButton()
         

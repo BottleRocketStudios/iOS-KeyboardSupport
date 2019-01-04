@@ -39,7 +39,14 @@ open class KeyboardNavigator {
         self.keyboardToolbar = keyboardToolbar
         self.returnKeyNavigationEnabled = returnKeyNavigationEnabled
         
-        self.textInputs.forEach {
+        addTargets()
+        addInputAccessoryViews()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func addTargets() {
+        textInputs.forEach {
             if let textField = $0 as? UITextField {
                 // Updates currentIndex when a text field is tapped.
                 textField.addTarget(self, action: #selector(textFieldEditingDidBegin(_:)), for: .editingDidBegin)
@@ -47,20 +54,21 @@ open class KeyboardNavigator {
                 textField.addTarget(self, action: #selector(textFieldEditingDidEndOnExit(_:)), for: .editingDidEndOnExit)
             }
         }
-        
-        if let keyboardToolbar = self.keyboardToolbar {
-            keyboardToolbar.keyboardAccessoryDelegate = self
-            
-            self.textInputs.forEach {
-                if let textField = $0 as? UITextField {
-                    textField.inputAccessoryView = keyboardToolbar
-                } else if let textView = $0 as? UITextView {
-                    textView.inputAccessoryView = keyboardToolbar
-                }
+    }
+    
+    private func addInputAccessoryViews() {
+        keyboardToolbar?.keyboardAccessoryDelegate = self
+        textInputs.forEach {
+            if let textField = $0 as? UITextField {
+                textField.inputAccessoryView = keyboardToolbar
+            } else if let textView = $0 as? UITextView {
+                textView.inputAccessoryView = keyboardToolbar
             }
         }
     }
 }
+
+// MARK: - Private Extension
 
 private extension KeyboardNavigator {
     

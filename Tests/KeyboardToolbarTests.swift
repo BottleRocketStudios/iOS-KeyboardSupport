@@ -38,42 +38,42 @@ class KeyboardToolbarTests: XCTestCase {
     
     func test_addBackButtonWithTitle() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addBackButton(title: "Title")
+        keyboardToolbar.addButton(type: .back, title: "Title")
 
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
     
     func test_addBackButtonWithImage() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addBackButton(image: UIImage())
+        keyboardToolbar.addButton(type: .back, image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
     
     func test_addNextButtonWithTitle() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addNextButton(title: "Title")
+        keyboardToolbar.addButton(type: .next, title: "Title")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
     
     func test_addNextButtonWithImage() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addNextButton(image: UIImage())
+        keyboardToolbar.addButton(type: .next, image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
     
     func test_addDoneButtonWithTitle() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addDoneButton(title: "Title")
+        keyboardToolbar.addButton(type: .done, title: "Title")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
     
     func test_addDoneButtonWithImage() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addDoneButton(image: UIImage())
+        keyboardToolbar.addButton(type: .done, image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
