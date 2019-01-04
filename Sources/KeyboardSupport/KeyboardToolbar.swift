@@ -8,26 +8,27 @@
 
 import UIKit
 
-/// Represents a navigation type that a button could have on `KeyboardToolbar`.
-public enum KeyboardToolbarButtonNavigationType {
-    case back
-    case next
-    case done
-    
-    var action: Selector {
-        switch self {
-        case .back:
-            return #selector(KeyboardToolbar.backButtonTapped)
-        case .next:
-            return #selector(KeyboardToolbar.nextButtonTapped)
-        case .done:
-            return #selector(KeyboardToolbar.doneButtonTapped)
-        }
-    }
-}
-
 /// Represents a toolbar shown above the keyboard.
 open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
+    
+    // MARK: - Sub-types
+    
+    public enum ButtonNavigationType {
+        case back
+        case next
+        case done
+        
+        var action: Selector {
+            switch self {
+            case .back:
+                return #selector(KeyboardToolbar.backButtonTapped)
+            case .next:
+                return #selector(KeyboardToolbar.nextButtonTapped)
+            case .done:
+                return #selector(KeyboardToolbar.doneButtonTapped)
+            }
+        }
+    }
     
     // MARK: - KeyboardAccessory
     
@@ -53,13 +54,13 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
     }
     
     /// Adds a `UIBarButtonItem` with a title for a `KeyboardToolbarButtonNavigationType`.
-    open func addButton(type: KeyboardToolbarButtonNavigationType, title: String) {
+    open func addButton(type: ButtonNavigationType, title: String) {
         let button = UIBarButtonItem(title: title, style: .plain, target: self, action: type.action)
         items?.append(button)
     }
     
     /// Adds a `UIBarButtonItem` with images for a `KeyboardToolbarButtonNavigationType`.
-    open func addButton(type: KeyboardToolbarButtonNavigationType, image: UIImage, landscapeImagePhone: UIImage? = nil) {
+    open func addButton(type: ButtonNavigationType, image: UIImage, landscapeImagePhone: UIImage? = nil) {
         let button = UIBarButtonItem(image: image, landscapeImagePhone: landscapeImagePhone, style: .plain, target: self, action: type.action)
         items?.append(button)
     }

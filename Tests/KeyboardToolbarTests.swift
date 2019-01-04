@@ -38,7 +38,7 @@ class KeyboardToolbarTests: XCTestCase {
     
     func test_addBackButtonWithTitle() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addButton(type: .back, title: "Title")
+        keyboardToolbar.addButton(type: .back, title: "Back")
 
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
@@ -52,7 +52,7 @@ class KeyboardToolbarTests: XCTestCase {
     
     func test_addNextButtonWithTitle() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addButton(type: .next, title: "Title")
+        keyboardToolbar.addButton(type: .next, title: "Next")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
@@ -66,7 +66,7 @@ class KeyboardToolbarTests: XCTestCase {
     
     func test_addDoneButtonWithTitle() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addButton(type: .done, title: "Title")
+        keyboardToolbar.addButton(type: .done, title: "Done")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
@@ -96,7 +96,7 @@ class KeyboardToolbarTests: XCTestCase {
         let keyboardToolbar = KeyboardToolbar()
         let mockDelegate = MockKeyboardAccessoryDelegate()
         keyboardToolbar.keyboardAccessoryDelegate = mockDelegate
-        keyboardToolbar.addBackButton(title: "Title")
+        keyboardToolbar.addButton(type: .back, title: "Back")
         keyboardToolbar.backButtonTapped(keyboardToolbar.items!.first!)
         XCTAssertEqual(mockDelegate.tapType, .back)
     }
@@ -105,7 +105,7 @@ class KeyboardToolbarTests: XCTestCase {
         let keyboardToolbar = KeyboardToolbar()
         let mockDelegate = MockKeyboardAccessoryDelegate()
         keyboardToolbar.keyboardAccessoryDelegate = mockDelegate
-        keyboardToolbar.addNextButton(title: "Title")
+        keyboardToolbar.addButton(type: .next, title: "Next")
         keyboardToolbar.nextButtonTapped(keyboardToolbar.items!.first!)
         XCTAssertEqual(mockDelegate.tapType, .next)
     }
@@ -114,7 +114,7 @@ class KeyboardToolbarTests: XCTestCase {
         let keyboardToolbar = KeyboardToolbar()
         let mockDelegate = MockKeyboardAccessoryDelegate()
         keyboardToolbar.keyboardAccessoryDelegate = mockDelegate
-        keyboardToolbar.addDoneButton(title: "Title")
+        keyboardToolbar.addButton(type: .done, title: "Done")
         keyboardToolbar.doneButtonTapped(keyboardToolbar.items!.first!)
         XCTAssertEqual(mockDelegate.tapType, .done)
     }
