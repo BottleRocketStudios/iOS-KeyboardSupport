@@ -30,4 +30,4 @@ This new subclass of `UIToolbar` allows you to quickly create an input accessory
 
 ### `KeyboardScrollable`
 
-Animations for moving views in a scroll view when the keyboard shows or hides has been added.
+Hooks have been added to allow for animating your custom views alongside the keyboard appearance/disappearance animations. Simply implement `keyboardWillShow(_:)` and/or `keyboardWillHide(_:)` in your class that conforms to `KeyboardScrollable`.

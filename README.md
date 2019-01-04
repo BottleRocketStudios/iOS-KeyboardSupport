@@ -6,7 +6,6 @@
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-KeyboardSupport/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-KeyboardSupport)
 [![codebeat badge](https://codebeat.co/badges/3ef15dda-15d5-4bb6-a7f1-13f22da10813)](https://codebeat.co/projects/github-com-bottlerocketstudios-ios-keyboardsupport-master)
 
-
 ## Purpose
 
 This library provides conveniences for dealing with common keyboard tasks. There are a few main goals:
@@ -14,7 +13,7 @@ This library provides conveniences for dealing with common keyboard tasks. There
 * Make it easy to auto-dismiss the keyboard via tap on screen.
 * Auto-scrolling to the active `UITextField` or `UITextView`.
 * Easily implement navigation between text inputs by supplying your own input accessory view.
-* Allow keyboard "return" key to navigate between `UITextField`s.
+* Allow keyboard "Return" key to navigate between `UITextField`s.
 * Provide a `UIToolbar` subclass so you can create your own input accessory views faster.
 
 ## Key Concepts
@@ -35,7 +34,6 @@ class ViewController: UIViewController, KeyboardDismissable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupKeyboardDismissal()
     }
 }
@@ -76,9 +74,8 @@ keyboardToolbar.addSystemDoneButton()
 ```
 Check out `KeyboardToolbar` for other button adding options.
 
-
 ### KeyboardNavigator - when using a KeyboardToolbar
-Create a `KeyboardToolbar`, configuring it with back/next/done buttons as appropriate. Then, create a `KeyboardNavigator`, passing in your text inputs and toolbar. The order of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`. **Please see the example project for tips when using `UITextViews`.**
+Create a `KeyboardToolbar`, configuring it with back/next/done buttons as appropriate. Then, create a `KeyboardNavigator`, passing in your text inputs and toolbar. The order of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`.
 ``` swift
 class ViewController: UIViewController {
 
@@ -160,4 +157,3 @@ See the [CONTRIBUTING] document. Thank you, [contributors]!
 
 [CONTRIBUTING]: CONTRIBUTING.md
 [contributors]: https://github.com/BottleRocketStudios/iOS-KeyboardSupport/graphs/contributors
-

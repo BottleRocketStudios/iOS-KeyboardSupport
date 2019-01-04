@@ -13,11 +13,10 @@ enum TapType {
     case back
     case next
     case done
-    case none
 }
 
 class MockKeyboardAccessoryDelegate: KeyboardAccessoryDelegate {
-    var tapType: TapType = .none
+    var tapType: TapType?
     
     func keyboardAccessoryDidTapBack(_ accessory: UIView) {
         tapType = .back
