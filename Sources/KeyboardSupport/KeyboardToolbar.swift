@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// An object that displays a toolbar above the keyboard.
+/// Represents a toolbar shown above the keyboard.
 open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
     
     // MARK: - KeyboardAccessory

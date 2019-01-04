@@ -33,11 +33,11 @@ Conform to this protocol to enable keyboard dismissal via tapping the screen whe
 ``` swift
 class ViewController: UIViewController, KeyboardDismissable {
 
-override func viewDidLoad() {
-super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-setupKeyboardDismissal()
-}
+        setupKeyboardDismissal()
+    }
 }
 ```
 
@@ -46,25 +46,22 @@ Conform to this protocol to enable scrolling to the first responder when the key
 ``` swift
 class ViewController: UIViewController, KeyboardScrollable {
 
-@IBOutlet private var scrollView: UIScrollView!
-var keyboardScrollableScrollView: UIScrollView?
-var keyboardWillShowObserver: NSObjectProtocol?
-var keyboardWillHideObserver: NSObjectProtocol?
+    @IBOutlet private var scrollView: UIScrollView!
+    var keyboardScrollableScrollView: UIScrollView? {
+        return scrollView
+    }
+    var keyboardWillShowObserver: NSObjectProtocol?
+    var keyboardWillHideObserver: NSObjectProtocol?
 
-override func viewDidLoad() {
-super.viewDidLoad()
-keyboardScrollableScrollView = scrollView
-}
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupKeyboardObservers()
+    }
 
-override func viewWillAppear(_ animated: Bool) {
-super.viewWillAppear(animated)
-setupKeyboardObservers()
-}
-
-override func viewWillDisappear(_ animated: Bool) {
-super.viewWillDisappear(animated)
-removeKeyboardObservers()
-}
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeKeyboardObservers()
+    }
 }
 ```
 
@@ -76,42 +73,41 @@ keyboardToolbar.addBackButton(title: "Back")
 keyboardToolbar.addNextButton(title: "Next")
 keyboardToolbar.addFlexibleSpace()
 keyboardToolbar.addSystemDoneButton()
-}
 ```
 Check out `KeyboardToolbar` for other button adding options.
 
 
 ### KeyboardNavigator - when using a KeyboardToolbar
-Create a KeyboardToolbar, configuring it with back/next/done buttons as appropriate. Then, create a KeyboardNavigator, passing in your text inputs and toolbar. The order of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`. **Please see the example project for tips when using `UITextViews`.**
+Create a `KeyboardToolbar`, configuring it with back/next/done buttons as appropriate. Then, create a `KeyboardNavigator`, passing in your text inputs and toolbar. The order of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`. **Please see the example project for tips when using `UITextViews`.**
 ``` swift
 class ViewController: UIViewController {
 
-@IBOutlet private var textInput1: UITextField!
-@IBOutlet private var textInput2: UITextView!
-private var keyboardNavigator: KeyboardNavigator?
+    @IBOutlet private var textInput1: UITextField!
+    @IBOutlet private var textInput2: UITextView!
+    private var keyboardNavigator: KeyboardNavigator?
 
-override func viewDidLoad() {
-super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-let keyboardToolbar = KeyboardToolbar()
-keyboardNavigator = KeyboardNavigator(textInputs: [textInput1, textInput2], keyboardToolbar: keyboardToolbar)
-keyboardNavigator?.delegate = self
-}
+        let keyboardToolbar = KeyboardToolbar()
+        keyboardNavigator = KeyboardNavigator(textInputs: [textInput1, textInput2], keyboardToolbar: keyboardToolbar)
+        keyboardNavigator?.delegate = self
+    }
 }
 
 extension ViewController: KeyboardNavigatorDelegate {
 
-func keyboardNavigatorDidTapBack(_ navigator: KeyboardNavigator) {
-// Your code here
-}
+    func keyboardNavigatorDidTapBack(_ navigator: KeyboardNavigator) {
+        // Your code here
+    }
 
-func keyboardNavigatorDidTapNext(_ navigator: KeyboardNavigator) {
-// Your code here
-}
+    func keyboardNavigatorDidTapNext(_ navigator: KeyboardNavigator) {
+        // Your code here
+    }
 
-func keyboardNavigatorDidTapDone(_ navigator: KeyboardNavigator) {
-// Your code here
-}
+    func keyboardNavigatorDidTapDone(_ navigator: KeyboardNavigator) {
+        // Your code here
+    }
 }
 ```
 
@@ -120,15 +116,15 @@ Create a `KeyboardNavigator`, passing in your text inputs and setting the `retur
 ``` swift
 class ViewController: UIViewController {
 
-@IBOutlet private var textInput1: UITextField!
-@IBOutlet private var textInput2: UITextField!
-private var keyboardNavigator: KeyboardNavigator?
+    @IBOutlet private var textInput1: UITextField!
+    @IBOutlet private var textInput2: UITextField!
+    private var keyboardNavigator: KeyboardNavigator?
 
-override func viewDidLoad() {
-super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-keyboardNavigator = KeyboardNavigator(textInputs: [textInput1, textInput2], returnKeyNavigationEnabled: true)
-}
+        keyboardNavigator = KeyboardNavigator(textInputs: [textInput1, textInput2], returnKeyNavigationEnabled: true)
+    }
 }
 ```
 

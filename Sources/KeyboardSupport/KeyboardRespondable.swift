@@ -47,7 +47,7 @@ extension UIViewController {
 // MARK: - KeyboardInfo
 
 /// Stores info about the keyboard.
-struct KeyboardInfo {
+public struct KeyboardInfo {
     let initialFrame: CGRect
     let finalFrame: CGRect
     let animationDuration: TimeInterval
@@ -87,7 +87,7 @@ struct KeyboardInfo {
 
 /// Enables scrolling views to the first responder when a keyboard is shown. Must be used with a UIScrollView or one of its subclasses.
 public protocol KeyboardScrollable: class {
-    var keyboardScrollableScrollView: UIScrollView? { get set }
+    var keyboardScrollableScrollView: UIScrollView? { get }
     var keyboardWillShowObserver: NSObjectProtocol? { get set }
     var keyboardWillHideObserver: NSObjectProtocol? { get set }
     
@@ -100,18 +100,18 @@ public protocol KeyboardScrollable: class {
     func removeKeyboardObservers()
     
     /// Called when the keyboard is showing.
-    func keyboardWillShow()
+    func keyboardWillShow(keyboardInfo: KeyboardInfo)
     
     /// Called when the keyboard is hiding.
-    func keyboardWillHide()
+    func keyboardWillHide(keyboardInfo: KeyboardInfo)
 }
 
 extension KeyboardScrollable {
-    func keyboardWillShow() {
+    func keyboardWillShow(keyboardInfo: KeyboardInfo) {
         // No-op by default. Opt-in by implementing this method in your class conforming to KeyboardScrollable.
     }
     
-    func keyboardWillHide() {
+    func keyboardWillHide(keyboardInfo: KeyboardInfo) {
         // No-op by default. Opt-in by implementing this method in your class conforming to KeyboardScrollable.
     }
 }
@@ -143,12 +143,12 @@ public extension KeyboardScrollable where Self: UIViewController {
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: keyboardWillShowNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
             guard let keyboardInfo = KeyboardInfo(notification: notification), keyboardInfo.isMoving, let activeField = self?.view.activeFirstResponder() else { return }
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
-            self?.keyboardWillShow()
+            self?.keyboardWillShow(keyboardInfo: keyboardInfo)
         })
         keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: keyboardWillHideNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
             guard let keyboardInfo = KeyboardInfo(notification: notification) else { return }
             self?.resetViewForKeyboardDisappearance(with: keyboardInfo)
-            self?.keyboardWillHide()
+            self?.keyboardWillHide(keyboardInfo: keyboardInfo)
         })
     }
     
@@ -194,26 +194,26 @@ public extension KeyboardScrollable where Self: UIViewController {
         
         // If active text field is hidden by keyboard, scroll so it's visible
         if let textView = firstResponder as? UITextView {
-            scrollToSelectedText(for: textView, in: scrollView, keyboardHeight: keyboardHeight, keyboardInfo: keyboardInfo)
+            scrollToSelectedText(for: textView, in: scrollView, keyboardInfo: keyboardInfo)
         } else {
             let contentRect = firstResponder.convert(firstResponder.bounds, to: scrollView)
-            scrollToContentRectIfNecessary(contentRect: contentRect, keyboardHeight: keyboardHeight, keyboardInfo: keyboardInfo)
+            scrollToContentRectIfNecessary(contentRect: contentRect, keyboardInfo: keyboardInfo)
         }
     }
     
-    private func scrollToSelectedText(for textView: UITextView, in scrollView: UIScrollView, keyboardHeight: CGFloat, keyboardInfo: KeyboardInfo) {
+    private func scrollToSelectedText(for textView: UITextView, in scrollView: UIScrollView, keyboardInfo: KeyboardInfo) {
         // Get the frame of the cursor/selection to improve scrolling position for UITextView's
         // DispatchQueue.async() is necessary because the selectedTextRange typically hasn't not been updated when UIResponder.keyboardWillShowNotification is posted
         DispatchQueue.main.async {
             guard let textRange = textView.selectedTextRange, let selectionRect = textView.selectionRects(for: textRange).first else { return }
             // Set an arbitray width to the target CGRect in case the width is zero. Otherwise, scrollRectToVisible has no effect.
             let contentRect = textView.convert(selectionRect.rect, to: scrollView).modifying(width: 30)
-            self.scrollToContentRectIfNecessary(contentRect: contentRect, keyboardHeight: keyboardHeight, keyboardInfo: keyboardInfo)
+            self.scrollToContentRectIfNecessary(contentRect: contentRect, keyboardInfo: keyboardInfo)
         }
     }
     
-    private func scrollToContentRectIfNecessary(contentRect: CGRect, keyboardHeight: CGFloat, keyboardInfo: KeyboardInfo) {
-        let keyboardMinY = view.bounds.height - keyboardHeight
+    private func scrollToContentRectIfNecessary(contentRect: CGRect, keyboardInfo: KeyboardInfo) {
+        let keyboardMinY = view.bounds.height - keyboardInfo.finalFrame.height
         guard let convertedTargetFrame = keyboardScrollableScrollView?.convert(contentRect, to: view), convertedTargetFrame.maxY > keyboardMinY else { return }
         
         UIView.animate(withDuration: keyboardInfo.animationDuration, delay: 0, options: [UIView.AnimationOptions(rawValue: keyboardInfo.animationCurve)], animations: {
