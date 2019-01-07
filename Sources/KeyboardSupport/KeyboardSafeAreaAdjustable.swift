@@ -1,6 +1,6 @@
 //
 //  KeyboardSafeAreaAdjustable.swift
-//  KeyboardSupport-iOS
+//  KeyboardSupport
 //
 //  Created by Cuong Ngo on 7/31/18.
 //  Copyright © 2018 Bottle Rocket. All rights reserved.

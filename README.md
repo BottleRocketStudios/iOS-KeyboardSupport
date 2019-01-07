@@ -6,78 +6,26 @@
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-KeyboardSupport/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-KeyboardSupport)
 [![codebeat badge](https://codebeat.co/badges/3ef15dda-15d5-4bb6-a7f1-13f22da10813)](https://codebeat.co/projects/github-com-bottlerocketstudios-ios-keyboardsupport-master)
 
-
 ## Purpose
+
 This library provides conveniences for dealing with common keyboard tasks. There are a few main goals:
 
 * Make it easy to auto-dismiss the keyboard via tap on screen.
-* Auto-scrolling to the active text field/view.
-* Make navigation between text views worry free with your own view.
-* Allow keyboard "return" key to navigate between text fields.
+* Auto-scrolling to the active `UITextField` or `UITextView`.
+* Easily implement navigation between text inputs by supplying your own input accessory view.
+* Allow keyboard "Return" key to navigate between `UITextField`s.
+* Provide a `UIToolbar` subclass so you can create your own input accessory views faster.
 
 ## Key Concepts
-* KeyboardManager - Handles navigaton between text fields by providing your custom view or using the keyboard's return key.
-* KeyboardInputAccessory - Your custom view conforms to this protocol to get callbacks for "back", "next", and "done" for moving between text fields.
-* KeyboardDismissable - A protocol that enables automatic keyboard dismissal via tapping the screen when the keyboard is displayed.
-* KeyboardScrollable - A protocol that enables scrolling views to the first responder when a keyboard is shown. Must be used with a UIScrollView or one of its subclasses.
-* KeyboardRespondable - Inherits from both KeyboardDismissable and KeyboardScrollable for convenience.
+
+* **KeyboardDismissable** - A protocol that enables automatic keyboard dismissal via tapping the screen when the keyboard is displayed.
+* **KeyboardScrollable** - A protocol that enables scrolling views to the first responder when a keyboard is shown. Must be used with a `UIScrollView` or one of its subclasses.
+* **KeyboardRespondable** - Inherits from both `KeyboardDismissable` and `KeyboardScrollable` for convenience.
+* **KeyboardToolbar** - A subclass of `UIToolbar` with customization options to quickly create your own input accessory views.
+* **KeyboardAccessory** - Have your custom view conform to this protocol to get callbacks for "back", "next", and "done" for moving between text inputs.
+* **KeyboardNavigator** - Handles navigation between text inputs by providing your `KeyboardToolbar` or using the keyboard's return key.
 
 ## Usage
-### KeyboardManager for using "Return" key.
-Create a KeyboardManager. Pass in your UITextFields. Make sure returnKeyNavigationEnabled is set to `true`. The order of the text fields determines the navigation order for traversing from one to the next.
-``` swift
-class ViewController: UIViewController {
-    @IBOutlet private var textField1: UITextField!
-    @IBOutlet private var textField2: UITextField!
-    private var keyboardManager: KeyboardManager?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        keyboardManager = KeyboardManager(textFields: [textField1, textField2], returnKeyNavigationEnabled: true)
-    }
-}
-```
-
-You can also set the delegate of the KeyboardManager to get a callback when "Done" is tapped on the keyboard.
-``` swift
-override func viewDidLoad() {
-    super.viewDidLoad()
-
-    keyboardManager = KeyboardManager(textFields: [textField1, textField2], configuresReturnKeys: true)
-    keyboardManager?.delegate = self
-}
-```
-
-``` swift
-extension ViewController: KeyboardManagerDelegate {
-    func keyboardManagerDidTapDone(_ manager: KeyboardManager) {
-        // Handle "Done" tap
-    }
-}
-```
-
-### KeyboardManager with custom view above the keyboard.
-Create a custom class that is a subclass of UIView or one of its subclasses to pass to the KeyboardManager. Your custom class can conform to KeyboardInputAccessory so the KeyboardManager handles navigation between text fields. Otherwise, your view controller can handle navigation callbacks.
-``` swift
-class KeyboardToolbar: UIToolbar, KeyboardInputAccessory {
-    // Use the delegate
-    weak var keyboardInputAccessoryDelegate: KeyboardInputAccessoryDelegate?
-
-    // Example button actions
-    @IBAction func backButtonTapped(_ sender: UIButton) {
-        keyboardInputAccessoryDelegate?.keyboardInputAccessoryDidTapBack(self)
-    }
-
-    @IBAction func nextButtonTapped(_ sender: UIButton) {
-        keyboardInputAccessoryDelegate?.keyboardInputAccessoryDidTapNext(self)
-    }
-
-    @IBAction func doneButtonTapped(_ sender: UIButton) {
-        keyboardInputAccessoryDelegate?.keyboardInputAccessoryDidTapDone(self)
-    }
-}
-```
 
 ### KeyboardDismissable
 Conform to this protocol to enable keyboard dismissal via tapping the screen when the keyboard is displayed.
@@ -86,26 +34,22 @@ class ViewController: UIViewController, KeyboardDismissable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupKeyboardDismissalView()
+        setupKeyboardDismissal()
     }
 }
 ```
 
 ### KeyboardScrollable
-Conform to this protocol to enable scrolling to the first responder when the keyboard is shown. Must be used with a UIScrollView or one of its subclasses.
+Conform to this protocol to enable scrolling to the first responder when the keyboard is shown. Must be used with a `UIScrollView` or one of its subclasses.
 ``` swift
 class ViewController: UIViewController, KeyboardScrollable {
 
     @IBOutlet private var scrollView: UIScrollView!
-    var keyboardScrollableScrollView: UIScrollView?
+    var keyboardScrollableScrollView: UIScrollView? {
+        return scrollView
+    }
     var keyboardWillShowObserver: NSObjectProtocol?
     var keyboardWillHideObserver: NSObjectProtocol?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        keyboardScrollableScrollView = scrollView
-        setupKeyboardDismissalView()
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -119,30 +63,64 @@ class ViewController: UIViewController, KeyboardScrollable {
 }
 ```
 
-### KeyboardRespondable
-Conform to this protocol to utilize both KeyboardDismissable and KeyboardScrollable.
+### KeyboardToolbar
+Create your own input accessory view for navigation between text inputs. Use the convenience methods to create back/next/done buttons or supply your own `UIBarButtonItem`s.
 ``` swift
-class ViewController: UIViewController, KeyboardRespondable {
+let keyboardToolbar = KeyboardToolbar()
+keyboardToolbar.addButton(type: .back, title: "Back")
+keyboardToolbar.addButton(type: .next, title: "Next")
+keyboardToolbar.addFlexibleSpace()
+keyboardToolbar.addSystemDoneButton()
+```
+Check out `KeyboardToolbar` for other button adding options.
 
-    @IBOutlet private var scrollView: UIScrollView!
-    var keyboardScrollableScrollView: UIScrollView?
-    var keyboardWillShowObserver: NSObjectProtocol?
-    var keyboardWillHideObserver: NSObjectProtocol?
+### KeyboardNavigator - when using a KeyboardToolbar
+Create a `KeyboardToolbar`, configuring it with back/next/done buttons as appropriate. Then, create a `KeyboardNavigator`, passing in your text inputs and toolbar. The order of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`.
+``` swift
+class ViewController: UIViewController {
+
+    @IBOutlet private var textInput1: UITextField!
+    @IBOutlet private var textInput2: UITextView!
+    private var keyboardNavigator: KeyboardNavigator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        keyboardScrollableScrollView = scrollView
-        setupKeyboardRespondable()
+
+        let keyboardToolbar = KeyboardToolbar()
+        keyboardNavigator = KeyboardNavigator(textInputs: [textInput1, textInput2], keyboardToolbar: keyboardToolbar)
+        keyboardNavigator?.delegate = self
+    }
+}
+
+extension ViewController: KeyboardNavigatorDelegate {
+
+    func keyboardNavigatorDidTapBack(_ navigator: KeyboardNavigator) {
+        // Your code here
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupKeyboardObservers()
+    func keyboardNavigatorDidTapNext(_ navigator: KeyboardNavigator) {
+        // Your code here
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeKeyboardObservers()
+    func keyboardNavigatorDidTapDone(_ navigator: KeyboardNavigator) {
+        // Your code here
+    }
+}
+```
+
+### KeyboardNavigator - when using the keyboard's "Return" key
+Create a `KeyboardNavigator`, passing in your text inputs and setting the `returnKeyNavigationEnabled` parameter to `true`. The order of the text fields determines the navigation order for traversing from one text input to the next. It's important to note that the use of the `KeyboardToolbar` and the keyboard's "Return" keys are not mutually exclusive. **You can have a `KeyboardNavigator` use both a `KeyboardToolbar` and the keyboard's "Return" keys.**
+``` swift
+class ViewController: UIViewController {
+
+    @IBOutlet private var textInput1: UITextField!
+    @IBOutlet private var textInput2: UITextField!
+    private var keyboardNavigator: KeyboardNavigator?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        keyboardNavigator = KeyboardNavigator(textInputs: [textInput1, textInput2], returnKeyNavigationEnabled: true)
     }
 }
 ```
@@ -152,8 +130,9 @@ class ViewController: UIViewController, KeyboardRespondable {
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+
 * iOS 9.0+
-* Swift 4
+* Swift 4.1
 
 ## Installation
 
@@ -163,6 +142,14 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'KeyboardSupport'
 ```
+
+## Author
+
+[Bottle Rocket Studios](https://www.bottlerocketstudios.com/)
+
+## License
+
+KeyboardSupport is available under the Apache 2.0 license. See the LICENSE.txt file for more info.
 
 ## Contributing
 

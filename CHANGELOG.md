@@ -1,10 +1,20 @@
 ## Master
 
+## 2.0.0 (2018-12-21)
+
 ##### Enhancements
 
-* **[BREAKING]** Renamed `KeyboardScrollable`'s `shouldPreserveContentInsetWhenKeyboardVisible` to `preservesContentInsetWhenKeyboardVisible` in order to fix a SwiftLint warning.
-  [Tyler Milner](https://github.com/tylermilner)
-  [#26](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/26)
+* Added `KeyboardToolbar` for fast creation of input accessorty views. Renamed `KeyboardManager` to `KeyboardNavigator`. `KeyboardNavigator` supports navigating between `UITextView`s. Renamed `KeyboardInputAccessory` to `KeyboardAccessory`. Renaming of methods in `KeyboardDismissable` and methods in `KeyboardScrollable`. Animations added when keyboard appears when using `KeyboardScrollable`.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#29](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/29)
+
+* Adjusted project structure to better support Travis-CI. CI is fully up-and-running on all supported platforms.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#10](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/10)
+
+* Added SwiftLint.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#10](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/10)
 
 ##### Bug Fixes
 
@@ -14,6 +24,10 @@
 ## 1.0.2 (2018-09-19)
 
 ##### Enhancements
+
+* **[BREAKING]** Renamed `KeyboardScrollable`'s `shouldPreserveContentInsetWhenKeyboardVisible` to `preservesContentInsetWhenKeyboardVisible` in order to fix a SwiftLint warning.
+[Tyler Milner](https://github.com/tylermilner)
+[#26](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/26)
 
  * Updated Travis-CI to Xcode 9.4 image.
    [Tyler Milner](https://github.com/tylermilner)
