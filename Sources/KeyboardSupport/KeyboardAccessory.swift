@@ -18,7 +18,7 @@ public protocol KeyboardAccessoryDelegate: class {
     func keyboardAccessoryDidTapDone(_ accessory: UIView)
 }
 
-extension KeyboardAccessoryDelegate {
+public extension KeyboardAccessoryDelegate {
     func keyboardAccessoryDidTapBack(_ accessory: UIView) {}
     func keyboardAccessoryDidTapNext(_ accessory: UIView) {}
     func keyboardAccessoryDidTapDone(_ accessory: UIView) {}

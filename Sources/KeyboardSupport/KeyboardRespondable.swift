@@ -48,12 +48,12 @@ extension UIViewController {
 
 /// Stores info about the keyboard.
 public struct KeyboardInfo {
-    let initialFrame: CGRect
-    let finalFrame: CGRect
-    let animationDuration: TimeInterval
-    let animationCurve: UInt
+    public let initialFrame: CGRect
+    public let finalFrame: CGRect
+    public let animationDuration: TimeInterval
+    public let animationCurve: UInt
     
-    init?(notification: Notification) {
+    public init?(notification: Notification) {
         #if swift(>=4.2)
         guard let userInfo = notification.userInfo,
             let initialKeyboardFrame = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect,
@@ -78,7 +78,7 @@ public struct KeyboardInfo {
         animationCurve = curve
     }
     
-    var isMoving: Bool {
+    public var isMoving: Bool {
         return initialFrame.origin != finalFrame.origin
     }
 }
