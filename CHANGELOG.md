@@ -1,6 +1,18 @@
 ## Master
 
-## 2.0.0 (2018-12-21)
+## 2.0.1 (2019-01-09)
+
+##### Enhancements
+
+* None
+
+##### Bug Fixes
+
+* Declare `KeyboardAccessoryDelegate` extension as public. Declare `KeyboardInfo`'s properties as public.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#32](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/32)
+
+## 2.0.0 (2019-01-07)
 
 ##### Enhancements
 
