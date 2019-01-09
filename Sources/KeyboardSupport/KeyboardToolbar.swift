@@ -65,6 +65,7 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
     /// Adds a `UIBarButtonItem` with a title for a `KeyboardToolbarButtonNavigationType`.
     open func addButton(type: ButtonNavigationType, title: String, width: CGFloat? = nil) {
         let button = UIBarButtonItem(title: title, style: .plain, target: self, action: type.action)
+        width.flatMap { button.width = $0 }
         storeButton(button, ofType: type)
         items?.append(button)
     }
@@ -72,6 +73,7 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
     /// Adds a `UIBarButtonItem` with images for a `KeyboardToolbarButtonNavigationType`.
     open func addButton(type: ButtonNavigationType, image: UIImage, landscapeImagePhone: UIImage? = nil, width: CGFloat? = nil) {
         let button = UIBarButtonItem(image: image, landscapeImagePhone: landscapeImagePhone, style: .plain, target: self, action: type.action)
+        width.flatMap { button.width = $0 }
         storeButton(button, ofType: type)
         items?.append(button)
     }
