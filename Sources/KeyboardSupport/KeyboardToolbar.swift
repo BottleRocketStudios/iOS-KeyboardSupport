@@ -17,6 +17,25 @@ protocol KeyboardToolbarProviding {
 /// An object that displays a toolbar above the keyboard.
 open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
     
+    // MARK: - Sub-types
+    
+    public enum ButtonNavigationType {
+        case back
+        case next
+        case done
+        
+        var action: Selector {
+            switch self {
+            case .back:
+                return #selector(KeyboardToolbar.backButtonTapped)
+            case .next:
+                return #selector(KeyboardToolbar.nextButtonTapped)
+            case .done:
+                return #selector(KeyboardToolbar.doneButtonTapped)
+            }
+        }
+    }
+    
     // MARK: - KeyboardAccessory
     
     open weak var keyboardAccessoryDelegate: KeyboardAccessoryDelegate?
@@ -43,50 +62,19 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
         items?.append(button)
     }
     
-    /// Adds a `UIBarButtonItem` set with a title for backward navigation.
-    open func addBackButton(title: String) {
-        let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton = button
+    /// Adds a `UIBarButtonItem` with a title for a `KeyboardToolbarButtonNavigationType`.
+    open func addButton(type: ButtonNavigationType, title: String, width: CGFloat? = nil) {
+        let button = UIBarButtonItem(title: title, style: .plain, target: self, action: type.action)
         items?.append(button)
     }
     
-    /// Adds a `UIBarButtonItem` set with images for backward navigation.
-    open func addBackButton(image: UIImage, landscapeImagePhone: UIImage? = nil, width: CGFloat? = nil) {
-        let button = UIBarButtonItem(image: image, landscapeImagePhone: landscapeImagePhone, style: .plain, target: self, action: #selector(backButtonTapped))
-        width.flatMap { button.width = $0 }
-        backButton = button
+    /// Adds a `UIBarButtonItem` with images for a `KeyboardToolbarButtonNavigationType`.
+    open func addButton(type: ButtonNavigationType, image: UIImage, landscapeImagePhone: UIImage? = nil, width: CGFloat? = nil) {
+        let button = UIBarButtonItem(image: image, landscapeImagePhone: landscapeImagePhone, style: .plain, target: self, action: type.action)
+
         items?.append(button)
     }
-    
-    /// Adds a `UIBarButtonItem` set with a title for forward navigation.
-    open func addNextButton(title: String) {
-        let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(nextButtonTapped))
-        nextButton = button
-        items?.append(button)
-    }
-    
-    /// Adds a `UIBarButtonItem` set with images for forward navigation.
-    open func addNextButton(image: UIImage, landscapeImagePhone: UIImage? = nil, width: CGFloat? = nil) {
-        let button = UIBarButtonItem(image: image, landscapeImagePhone: landscapeImagePhone, style: .plain, target: self, action: #selector(nextButtonTapped))
-        width.flatMap { button.width = $0 }
-        nextButton = button
-        items?.append(button)
-    }
-    
-    /// Adds a `UIBarButtonItem` set with a title for ending navigation.
-    open func addDoneButton(title: String) {
-        let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(doneButtonTapped))
-        doneButton = button
-        items?.append(button)
-    }
-    
-    /// Adds a `UIBarButtonItem` set with images for ending navigation.
-    open func addDoneButton(image: UIImage, landscapeImagePhone: UIImage? = nil) {
-        let button = UIBarButtonItem(image: image, landscapeImagePhone: landscapeImagePhone, style: .plain, target: self, action: #selector(doneButtonTapped))
-        doneButton = button
-        items?.append(button)
-    }
-    
+
     /// Adds a `UIBarButtonItem` set to the system item of `.done` for ending navigation.
     open func addSystemDoneButton() {
         let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))

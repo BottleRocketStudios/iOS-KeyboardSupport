@@ -46,7 +46,14 @@ open class KeyboardNavigator: KeyboardNavigating {
         self.keyboardToolbar = keyboardToolbar
         self.returnKeyNavigationEnabled = returnKeyNavigationEnabled
         
-        self.textInputs.forEach {
+        addTargets()
+        addInputAccessoryViews()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func addTargets() {
+        textInputs.forEach {
             if let textField = $0 as? UITextField {
                 // Updates currentIndex when a text field is tapped.
                 textField.addTarget(self, action: #selector(textFieldEditingDidBegin(_:)), for: .editingDidBegin)
@@ -54,32 +61,32 @@ open class KeyboardNavigator: KeyboardNavigating {
                 textField.addTarget(self, action: #selector(textFieldEditingDidEndOnExit(_:)), for: .editingDidEndOnExit)
             }
         }
-        
-        if let keyboardToolbar = self.keyboardToolbar {
-            keyboardToolbar.keyboardAccessoryDelegate = self
-            
-            self.textInputs.forEach {
-                if let textField = $0 as? UITextField {
-                    textField.inputAccessoryView = keyboardToolbar
-                } else if let textView = $0 as? UITextView {
-                    textView.inputAccessoryView = keyboardToolbar
-                }
+    }
+    
+    private func addInputAccessoryViews() {
+        keyboardToolbar?.keyboardAccessoryDelegate = self
+        textInputs.forEach {
+            if let textField = $0 as? UITextField {
+                textField.inputAccessoryView = keyboardToolbar
+            } else if let textView = $0 as? UITextView {
+                textView.inputAccessoryView = keyboardToolbar
             }
         }
     }
 }
 
+// MARK: - Private Extension
+
 private extension KeyboardNavigator {
+    
+    var currentTextInput: UIResponder? {
+        return textInputs[currentTextInputIndex] as? UIResponder
+    }
     
     func didTapBack() {
         if currentTextInputIndex > 0 {
             currentTextInputIndex -= 1
-            
-            if let textField = textInputs[currentTextInputIndex] as? UITextField {
-                textField.becomeFirstResponder()
-            } else if let textView = textInputs[currentTextInputIndex] as? UITextView {
-                textView.becomeFirstResponder()
-            }
+            currentTextInput?.becomeFirstResponder()
         }
         
         delegate?.keyboardNavigatorDidTapBack(self)
@@ -88,27 +95,17 @@ private extension KeyboardNavigator {
     func didTapNext() {
         if currentTextInputIndex < textInputs.count - 1 {
             currentTextInputIndex += 1
-            
-            if let textField = textInputs[currentTextInputIndex] as? UITextField {
-                textField.becomeFirstResponder()
-            } else if let textView = textInputs[currentTextInputIndex] as? UITextView {
-                textView.becomeFirstResponder()
-            }
+            currentTextInput?.becomeFirstResponder()
         }
-
+        
         delegate?.keyboardNavigatorDidTapNext(self)
     }
     
     func didTapDone() {
-        if let textField = textInputs[currentTextInputIndex] as? UITextField {
-            textField.resignFirstResponder()
-        } else if let textView = textInputs[currentTextInputIndex] as? UITextView {
-            textView.resignFirstResponder()
-        }
-        
+        currentTextInput?.resignFirstResponder()
         delegate?.keyboardNavigatorDidTapDone(self)
     }
-    
+        
     @objc func textFieldEditingDidBegin(_ textField: UITextField) {
         if let index = textInputs.index(where: { $0 as? UITextField == textField }) {
             currentTextInputIndex = index

@@ -11,14 +11,16 @@ import XCTest
 
 class KeyboardToolbarTests: XCTestCase {
     
-    func test_KeyboardToolbar_InitWithFrame() {
-        let keyboardToolbar = KeyboardToolbar()
+    func test_initWithFrame() {
+        let frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        let keyboardToolbar = KeyboardToolbar(frame: frame)
         
         XCTAssertNotNil(keyboardToolbar)
+        XCTAssertEqual(keyboardToolbar.frame, frame)
         XCTAssertTrue((keyboardToolbar.items!.isEmpty))
     }
     
-    func test_KeyboardToolbar_InitWithCoder() {
+    func test_initWithCoder() {
         let archiver = NSKeyedUnarchiver(forReadingWith: Data())
         let keyboardToolbar = KeyboardToolbar(coder: archiver)
         
@@ -26,7 +28,7 @@ class KeyboardToolbarTests: XCTestCase {
         XCTAssertTrue(keyboardToolbar!.items!.isEmpty)
     }
     
-    func test_KeyboardToolbar_AddButton() {
+    func test_addButton() {
         let keyboardToolbar = KeyboardToolbar()
         let barButton = UIBarButtonItem(title: "Title", style: .plain, target: self, action: #selector(buttonTapped))
         keyboardToolbar.addButton(barButton)
@@ -34,55 +36,50 @@ class KeyboardToolbarTests: XCTestCase {
         XCTAssertEqual(keyboardToolbar.items?.first, barButton)
     }
     
-    func test_KeyboardToolbar_AddBackButtonWithTitle() {
+    func test_addBackButtonWithTitle() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addBackButton(title: "Title")
+        keyboardToolbar.addButton(type: .back, title: "Back")
 
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
         XCTAssertNotNil(keyboardToolbar.backButton)
     }
     
-    func test_KeyboardToolbar_AddBackButtonWithImage() {
+    func test_addBackButtonWithImage() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addBackButton(image: UIImage())
+        keyboardToolbar.addButton(type: .back, image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
-        XCTAssertNotNil(keyboardToolbar.backButton)
     }
     
-    func test_KeyboardToolbar_AddNextButtonWithTitle() {
+    func test_addNextButtonWithTitle() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addNextButton(title: "Title")
+        keyboardToolbar.addButton(type: .next, title: "Next")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
-        XCTAssertNotNil(keyboardToolbar.nextButton)
     }
     
-    func test_KeyboardToolbar_AddNextButtonWithImage() {
+    func test_addNextButtonWithImage() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addNextButton(image: UIImage())
+        keyboardToolbar.addButton(type: .next, image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
-        XCTAssertNotNil(keyboardToolbar.nextButton)
     }
     
-    func test_KeyboardToolbar_AddDoneButtonWithTitle() {
+    func test_addDoneButtonWithTitle() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addDoneButton(title: "Title")
+        keyboardToolbar.addButton(type: .done, title: "Done")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
-        XCTAssertNotNil(keyboardToolbar.doneButton)
     }
     
-    func test_KeyboardToolbar_AddDoneButtonWithImage() {
+    func test_addDoneButtonWithImage() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addDoneButton(image: UIImage())
+        keyboardToolbar.addButton(type: .done, image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
-        XCTAssertNotNil(keyboardToolbar.doneButton)
     }
     
-    func test_KeyboardToolbar_AddSystemDoneButton() {
+    func test_addSystemDoneButton() {
         let keyboardToolbar = KeyboardToolbar()
         keyboardToolbar.addSystemDoneButton()
         
@@ -90,47 +87,38 @@ class KeyboardToolbarTests: XCTestCase {
         XCTAssertNotNil(keyboardToolbar.doneButton)
     }
     
-    func test_KeyboardToolbar_AddFlexibleSpace() {
+    func test_addFlexibleSpace() {
         let keyboardToolbar = KeyboardToolbar()
         keyboardToolbar.addFlexibleSpace()
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
     }
     
-    func test_KeyboardToolbar_BackButtonTapped() {
+    func test_backButtonTapped() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.keyboardAccessoryDelegate = self
-        keyboardToolbar.addBackButton(title: "Title")
+        let mockDelegate = MockKeyboardAccessoryDelegate()
+        keyboardToolbar.keyboardAccessoryDelegate = mockDelegate
+        keyboardToolbar.addButton(type: .back, title: "Back")
         keyboardToolbar.backButtonTapped(keyboardToolbar.items!.first!)
+        XCTAssertEqual(mockDelegate.tapType, .back)
     }
     
-    func test_KeyboardToolbar_NextButtonTapped() {
+    func test_nextButtonTapped() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.keyboardAccessoryDelegate = self
-        keyboardToolbar.addNextButton(title: "Title")
+        let mockDelegate = MockKeyboardAccessoryDelegate()
+        keyboardToolbar.keyboardAccessoryDelegate = mockDelegate
+        keyboardToolbar.addButton(type: .next, title: "Next")
         keyboardToolbar.nextButtonTapped(keyboardToolbar.items!.first!)
+        XCTAssertEqual(mockDelegate.tapType, .next)
     }
     
-    func test_KeyboardToolbar_DoneButtonTapped() {
+    func test_doneButtonTapped() {
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.keyboardAccessoryDelegate = self
-        keyboardToolbar.addDoneButton(title: "Title")
+        let mockDelegate = MockKeyboardAccessoryDelegate()
+        keyboardToolbar.keyboardAccessoryDelegate = mockDelegate
+        keyboardToolbar.addButton(type: .done, title: "Done")
         keyboardToolbar.doneButtonTapped(keyboardToolbar.items!.first!)
-    }
-}
-
-extension KeyboardToolbarTests: KeyboardAccessoryDelegate {
-    
-    func keyboardAccessoryDidTapBack(_ accessory: UIView) {
-        XCTAssertTrue(accessory is KeyboardToolbar)
-    }
-    
-    func keyboardAccessoryDidTapNext(_ accessory: UIView) {
-        XCTAssertTrue(accessory is KeyboardToolbar)
-    }
-    
-    func keyboardAccessoryDidTapDone(_ accessory: UIView) {
-        XCTAssertTrue(accessory is KeyboardToolbar)
+        XCTAssertEqual(mockDelegate.tapType, .done)
     }
 }
 

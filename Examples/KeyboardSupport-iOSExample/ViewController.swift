@@ -19,7 +19,9 @@ class ViewController: UIViewController, KeyboardRespondable {
     @IBOutlet private var textView: UITextView!
     
     // KeyboardScrollable
-    var keyboardScrollableScrollView: UIScrollView?
+    var keyboardScrollableScrollView: UIScrollView? {
+        return scrollView
+    }
     var keyboardWillShowObserver: NSObjectProtocol?
     var keyboardWillHideObserver: NSObjectProtocol?
     
@@ -31,19 +33,13 @@ class ViewController: UIViewController, KeyboardRespondable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textView.delegate = self
-        
         // KeyboardDismissable setup
         setupKeyboardDismissalView()
         
-        // KeyboardScrollable setup
-        keyboardScrollableScrollView = scrollView
-        setupKeyboardObservers()
-        
         // KeyboardToolbar setup
-        let keyboardToolbar = KeyboardToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        keyboardToolbar.addBackButton(title: "Back")
-        keyboardToolbar.addNextButton(title: "Next")
+        let keyboardToolbar = KeyboardToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50))
+        keyboardToolbar.addButton(type: .back, title: "Back")
+        keyboardToolbar.addButton(type: .next, title: "Next")
         keyboardToolbar.addFlexibleSpace()
         keyboardToolbar.addSystemDoneButton()
         
@@ -64,11 +60,13 @@ class ViewController: UIViewController, KeyboardRespondable {
     
     // MARK: - KeyboardScrollable
     
-    func keyboardWillShow() {
+    func keyboardWillShow(keyboardInfo: KeyboardInfo) {
+        // Implement any custom animations or code you want to run alongside the appearance of the keyboard
         print("keyboardWillShow")
     }
     
-    func keyboardWillHide() {
+    func keyboardWillHide(keyboardInfo: KeyboardInfo) {
+        // Implement any custom animations or code you want to run alongside the disappearance of the keyboard
         print("keyboardWillHide")
     }
 }
@@ -87,16 +85,5 @@ extension ViewController: KeyboardNavigatorDelegate {
     
     func keyboardNavigatorDidTapDone(_ navigator: KeyboardNavigator) {
         print("keyboardNavigatorDidTapDone")
-    }
-}
-
-// MARK: - UITextViewDelegate
-
-extension ViewController: UITextViewDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        // Setting the currentTextInputIndex here allows the KeyboardNavigator to move to textView when provided with a KeyboardToolbar that supports 'Back' or 'Next' taps.
-        // The currentTextInputIndex needs to be set to the textView's position in the textInputs passed into KeyboardNavigator. In this example it is 2 because textView is 3rd element in the array.
-        keyboardNavigator?.currentTextInputIndex = 2
     }
 }

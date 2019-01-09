@@ -53,7 +53,7 @@ extension UIViewController {
 // MARK: - KeyboardInfo
 
 /// Stores info about the keyboard.
-struct KeyboardInfo {
+public struct KeyboardInfo {
     let initialFrame: CGRect
     let finalFrame: CGRect
     let animationDuration: TimeInterval
@@ -95,7 +95,7 @@ struct KeyboardInfo {
 public protocol KeyboardScrollable: class {
     var minimumPaddingAroundInput: UIEdgeInsets { get }
     
-    var keyboardScrollableScrollView: UIScrollView? { get set }
+    var keyboardScrollableScrollView: UIScrollView? { get }
     var keyboardWillShowObserver: NSObjectProtocol? { get set }
     var keyboardWillHideObserver: NSObjectProtocol? { get set }
     
@@ -108,18 +108,18 @@ public protocol KeyboardScrollable: class {
     func removeKeyboardObservers()
     
     /// Called when the keyboard is showing.
-    func keyboardWillShow()
+    func keyboardWillShow(keyboardInfo: KeyboardInfo)
     
     /// Called when the keyboard is hiding.
-    func keyboardWillHide()
+    func keyboardWillHide(keyboardInfo: KeyboardInfo)
 }
 
 extension KeyboardScrollable {
-    func keyboardWillShow() {
+    func keyboardWillShow(keyboardInfo: KeyboardInfo) {
         // No-op by default. Opt-in by implementing this method in your class conforming to KeyboardScrollable.
     }
     
-    func keyboardWillHide() {
+    func keyboardWillHide(keyboardInfo: KeyboardInfo) {
         // No-op by default. Opt-in by implementing this method in your class conforming to KeyboardScrollable.
     }
 }
@@ -154,12 +154,12 @@ public extension KeyboardScrollable where Self: UIViewController {
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: keyboardWillShowNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
             guard let keyboardInfo = KeyboardInfo(notification: notification), let activeField = self?.view.activeFirstResponder() else { return }
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
-            self?.keyboardWillShow()
+            self?.keyboardWillShow(keyboardInfo: keyboardInfo)
         })
         keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: keyboardWillHideNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
             guard let keyboardInfo = KeyboardInfo(notification: notification) else { return }
             self?.resetViewForKeyboardDisappearance(with: keyboardInfo)
-            self?.keyboardWillHide()
+            self?.keyboardWillHide(keyboardInfo: keyboardInfo)
         })
     }
     
