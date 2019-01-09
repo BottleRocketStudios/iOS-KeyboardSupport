@@ -89,6 +89,20 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
     }
 }
 
+// MARK: - Pricate helpers
+private extension KeyboardToolbar {
+    private func storeButton(_ button: UIBarButtonItem, ofType type: ButtonNavigationType) {
+        switch type {
+        case .back:
+            backButton = button
+        case .next:
+            nextButton = button
+        case .done:
+            doneButton = button
+        }
+    }
+}
+
 // MARK: - methods for hiding next and back buttons
 public extension KeyboardToolbar {
     public func setNextAndBackButtonsHidden(hidden: Bool) {
