@@ -36,7 +36,7 @@ class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
         setupKeyboardObservers()
         
         // KeyboardToolbar setup
-        let keyboardToolbar = KeyboardToolbar()
+        let keyboardToolbar = KeyboardToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0))
         keyboardToolbar.addButton(type: .back, title: "Back")
         keyboardToolbar.addButton(type: .next, title: "Next")
         keyboardToolbar.addFlexibleSpace()
@@ -61,15 +61,15 @@ class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
 
 extension SingleFieldAutoNavViewController: KeyboardNavigatorDelegate {
     
-    func keyboardNavigatorDidTapBack(_ navigator: KeyboardNavigator) {
-        print("keyboardNavigatorDidTapBack")
+    func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
+        print("keyboardAutoNavigatorDidTapBack")
     }
     
-    func keyboardNavigatorDidTapNext(_ navigator: KeyboardNavigator) {
-        print("keyboardNavigatorDidTapNext")
+    func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
+        print("keyboardAutoNavigatorDidTapNext")
     }
     
-    func keyboardNavigatorDidTapDone(_ navigator: KeyboardNavigator) {
-        print("keyboardNavigatorDidTapDone")
+    func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
+        print("keyboardAutoNavigatorDidTapDone")
     }
 }

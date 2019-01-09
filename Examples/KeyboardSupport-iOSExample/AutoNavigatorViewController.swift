@@ -19,7 +19,10 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
     @IBOutlet private(set) var textView: UITextView!
     
     // KeyboardScrollable
-    var keyboardScrollableScrollView: UIScrollView?
+    var keyboardScrollableScrollView: UIScrollView? {
+        return scrollView
+    }
+    
     var keyboardWillShowObserver: NSObjectProtocol?
     var keyboardWillHideObserver: NSObjectProtocol?
     
@@ -34,11 +37,8 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
         // KeyboardDismissable setup
         setupKeyboardDismissalView()
         
-        // KeyboardScrollable setup
-        keyboardScrollableScrollView = scrollView
-        
         // KeyboardToolbar setup
-        let keyboardToolbar = KeyboardToolbar()
+        let keyboardToolbar = KeyboardToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0))
         keyboardToolbar.addButton(type: .back, title: "Back")
         keyboardToolbar.addButton(type: .next, title: "Next")
         keyboardToolbar.addFlexibleSpace()
@@ -65,14 +65,14 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
 extension AutoNavigatorViewController: KeyboardAutoNavigatorDelegate {
     
     func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
-        print("keyboardNavigatorDidTapBack")
+        print("keyboardAutoNavigatorDidTapBack")
     }
     
     func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
-        print("keyboardNavigatorDidTapNext")
+        print("keyboardAutoNavigatorDidTapNext")
     }
     
     func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
-        print("keyboardNavigatorDidTapDone")
+        print("keyboardAutoNavigatorDidTapDone")
     }
 }
