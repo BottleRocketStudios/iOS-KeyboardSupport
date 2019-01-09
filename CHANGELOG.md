@@ -10,7 +10,7 @@
 
 * Declare `KeyboardAccessoryDelegate` extension as public. Declare `KeyboardInfo`'s properties as public.
 [Earl Gaspard](https://github.com/earlgaspard)
-[#30](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/30)
+[#32](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/32)
 
 ## 2.0.0 (2019-01-07)
 
