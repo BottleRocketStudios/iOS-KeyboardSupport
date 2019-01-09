@@ -21,11 +21,11 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
         var action: Selector {
             switch self {
             case .back:
-                return #selector(backButtonTapped)
+                return #selector(KeyboardToolbar.backButtonTapped)
             case .next:
-                return #selector(nextButtonTapped)
+                return #selector(KeyboardToolbar.nextButtonTapped)
             case .done:
-                return #selector(doneButtonTapped)
+                return #selector(KeyboardToolbar.doneButtonTapped)
             }
         }
     }

@@ -1,17 +1,5 @@
 ## Master
 
-## 2.0.2 (2019-01-09)
-
-##### Enhancements
-
-* None
-
-##### Bug Fixes
-
-* Fix protocol extension function signature mismatch in `KeyboardScrollable`.
-[Earl Gaspard](https://github.com/earlgaspard)
-[#34](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/34)
-
 ## 2.0.1 (2019-01-09)
 
 ##### Enhancements
