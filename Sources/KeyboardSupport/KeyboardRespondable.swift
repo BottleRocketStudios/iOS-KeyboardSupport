@@ -106,16 +106,6 @@ public protocol KeyboardScrollable: class {
     func keyboardWillHide(keyboardInfo: KeyboardInfo)
 }
 
-extension KeyboardScrollable {
-    func keyboardWillShow(keyboardInfo: KeyboardInfo) {
-        // No-op by default. Opt-in by implementing this method in your class conforming to KeyboardScrollable.
-    }
-    
-    func keyboardWillHide(keyboardInfo: KeyboardInfo) {
-        // No-op by default. Opt-in by implementing this method in your class conforming to KeyboardScrollable.
-    }
-}
-
 public extension KeyboardScrollable where Self: UIViewController {
     
     // MARK: KeyboardScrollable Conformance
@@ -162,11 +152,11 @@ public extension KeyboardScrollable where Self: UIViewController {
         }
     }
     
-    func keyboardWillShow() {
+    func keyboardWillShow(keyboardInfo: KeyboardInfo) {
         // No-op by default. Opt-in by implementing this method in your class conforming to KeyboardScrollable.
     }
     
-    func keyboardWillHide() {
+    func keyboardWillHide(keyboardInfo: KeyboardInfo) {
         // No-op by default. Opt-in by implementing this method in your class conforming to KeyboardScrollable.
     }
     
