@@ -59,7 +59,7 @@ class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
 
 // MARK: - KeyboardNavigatorDelegate
 
-extension SingleFieldAutoNavViewController: KeyboardNavigatorDelegate {
+extension SingleFieldAutoNavViewController: KeyboardAutoNavigatorDelegate {
     
     func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
         print("keyboardAutoNavigatorDidTapBack")
