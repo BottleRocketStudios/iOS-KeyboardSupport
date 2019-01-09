@@ -37,8 +37,8 @@ class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
         
         // KeyboardToolbar setup
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addBackButton(title: "Back")
-        keyboardToolbar.addNextButton(title: "Next")
+        keyboardToolbar.addButton(type: .back, title: "Back")
+        keyboardToolbar.addButton(type: .next, title: "Next")
         keyboardToolbar.addFlexibleSpace()
         keyboardToolbar.addSystemDoneButton()
         
