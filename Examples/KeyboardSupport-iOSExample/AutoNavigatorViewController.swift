@@ -10,7 +10,7 @@ import UIKit
 import KeyboardSupport
 
 class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
-    
+
     // IBOutlets
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private(set) var textField1: UITextField!
@@ -39,8 +39,8 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
         
         // KeyboardToolbar setup
         let keyboardToolbar = KeyboardToolbar()
-        keyboardToolbar.addBackButton(title: "Back")
-        keyboardToolbar.addNextButton(title: "Next")
+        keyboardToolbar.addButton(type: .back, title: "Back")
+        keyboardToolbar.addButton(type: .next, title: "Next")
         keyboardToolbar.addFlexibleSpace()
         keyboardToolbar.addSystemDoneButton()
         

@@ -114,7 +114,7 @@ public protocol KeyboardScrollable: class {
     func keyboardWillHide(keyboardInfo: KeyboardInfo)
 }
 
-extension KeyboardScrollable {
+public extension KeyboardScrollable {
     func keyboardWillShow(keyboardInfo: KeyboardInfo) {
         // No-op by default. Opt-in by implementing this method in your class conforming to KeyboardScrollable.
     }
