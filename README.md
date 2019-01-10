@@ -138,7 +138,7 @@ private var keyboardNavigator: KeyboardAutoNavigator?
 override func viewDidLoad() {
 super.viewDidLoad()
 
-let keyboardToolbar = KeyboardToolbar()
+let keyboardToolbar = KeyboardToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0))
 keyboardNavigator = KeyboardAutoNavigator(navigationContainer: scrollView, defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
 keyboardNavigator?.delegate = self
 }

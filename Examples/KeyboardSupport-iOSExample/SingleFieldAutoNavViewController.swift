@@ -44,6 +44,7 @@ class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
         
         // KeyboardNavigator setup
         keyboardNavigator = KeyboardAutoNavigator(navigationContainer: scrollView, defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
+        keyboardNavigator?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
