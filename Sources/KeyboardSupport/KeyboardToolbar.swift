@@ -27,11 +27,11 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
         var action: Selector {
             switch self {
             case .back:
-                return #selector(KeyboardToolbar.backButtonTapped)
+                return #selector(backButtonTapped)
             case .next:
-                return #selector(KeyboardToolbar.nextButtonTapped)
+                return #selector(nextButtonTapped)
             case .done:
-                return #selector(KeyboardToolbar.doneButtonTapped)
+                return #selector(doneButtonTapped)
             }
         }
     }
@@ -92,7 +92,7 @@ open class KeyboardToolbar: UIToolbar, KeyboardAccessory {
     }
 }
 
-// MARK: - Pricate helpers
+// MARK: - Private helpers
 private extension KeyboardToolbar {
     private func storeButton(_ button: UIBarButtonItem, ofType type: ButtonNavigationType) {
         switch type {

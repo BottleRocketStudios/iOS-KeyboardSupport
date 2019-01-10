@@ -1,6 +1,6 @@
 ## Master
 
-## 2.1.0 (2018-12-28)
+## 2.1.0 (2019-01-10)
 
 ##### Enhancements
 
@@ -12,7 +12,31 @@
 
 * None
 
-## 2.0.0 (2018-12-21)
+## 2.0.2 (2019-01-09)
+
+##### Enhancements
+
+* None
+
+##### Bug Fixes
+
+* Fix protocol extension function signature mismatch in `KeyboardScrollable`.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#34](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/34)
+
+## 2.0.1 (2019-01-09)
+
+##### Enhancements
+
+* None
+
+##### Bug Fixes
+
+* Declare `KeyboardAccessoryDelegate` extension as public. Declare `KeyboardInfo`'s properties as public.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#32](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/32)
+
+## 2.0.0 (2019-01-07)
 
 ##### Enhancements
 
