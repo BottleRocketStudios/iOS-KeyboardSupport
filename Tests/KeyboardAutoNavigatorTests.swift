@@ -1,5 +1,5 @@
 //
-//  AutoKeyboardNavigatorTests.swift
+//  KeyboardAutoNavigatorTests.swift
 //  KeyboardSupport-iOSTests
 //
 //  Created by John Davis on 12/18/18.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import KeyboardSupport
 
-class AutoKeyboardNavigatorTests: XCTestCase {
+class KeyboardAutoNavigatorTests: XCTestCase {
 
     // MARK: - Properties
     
@@ -29,6 +29,8 @@ class AutoKeyboardNavigatorTests: XCTestCase {
 
     override func tearDown() {
         super.tearDown()
+        delegateMock = nil
+        keyboardToolbar = nil
         keyboardNavigator = nil
     }
 
