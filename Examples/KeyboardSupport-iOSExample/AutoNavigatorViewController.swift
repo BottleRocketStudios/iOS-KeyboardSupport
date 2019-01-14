@@ -27,7 +27,7 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
     var keyboardWillHideObserver: NSObjectProtocol?
     
     // KeyboardNavigator
-    private(set) var keyboardNavigator: KeyboardAutoNavigator?
+    private var keyboardNavigator: KeyboardAutoNavigator?
     
     // MARK: - Lifecycle
     
