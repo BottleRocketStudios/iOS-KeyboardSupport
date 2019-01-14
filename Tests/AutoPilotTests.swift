@@ -14,7 +14,7 @@ class AutoPilotTests: XCTestCase {
 
     // MARK: - Properties
     
-    private var viewController: AutoNavigatorViewController! = nil
+    private var viewController: AutoNavigatorViewController!
     private var window: UIWindow!
     
     // MARK: - Tests
@@ -24,7 +24,6 @@ class AutoPilotTests: XCTestCase {
         viewController = UIStoryboard.init(name: "Main", bundle: Bundle(for: AutoPilotTests.self)).instantiateViewController(withIdentifier: "AutoNavigatorViewController") as? AutoNavigatorViewController
         
         viewController.loadViewIfNeeded()
-        _ = viewController.view
     }
 
     override func tearDown() {
