@@ -2,16 +2,21 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode10
+osx_image: xcode10.1
 language: swift
 env:
   global:
     - WORKSPACE=KeyboardSupport.xcworkspace
     - IOS_FRAMEWORK_SCHEME=KeyboardSupport-iOS
   matrix:
-    - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"
-before_install:
-  - brew update
+    - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"  RUN_DANGER="YES"
+addons:
+  homebrew:
+    update: true
+    taps:
+      - danger/tap
+    packages:
+      - danger-swift
 script:
   - swiftlint
   - set -o pipefail
@@ -26,6 +31,11 @@ script:
   # Run `pod lib lint` if specified
   - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
+    fi
+
+  # Run Danger if specified
+  - if [ $RUN_DANGER == "YES" ]; then
+      DEBUG='*' danger-swift ci;
     fi
 after_success:
   - bash <(curl -s https://codecov.io/bash)
