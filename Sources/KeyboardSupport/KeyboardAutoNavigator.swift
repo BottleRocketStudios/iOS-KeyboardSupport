@@ -77,7 +77,7 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
         
         private static func sortedFields(around source: UITextInputView, in container: UIView?) -> [UITextInputView] {
             let container = container ?? source.topLevelContainer
-            return container.getAllTextInputViews().sortedByPosition(in: container)
+            return container.textInputViews.sortedByPosition(in: container)
         }
     }
     
