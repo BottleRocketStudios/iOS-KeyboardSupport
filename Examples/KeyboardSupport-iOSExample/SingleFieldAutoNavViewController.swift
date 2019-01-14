@@ -43,7 +43,7 @@ class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
         keyboardToolbar.addSystemDoneButton()
         
         // KeyboardNavigator setup
-        keyboardNavigator = KeyboardAutoNavigator(navigationContainer: scrollView, defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
+        keyboardNavigator = KeyboardAutoNavigator(containerView: scrollView, defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
         keyboardNavigator?.delegate = self
     }
     

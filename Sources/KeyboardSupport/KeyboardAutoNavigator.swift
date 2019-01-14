@@ -16,7 +16,7 @@ public protocol KeyboardAutoNavigatorDelegate: class {
 }
 
 /// Handles navigating between text fields in a containing view hierarchy.
-open class KeyboardAutoNavigator: KeyboardNavigating {
+open class KeyboardAutoNavigator: KeyboardNavigatorBase {
     
     /// AutoPilot is a collection of static functions that enable navigating between UITextInputViews in a view hierarchy
     public enum AutoPilot {
@@ -96,12 +96,6 @@ open class KeyboardAutoNavigator: KeyboardNavigating {
         }
     }
     
-    /// If enabled, the auto navigator will add itself as a target to a UITextField's textFieldEditingDidEndOnExit action and advance to the next field
-    public var returnKeyNavigationEnabled: Bool
-    
-    /// Default toolbar to be populated on a textInput when editing begins. If that input implements "KeyboardToolbarProviding" that input's toolbar will be used instead.
-    public var keyboardToolbar: KeyboardToolbar?
-    
     /// Containing view of text inputs that can be navigated by the AutoNavigator instance
     private var containerView: UIView
 
@@ -113,12 +107,13 @@ open class KeyboardAutoNavigator: KeyboardNavigating {
     ///
     /// - Parameters:
     ///   - containerView: Containing view of text inputs that can be navigated by the AutoNavigator instance
-    ///   - defaultToolbar: Toolbar to be populated on a textInput when editting begins. If that text input implemenets "KeyboardToolbarProviding" that input's toolbar will be used instead.
+    ///   - defaultToolbar: Default toolbar to be populated on a textInput when editing begins. If that input implements "KeyboardToolbarProviding" that input's toolbar will be used instead.
     ///   - returnKeyNavigationEnabled: If enabled, the auto navigator will add itself as a target to a UITextField's textFieldEditingDidEndOnExit action and advance to the next field when the return key is tapped.
     public init(containerView: UIView, defaultToolbar: KeyboardToolbar? = nil, returnKeyNavigationEnabled: Bool = true) {
         self.containerView = containerView
-        self.keyboardToolbar = defaultToolbar
-        self.returnKeyNavigationEnabled = returnKeyNavigationEnabled
+        
+        super.init(keyboardToolbar: defaultToolbar, returnKeyNavigationEnabled: returnKeyNavigationEnabled)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(textEditingDidBegin(_:)), name: UITextField.textDidBeginEditingNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(textEditingDidBegin(_:)), name: UITextView.textDidBeginEditingNotification, object: nil)
     }
