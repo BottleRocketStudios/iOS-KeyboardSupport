@@ -15,7 +15,6 @@ class AutoPilotTests: XCTestCase {
     // MARK: - Properties
     
     private var viewController: AutoNavigatorViewController!
-    private var window: UIWindow!
     
     // MARK: - Tests
     
