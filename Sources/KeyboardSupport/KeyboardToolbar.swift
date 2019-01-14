@@ -9,7 +9,7 @@
 import UIKit
 
 /// AutoNavigator will ask a TextInputView that conforms to this protocol for a toolbar to use in place of the default toolbar.
-/// If this variable is nil, the defualt toolbar will not be used.
+/// If this variable is nil, the default toolbar will not be used.
 protocol KeyboardToolbarProviding {
     var keyboardToolbar: KeyboardToolbar? { get }
 }
