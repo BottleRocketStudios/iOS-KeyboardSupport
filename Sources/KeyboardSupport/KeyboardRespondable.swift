@@ -223,7 +223,7 @@ public extension KeyboardScrollable where Self: UIViewController {
                                           bottom: max(paddingAroundInput.bottom, minimumPaddingAroundInput.bottom),
                                           right: max(paddingAroundInput.right, minimumPaddingAroundInput.right))
         
-        //Inflate the frame being scrolled into view by the padding
+        // Inflate the frame being scrolled into view by the padding
         let paddedFrameOfFirstResponder = rect.modifying(minY: rect.minY - paddingAroundInput.top)
             .modifying(minX: rect.minX - paddingAroundInput.left)
             .modifying(height: rect.height + paddingAroundInput.top + paddingAroundInput.bottom)
@@ -231,7 +231,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         
         // Convert the padded rect to the scrollview coordinate space and scroll it into view
         let paddedFrameOfFirstResponderInScrollView = coordinateSpaceView.convert(paddedFrameOfFirstResponder, to: scrollView)
-        UIView.animate(withDuration: keyboardInfo.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: keyboardInfo.animationDuration, delay: 0, options: [UIView.AnimationOptions(rawValue: keyboardInfo.animationCurve)], animations: {
             scrollView.scrollRectToVisible(paddedFrameOfFirstResponderInScrollView, animated: false)
         }, completion: nil)
     }
@@ -254,7 +254,7 @@ public extension KeyboardScrollable where Self: UIViewController {
 
 extension UIView {
     
-    /// Attempts to return the currentlyActiveFirstReponder
+    /// Attempts to return the currentlyActiveFirstResponder
     ///
     /// - Returns: Result of resignFirstResponder() or false if active first responder can not be found.
     @discardableResult
