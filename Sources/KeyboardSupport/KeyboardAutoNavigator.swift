@@ -131,9 +131,9 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
         let hasPrevious = AutoPilot.hasPreviousField(from: currentTextInput, in: containerView)
         
         if !hasNext && !hasPrevious {
-            currentToolbar.setNextAndBackButtonsHidden(hidden: true)
+            currentToolbar.setNextAndBackButtonsHidden(true)
         } else {
-            currentToolbar.setNextAndBackButtonsHidden(hidden: false)
+            currentToolbar.setNextAndBackButtonsHidden(false)
             
             currentToolbar.backButton?.isEnabled = hasPrevious
             currentToolbar.nextButton?.isEnabled = hasNext

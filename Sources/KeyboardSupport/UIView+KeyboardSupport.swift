@@ -14,8 +14,8 @@ extension UIView {
     var topLevelContainer: UIView {
         var returnView = self
         
-        while returnView.superview != nil {
-            returnView = returnView.superview!
+        while let superview = returnView.superview {
+            returnView = superview
         }
         
         return returnView

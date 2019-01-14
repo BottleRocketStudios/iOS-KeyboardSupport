@@ -108,7 +108,7 @@ private extension KeyboardToolbar {
 
 // MARK: - methods for hiding next and back buttons
 public extension KeyboardToolbar {
-    public func setNextAndBackButtonsHidden(hidden: Bool) {
+    public func setNextAndBackButtonsHidden(_ hidden: Bool) {
         if hidden {
             removeNextButton()
             removeBackButton()
