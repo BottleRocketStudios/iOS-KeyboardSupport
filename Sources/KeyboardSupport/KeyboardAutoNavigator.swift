@@ -99,7 +99,7 @@ open class KeyboardAutoNavigator: KeyboardNavigating {
     /// If enabled, the auto navigator will add itself as a target to a UITextField's textFieldEditingDidEndOnExit action and advance to the next field
     public var returnKeyNavigationEnabled: Bool
     
-    /// Default toolbar to be populated on a textInput when editing begins. If that text input implements "KeyboardToolbarProviding" that input's toolbar will be used instead.
+    /// Default toolbar to be populated on a textInput when editing begins. If that input implements "KeyboardToolbarProviding" that input's toolbar will be used instead.
     public var keyboardToolbar: KeyboardToolbar?
     
     /// Containing view of text inputs that can be navigated by the AutoNavigator instance
@@ -158,11 +158,7 @@ extension KeyboardAutoNavigator {
             controlInput.addTarget(self, action: #selector(textFieldEditingDidEndOnExit(_:)), for: UIControl.Event.editingDidEndOnExit)
         }
         
-        if let toolbarProvidingInputView = inputView as? KeyboardToolbarProviding {
-            applyToolbar(toolbarProvidingInputView.keyboardToolbar, toTextInput: inputView)
-        } else {
-            applyToolbar(keyboardToolbar, toTextInput: inputView)
-        }
+        applyToolbarToTextInput(inputView)
         
         // There's a chance that the TextInput gaining first responder will trigger a containing scroll view to scroll new textfields into view.
         // We want to try to refresh our toolbar buttons after the scrollview has settled so those new views are taken into consideration. Using
@@ -183,7 +179,8 @@ extension KeyboardAutoNavigator {
 
 // MARK: - Helpers
 extension KeyboardAutoNavigator {
-    private func applyToolbar(_ toolbar: KeyboardToolbar?, toTextInput textInput: UITextInputView) {
+    private func applyToolbarToTextInput(_ textInput: UITextInputView) {
+        let toolbar = (textInput as? KeyboardToolbarProviding)?.keyboardToolbar ?? keyboardToolbar
         toolbar?.keyboardAccessoryDelegate = self
 
         if let textInput = textInput as? UITextField {
