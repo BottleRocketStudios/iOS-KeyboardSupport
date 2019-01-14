@@ -99,11 +99,11 @@ open class KeyboardAutoNavigator: KeyboardNavigating {
     /// If enabled, the auto navigator will add itself as a target to a UITextField's textFieldEditingDidEndOnExit action and advance to the next field
     public var returnKeyNavigationEnabled: Bool
     
-    /// Default toolbar to be populated on a textInput when editting begins. If that text input implemenets "KeyboardToolbarProviding" that input's toolbar will be used instead.
+    /// Default toolbar to be populated on a textInput when editing begins. If that text input implements "KeyboardToolbarProviding" that input's toolbar will be used instead.
     public var keyboardToolbar: KeyboardToolbar?
     
     /// Containing view of text inputs that can be navigated by the AutoNavigator instance
-    private var navigationContainer: UIView
+    private var containerView: UIView
 
     /// Delegate that will be informed of navigation tap events
     weak open var delegate: KeyboardAutoNavigatorDelegate?
@@ -112,11 +112,11 @@ open class KeyboardAutoNavigator: KeyboardNavigating {
     /// Initializes a KeyboardAutoNavigator
     ///
     /// - Parameters:
-    ///   - navigationContainer: Containing view of text inputs that can be navigated by the AutoNavigator instance
+    ///   - containerView: Containing view of text inputs that can be navigated by the AutoNavigator instance
     ///   - defaultToolbar: Toolbar to be populated on a textInput when editting begins. If that text input implemenets "KeyboardToolbarProviding" that input's toolbar will be used instead.
     ///   - returnKeyNavigationEnabled: If enabled, the auto navigator will add itself as a target to a UITextField's textFieldEditingDidEndOnExit action and advance to the next field when the return key is tapped.
-    public init(navigationContainer: UIView, defaultToolbar: KeyboardToolbar? = nil, returnKeyNavigationEnabled: Bool = true) {
-        self.navigationContainer = navigationContainer
+    public init(containerView: UIView, defaultToolbar: KeyboardToolbar? = nil, returnKeyNavigationEnabled: Bool = true) {
+        self.containerView = containerView
         self.keyboardToolbar = defaultToolbar
         self.returnKeyNavigationEnabled = returnKeyNavigationEnabled
         NotificationCenter.default.addObserver(self, selector: #selector(textEditingDidBegin(_:)), name: UITextField.textDidBeginEditingNotification, object: nil)
@@ -132,8 +132,8 @@ open class KeyboardAutoNavigator: KeyboardNavigating {
         guard let currentTextInput = currentTextInputView,
             let currentToolbar = currentTextInputView?.inputAccessoryView as? KeyboardToolbar else { return }
         
-        let hasNext = AutoPilot.hasNextField(from: currentTextInput, in: self.navigationContainer)
-        let hasPrevious = AutoPilot.hasPreviousField(from: currentTextInput, in: self.navigationContainer)
+        let hasNext = AutoPilot.hasNextField(from: currentTextInput, in: containerView)
+        let hasPrevious = AutoPilot.hasPreviousField(from: currentTextInput, in: containerView)
         
         if !hasNext && !hasPrevious {
             currentToolbar.setNextAndBackButtonsHidden(hidden: true)
@@ -151,7 +151,7 @@ extension KeyboardAutoNavigator {
     @objc
     private func textEditingDidBegin(_ notification: Notification) {
         guard let inputView = notification.object as? UITextInputView,
-            inputView.isDescendant(of: self.navigationContainer) else { return }
+            inputView.isDescendant(of: containerView) else { return }
         currentTextInputView = inputView
         
         if returnKeyNavigationEnabled, let controlInput = currentTextInputView as? UIControl {
@@ -176,7 +176,7 @@ extension KeyboardAutoNavigator {
     @objc
     private func textFieldEditingDidEndOnExit(_ sender: UITextInputView) {
         if returnKeyNavigationEnabled {
-            AutoPilot.nextField(from: sender, in: navigationContainer)?.becomeFirstResponder()
+            AutoPilot.nextField(from: sender, in: containerView)?.becomeFirstResponder()
         }
     }
 }
@@ -196,25 +196,25 @@ extension KeyboardAutoNavigator {
 
 // MARK: - KeyboardAccessoryDelegate
 extension KeyboardAutoNavigator: KeyboardAccessoryDelegate {
-    public func didTapBack() {
+    private func didTapBack() {
         defer {
             delegate?.keyboardNavigatorDidTapBack(self)
         }
         
         guard let currentTextField = currentTextInputView else { return }
-        AutoPilot.previousField(from: currentTextField, in: navigationContainer)?.becomeFirstResponder()
+        AutoPilot.previousField(from: currentTextField, in: containerView)?.becomeFirstResponder()
     }
     
-    public func didTapNext() {
+    private func didTapNext() {
         defer {
             delegate?.keyboardNavigatorDidTapNext(self)
         }
         
         guard let currentTextField = currentTextInputView else { return }
-        AutoPilot.nextField(from: currentTextField, in: navigationContainer)?.becomeFirstResponder()
+        AutoPilot.nextField(from: currentTextField, in: containerView)?.becomeFirstResponder()
     }
     
-    public func didTapDone() {
+    private func didTapDone() {
         currentTextInputView?.resignFirstResponder()
         delegate?.keyboardNavigatorDidTapDone(self)
     }

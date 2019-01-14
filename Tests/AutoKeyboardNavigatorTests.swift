@@ -13,6 +13,7 @@ class AutoKeyboardNavigatorTests: XCTestCase {
 
     // MARK: - Properties
     
+    private var keyboardToolbar: KeyboardToolbar!
     private var keyboardNavigator: KeyboardAutoNavigator?
     private var delegateMock: MockKeyboardAutoNavigatorDelegate?
     
@@ -21,7 +22,8 @@ class AutoKeyboardNavigatorTests: XCTestCase {
     override func setUp() {
         super.setUp()
         delegateMock = MockKeyboardAutoNavigatorDelegate()
-        keyboardNavigator = KeyboardAutoNavigator(navigationContainer: UIView(), defaultToolbar: KeyboardToolbar(), returnKeyNavigationEnabled: true)
+        keyboardToolbar = KeyboardToolbar()
+        keyboardNavigator = KeyboardAutoNavigator(containerView: UIView(), defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
         keyboardNavigator?.delegate = delegateMock
     }
 
@@ -31,19 +33,19 @@ class AutoKeyboardNavigatorTests: XCTestCase {
     }
 
     func test_keyboardAutoNavigator_invokesDelegateOnNext() {
-        keyboardNavigator?.didTapNext()
+        keyboardNavigator?.keyboardAccessoryDidTapNext(keyboardToolbar)
         XCTAssertEqual(delegateMock?.keyboardNavigatorDidTapNextCount, 1)
         XCTAssertTrue(delegateMock?.keyboardNavigatorDidTapNextLastNavigator === keyboardNavigator )
     }
     
     func test_keyboardAutoNavigator_invokesDelegateOnBack() {
-        keyboardNavigator?.didTapBack()
+        keyboardNavigator?.keyboardAccessoryDidTapBack(keyboardToolbar)
         XCTAssertEqual(delegateMock?.keyboardNavigatorDidTapBackCount, 1)
         XCTAssertTrue(delegateMock?.keyboardNavigatorDidTapBackLastNavigator === keyboardNavigator )
     }
     
     func test_keyboardAutoNavigator_invokesDelegateOnDone() {
-        keyboardNavigator?.didTapDone()
+        keyboardNavigator?.keyboardAccessoryDidTapDone(keyboardToolbar)
         XCTAssertEqual(delegateMock?.keyboardNavigatorDidTapDoneCount, 1)
         XCTAssertTrue(delegateMock?.keyboardNavigatorDidTapDoneLastNavigator === keyboardNavigator )
     }
