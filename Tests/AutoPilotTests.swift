@@ -31,6 +31,14 @@ class AutoPilotTests: XCTestCase {
     }
     
     func test_KeyboardAutoNavigator_AutoPilotDoesNavigateNext() {
+        /*
+         Text fields on the screen are laid out vertically in the following order:
+         [Text Field 1]
+         [Text Field 2]
+         [Text View]
+         [Text Field 3]
+        */
+        
         // Arrange / Act
         let nextFrom1 = KeyboardAutoNavigator.AutoPilot.nextField(from: viewController.textField1, in: viewController.view)
         let nextFrom2 = KeyboardAutoNavigator.AutoPilot.nextField(from: viewController.textField2, in: viewController.view)
@@ -45,6 +53,14 @@ class AutoPilotTests: XCTestCase {
     }
     
     func test_KeyboardAutoNavigator_AutoPilotDoesNavigateBack() {
+        /*
+         Text fields on the screen are laid out vertically in the following order:
+         [Text Field 1]
+         [Text Field 2]
+         [Text View]
+         [Text Field 3]
+         */
+        
         // Arrange / Act
         let backFrom1 = KeyboardAutoNavigator.AutoPilot.previousField(from: viewController.textField1, in: viewController.view)
         let backFrom2 = KeyboardAutoNavigator.AutoPilot.previousField(from: viewController.textField2, in: viewController.view)
