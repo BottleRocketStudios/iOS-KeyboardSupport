@@ -24,48 +24,48 @@ open class KeyboardAutoNavigator: KeyboardNavigating {
         /// Returns the "next" UITextInputView from the provided view within the provided container
         /// The next view is found in a left-to-right, top-to-bottom fashion
         ///
-        /// - Parameter origin: UITextInputView to find the next field from
+        /// - Parameter source: UITextInputView to find the next field from
         /// - Returns: The next UITextInputView from the origin, or nil if one could not be found.
-        public static func nextField(from origin: UITextInputView, in container: UIView?) -> UITextInputView? {
-            let container = container ?? origin.topLevelContainer
+        public static func nextField(from source: UITextInputView, in container: UIView?) -> UITextInputView? {
+            let container = container ?? source.topLevelContainer
             let fields = container.getAllTextInputViews().sortedByPosition(in: container)
-            guard let currentFieldIndex = fields.firstIndex(where: { $0 == origin }) else { return nil }
+            guard let currentFieldIndex = fields.firstIndex(where: { $0 == source }) else { return nil }
             let nextIndex = min(currentFieldIndex + 1, fields.count - 1) //Add to index or max out
             
             let nextField = fields[nextIndex]
-            return (nextField as UIView) != (origin as UIView) ? nextField : nil
+            return (nextField as UIView) != (source as UIView) ? nextField : nil
         }
         
         /// Returns the "previous" UITextInputView from the provided view.
         /// The previous view is founnd in a right-to-left, bottom-to-top fashion
         ///
-        /// - Parameter origin: UITextInputView to find the previous field from
+        /// - Parameter source: UITextInputView to find the previous field from
         /// - Returns: The previous UITextInputView from the origin, or nil if one could not be found.
-        public static func previousField(from origin: UITextInputView, in container: UIView?) -> UITextInputView? {
-            let container = container ?? origin.topLevelContainer
+        public static func previousField(from source: UITextInputView, in container: UIView?) -> UITextInputView? {
+            let container = container ?? source.topLevelContainer
             let fields = container.getAllTextInputViews().sortedByPosition(in: container)
             
-            guard let currentFieldIndex = fields.firstIndex(where: { $0 == origin }) else { return nil }
+            guard let currentFieldIndex = fields.firstIndex(where: { $0 == source }) else { return nil }
             let previousIndex = max(currentFieldIndex - 1, 0) // subtract from index, or bottom out at zero
             
             let previousField = fields[previousIndex]
-            return (previousField as UIView) != (origin as UIView) ? previousField : nil
+            return (previousField as UIView) != (source as UIView) ? previousField : nil
         }
         
         /// Indicates if a following UITextInputView from the provided view exists.
         ///
-        /// - Parameter origin: UITextInputView to find the next field from
+        /// - Parameter source: UITextInputView to find the next field from
         /// - Returns: True if there is a next field. Otherwise false.
-        public static func hasNextField(from origin: UITextInputView, in container: UIView?) -> Bool {
-            return nextField(from: origin, in: container) != nil
+        public static func hasNextField(from source: UITextInputView, in container: UIView?) -> Bool {
+            return nextField(from: source, in: container) != nil
         }
         
         /// Indicates if a preceding UITextInputView from the provided view exists.
         ///
-        /// - Parameter origin: UITextInputView to find the previous field from
+        /// - Parameter source: UITextInputView to find the previous field from
         /// - Returns: True if there is a previous field. Otherwise false.
-        public static func hasPreviousField(from origin: UITextInputView, in container: UIView?) -> Bool {
-            return previousField(from: origin, in: container) != nil
+        public static func hasPreviousField(from source: UITextInputView, in container: UIView?) -> Bool {
+            return previousField(from: source, in: container) != nil
         }
     }
     

@@ -10,7 +10,6 @@ import CoreGraphics
 
 extension CGRect {
     
-    
     /// Returns a new CGRect instance with a modified minX property
     ///
     /// - Parameter minX: New value for minX
@@ -18,7 +17,6 @@ extension CGRect {
     func modifying(minX: CGFloat) -> CGRect {
         return CGRect(x: minX, y: minY, width: width, height: height)
     }
-    
     
     /// Returns a new CGRect instance with a modified minY property
     ///
