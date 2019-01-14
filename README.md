@@ -126,37 +126,36 @@ class ViewController: UIViewController {
 ```
 
 ### KeyboardAutoNavigator - when using a KeyboardToolbar
-Create a KeyboardToolbar, configuring it with back/next/done buttons as appropriate. Then, create a KeyboardAutoNavigator, passing in your  toolbar. The position of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardAutoNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`.
+Create a `KeyboardToolbar`, configuring it with back/next/done buttons as appropriate. Then, create a `KeyboardAutoNavigator`, passing in your  toolbar. The position of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardAutoNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`.
 
 ``` swift
 class ViewController: UIViewController {
 
-@IBOutlet private var textInput1: UITextField!
-@IBOutlet private var textInput2: UITextView!
-private var keyboardNavigator: KeyboardAutoNavigator?
+    @IBOutlet private var textInput1: UITextField!
+    @IBOutlet private var textInput2: UITextView!
+    private var keyboardNavigator: KeyboardAutoNavigator?
 
-override func viewDidLoad() {
-super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-let keyboardToolbar = KeyboardToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0))
-keyboardNavigator = KeyboardAutoNavigator(navigationContainer: scrollView, defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
-keyboardNavigator?.delegate = self
-}
+        let keyboardToolbar = KeyboardToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0))
+        keyboardNavigator = KeyboardAutoNavigator(navigationContainer: scrollView, defaultToolbar: keyboardToolbar, returnKeyNavigationEnabled: true)
+        keyboardNavigator?.delegate = self
+    }
 }
 
 extension ViewController: KeyboardAutoNavigatorDelegate {
+    func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
+        // Your code here
+    }
 
-func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
-// Your code here
-}
+    func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
+        // Your code here
+    }
 
-func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
-// Your code here
-}
-
-func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
-// Your code here
-}
+    func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
+        // Your code here
+    }
 }
 ```
 
