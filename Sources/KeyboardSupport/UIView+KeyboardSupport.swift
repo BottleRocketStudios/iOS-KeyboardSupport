@@ -21,11 +21,9 @@ extension UIView {
         return returnView
     }
     
-    /// Walks the view hierachy starting with itself to build an array of non-hidden,
+    /// Computed array of UITextInput subviews. Walks the view hierachy starting with itself to build an array of non-hidden,
     /// UITextInput subviews that can become first responder.
-    ///
-    /// - Returns: Array of UITextInput subviews
-    func getAllTextInputViews() -> [UITextInputView] {
+    var textInputViews: [UITextInputView] {
         var fields: [UITextInputView] = []
         
         subviews.forEach { subview in
@@ -34,7 +32,7 @@ extension UIView {
             if let textField = subview as? UITextInputView, textField.canBecomeFirstResponder, !textField.isHidden {
                 fields.append(textField)
             } else {
-                fields.append(contentsOf: subview.getAllTextInputViews())
+                fields.append(contentsOf: subview.textInputViews)
             }
         }
         
