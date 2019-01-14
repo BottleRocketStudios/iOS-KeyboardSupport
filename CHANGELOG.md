@@ -1,7 +1,5 @@
 ## Master
 
-## 2.1.0 (2019-01-10)
-
 ##### Enhancements
 
 * Modified KeyboardToolbar to keep track of the next, back, and done buttons, so they can be enabled / disabled as needed. 

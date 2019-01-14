@@ -60,7 +60,7 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
     }
 }
 
-// MARK: - KeyboardNavigatorDelegate
+// MARK: - KeyboardAutoNavigatorDelegate
 
 extension AutoNavigatorViewController: KeyboardAutoNavigatorDelegate {
     
