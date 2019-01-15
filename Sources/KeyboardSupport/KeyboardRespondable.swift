@@ -198,7 +198,7 @@ public extension KeyboardScrollable where Self: UIViewController {
             scrollToSelectedText(for: textView, keyboardInfo: keyboardInfo)
         } else {
             
-            let preferredPaddingAroundInput = (firstResponder as? KeyboardPaddingProviding)?.inputPadding
+            let preferredPaddingAroundInput = (firstResponder as? KeyboardPaddingProviding)?.inputPadding ?? .zero
             scrollToRectIfNecessary(rect: firstResponder.frame, of: firstResponder, keyboardInfo: keyboardInfo, preferredPaddingAroundInput: preferredPaddingAroundInput)
         }
     }
@@ -213,15 +213,10 @@ public extension KeyboardScrollable where Self: UIViewController {
         }
     }
     
-    private func scrollToRectIfNecessary(rect: CGRect, of coordinateSpaceView: UIView, keyboardInfo: KeyboardInfo, preferredPaddingAroundInput: UIEdgeInsets? = nil) {
+    private func scrollToRectIfNecessary(rect: CGRect, of coordinateSpaceView: UIView, keyboardInfo: KeyboardInfo, preferredPaddingAroundInput: UIEdgeInsets = .zero) {
         guard let scrollView = keyboardScrollableScrollView else { return }
         
-        // Determine padding
-        var paddingAroundInput: UIEdgeInsets = preferredPaddingAroundInput ?? .zero
-        paddingAroundInput = UIEdgeInsets(top: max(paddingAroundInput.top, minimumPaddingAroundInput.top),
-                                          left: max(paddingAroundInput.left, minimumPaddingAroundInput.left),
-                                          bottom: max(paddingAroundInput.bottom, minimumPaddingAroundInput.bottom),
-                                          right: max(paddingAroundInput.right, minimumPaddingAroundInput.right))
+        let paddingAroundInput = UIEdgeInsets.max(lhs: preferredPaddingAroundInput, rhs: minimumPaddingAroundInput)
         
         // Inflate the frame being scrolled into view by the padding
         let paddedFrameOfFirstResponder = rect.modifying(minY: rect.minY - paddingAroundInput.top)
