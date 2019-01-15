@@ -135,6 +135,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47705A3821EE380800D26BB0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4739511821E65D8F00C58B2F /* UIScrollView+Inset.swift */,
+				4739511321E64DD300C58B2F /* Array+KeyboardSupport.swift */,
+				4739510F21E64BAA00C58B2F /* UIView+KeyboardSupport.swift */,
+				1DAC1AAD2138AC6F001B922E /* CGRect+Modifying.swift */,
+				47705A3621EE318600D26BB0 /* UIEdgeInsets+KeyboardSupport.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6225F2DA21DFC88A00A51458 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,15 +237,11 @@
 			children = (
 				626DEAAD20BC95A00036D5A6 /* KeyboardAccessory.swift */,
 				627D631E21CC3F5C00C98F78 /* KeyboardNavigator.swift */,
+				4739510D21E64BA900C58B2F /* KeyboardAutoNavigator.swift */,
 				626DEAAC20BC95A00036D5A6 /* KeyboardRespondable.swift */,
 				1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */,
 				627D632021CC3F6300C98F78 /* KeyboardToolbar.swift */,
-				4739511821E65D8F00C58B2F /* UIScrollView+Inset.swift */,
-				4739511321E64DD300C58B2F /* Array+KeyboardSupport.swift */,
-				4739510F21E64BAA00C58B2F /* UIView+KeyboardSupport.swift */,
-				1DAC1AAD2138AC6F001B922E /* CGRect+Modifying.swift */,
-				47705A3621EE318600D26BB0 /* UIEdgeInsets+KeyboardSupport.swift */,
-				4739510D21E64BA900C58B2F /* KeyboardAutoNavigator.swift */,
+				47705A3821EE380800D26BB0 /* Extensions */,
 			);
 			path = KeyboardSupport;
 			sourceTree = "<group>";
