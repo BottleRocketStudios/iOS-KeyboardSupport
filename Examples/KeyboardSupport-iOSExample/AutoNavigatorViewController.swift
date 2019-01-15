@@ -64,15 +64,15 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
 
 extension AutoNavigatorViewController: KeyboardAutoNavigatorDelegate {
     
-    func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
+    func keyboardAutoNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
         print("keyboardAutoNavigatorDidTapBack")
     }
     
-    func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
+    func keyboardAutoNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
         print("keyboardAutoNavigatorDidTapNext")
     }
     
-    func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
+    func keyboardAutoNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
         print("keyboardAutoNavigatorDidTapDone")
     }
 }

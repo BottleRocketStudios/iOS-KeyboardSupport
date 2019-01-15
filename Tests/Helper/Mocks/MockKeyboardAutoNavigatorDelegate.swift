@@ -20,17 +20,17 @@ class MockKeyboardAutoNavigatorDelegate: KeyboardAutoNavigatorDelegate {
     var keyboardNavigatorDidTapDoneCount: Int = 0
     var keyboardNavigatorDidTapDoneLastNavigator: KeyboardAutoNavigator?
     
-    func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
+    func keyboardAutoNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
         keyboardNavigatorDidTapBackCount += 1
         keyboardNavigatorDidTapBackLastNavigator = navigator
     }
     
-    func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
+    func keyboardAutoNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
         keyboardNavigatorDidTapNextCount += 1
         keyboardNavigatorDidTapNextLastNavigator = navigator
     }
     
-    func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
+    func keyboardAutoNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
         keyboardNavigatorDidTapDoneCount += 1
         keyboardNavigatorDidTapDoneLastNavigator = navigator
     }

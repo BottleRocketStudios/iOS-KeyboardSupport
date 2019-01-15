@@ -10,9 +10,9 @@ import Foundation
 
 /// Contains callbacks for `KeyboardAutoNavigator` navigation events.
 public protocol KeyboardAutoNavigatorDelegate: class {
-    func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator)
-    func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator)
-    func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator)
+    func keyboardAutoNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator)
+    func keyboardAutoNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator)
+    func keyboardAutoNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator)
 }
 
 /// Handles navigating between text fields in a containing view hierarchy.
@@ -190,7 +190,7 @@ extension KeyboardAutoNavigator {
 extension KeyboardAutoNavigator: KeyboardAccessoryDelegate {
     private func didTapBack() {
         defer {
-            delegate?.keyboardNavigatorDidTapBack(self)
+            delegate?.keyboardAutoNavigatorDidTapBack(self)
         }
         
         guard let currentTextField = currentTextInputView else { return }
@@ -199,7 +199,7 @@ extension KeyboardAutoNavigator: KeyboardAccessoryDelegate {
     
     private func didTapNext() {
         defer {
-            delegate?.keyboardNavigatorDidTapNext(self)
+            delegate?.keyboardAutoNavigatorDidTapNext(self)
         }
         
         guard let currentTextField = currentTextInputView else { return }
@@ -208,7 +208,7 @@ extension KeyboardAutoNavigator: KeyboardAccessoryDelegate {
     
     private func didTapDone() {
         currentTextInputView?.resignFirstResponder()
-        delegate?.keyboardNavigatorDidTapDone(self)
+        delegate?.keyboardAutoNavigatorDidTapDone(self)
     }
     
     public func keyboardAccessoryDidTapBack(_ inputAccessory: UIView) {
