@@ -18,16 +18,16 @@ public protocol KeyboardAutoNavigatorDelegate: class {
 /// Handles navigating between text fields in a containing view hierarchy.
 open class KeyboardAutoNavigator: KeyboardNavigatorBase {
     
-    /// AutoPilot is a collection of static functions that enable navigating between UITextInputViews in a view hierarchy
+    /// AutoPilot is a collection of static functions that enable navigating between `UITextInputViews` in a view hierarchy
     public enum AutoPilot {
         
-        /// Returns the "next" UITextInputView from the provided view within the provided container
+        /// Returns the "next" `UITextInputView` from the provided view within the provided container
         /// The next view is found in a left-to-right, top-to-bottom fashion
         ///
         /// - Parameters:
-        ///   - source: UITextInputView to find the next field from
+        ///   - source: `UITextInputView` to find the next field from
         ///   - container: Optional form container. If nil, the top-level container of the source will be determine and used.
-        /// - Returns: The next UITextInputView from the source, or nil if one could not be found.
+        /// - Returns: The next `UITextInputView` from the source, or nil if one could not be found.
         public static func nextField(from source: UITextInputView, in container: UIView?) -> UITextInputView? {
             let fields = sortedFields(around: source, in: container)
             
@@ -38,13 +38,13 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
             return (nextField as UIView) != (source as UIView) ? nextField : nil
         }
         
-        /// Returns the "previous" UITextInputView from the provided view.
+        /// Returns the "previous" `UITextInputView` from the provided view.
         /// The previous view is founnd in a right-to-left, bottom-to-top fashion
         ///
         /// - Parameters:
-        ///   - source: UITextInputView to find the previous field from
+        ///   - source: `UITextInputView` to find the previous field from
         ///   - container: Optional form container. If nil, the top-level container of the source will be determine and used.
-        /// - Returns: The previous UITextInputView from the source, or nil if one could not be found.
+        /// - Returns: The previous `UITextInputView` from the source, or nil if one could not be found.
         public static func previousField(from source: UITextInputView, in container: UIView?) -> UITextInputView? {
             let fields = sortedFields(around: source, in: container)
             
@@ -55,20 +55,20 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
             return (previousField as UIView) != (source as UIView) ? previousField : nil
         }
         
-        /// Indicates if a following UITextInputView from the provided view exists.
+        /// Indicates if a following `UITextInputView` from the provided view exists.
         ///
         /// - Parameters:
-        ///   - source: UITextInputView to find the next field from
+        ///   - source: `UITextInputView` to find the next field from
         ///   - container: Optional form container. If nil, the top-level container of the source will be determine and used.
         /// - Returns: True if there is a next field. Otherwise false.
         public static func hasNextField(from source: UITextInputView, in container: UIView?) -> Bool {
             return nextField(from: source, in: container) != nil
         }
         
-        /// Indicates if a preceding UITextInputView from the provided view exists.
+        /// Indicates if a preceding `UITextInputView` from the provided view exists.
         ///
         /// - Parameters:
-        ///   - source: UITextInputView to find the previous field from
+        ///   - source: `UITextInputView` to find the previous field from
         ///   - container: Optional form container. If nil, the top-level container of the source will be determine and used.
         /// - Returns: True if there is a previous field. Otherwise false.
         public static func hasPreviousField(from source: UITextInputView, in container: UIView?) -> Bool {
@@ -103,12 +103,12 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
     weak open var delegate: KeyboardAutoNavigatorDelegate?
     
     // MARK: - Init
-    /// Initializes a KeyboardAutoNavigator
+    /// Initializes a `KeyboardAutoNavigator`
     ///
     /// - Parameters:
     ///   - containerView: Containing view of text inputs that can be navigated by the AutoNavigator instance
-    ///   - defaultToolbar: Default toolbar to be populated on a textInput when editing begins. If that input implements "KeyboardToolbarProviding" that input's toolbar will be used instead.
-    ///   - returnKeyNavigationEnabled: If enabled, the auto navigator will add itself as a target to a UITextField's textFieldEditingDidEndOnExit action and advance to the next field when the return key is tapped.
+    ///   - defaultToolbar: Default toolbar to be populated on a textInput when editing begins. If that input implements `KeyboardToolbarProviding` that input's toolbar will be used instead.
+    ///   - returnKeyNavigationEnabled: If enabled, the auto navigator will add itself as a target to a `UITextField`'s textFieldEditingDidEndOnExit action and advance to the next field when the return key is tapped.
     public init(containerView: UIView, defaultToolbar: KeyboardToolbar? = nil, returnKeyNavigationEnabled: Bool = true) {
         self.containerView = containerView
         
