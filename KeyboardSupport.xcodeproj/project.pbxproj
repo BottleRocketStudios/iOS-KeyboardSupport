@@ -714,14 +714,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AJSV2L9F8Q;
+				DEVELOPMENT_TEAM = 2UAV38D2MU;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/KeyboardSupport-iOSExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.KeyboardSupport-iOSExample";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.KeyboardSupport-iOSExample2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -734,14 +734,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AJSV2L9F8Q;
+				DEVELOPMENT_TEAM = 2UAV38D2MU;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/KeyboardSupport-iOSExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.KeyboardSupport-iOSExample";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.KeyboardSupport-iOSExample2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

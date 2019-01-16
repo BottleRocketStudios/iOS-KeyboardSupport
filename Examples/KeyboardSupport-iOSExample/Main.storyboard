@@ -13,13 +13,13 @@
         <!--Navigator-->
         <scene sceneID="Jjk-nh-uDv">
             <objects>
-                <viewController id="Z9G-zu-35Z" customClass="ViewController" customModule="KeyboardSupport_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="Z9G-zu-35Z" customClass="ViewController" customModule="KeyboardSupport_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NDl-vU-KPk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFK-c2-IdW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentInsetAdjustmentBehavior="always" translatesAutoresizingMaskIntoConstraints="NO" id="oFK-c2-IdW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JtN-wq-WFa">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
@@ -65,7 +65,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Ejy-ov-oys" firstAttribute="centerX" secondItem="JtN-wq-WFa" secondAttribute="centerX" id="8Ts-o1-7Uc"/>
-                                            <constraint firstAttribute="bottom" secondItem="A9x-wk-De5" secondAttribute="bottom" constant="40" id="NTd-39-5Nl"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="A9x-wk-De5" secondAttribute="bottom" constant="32" id="NTd-39-5Nl"/>
                                             <constraint firstItem="iuE-LX-ap9" firstAttribute="top" secondItem="x7R-QX-Lqi" secondAttribute="bottom" constant="20" id="YcT-0u-ccM"/>
                                             <constraint firstItem="iuE-LX-ap9" firstAttribute="centerX" secondItem="JtN-wq-WFa" secondAttribute="centerX" id="aQl-Eq-nVZ"/>
                                             <constraint firstItem="A9x-wk-De5" firstAttribute="top" secondItem="Ejy-ov-oys" secondAttribute="bottom" constant="20" id="dmb-nM-1Wt"/>
@@ -87,7 +87,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.70702376359999997" green="0.84351402210000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="321-uB-0Jl" firstAttribute="bottom" secondItem="oFK-c2-IdW" secondAttribute="bottom" id="77x-Vb-iE0"/>
+                            <constraint firstAttribute="bottom" secondItem="oFK-c2-IdW" secondAttribute="bottom" id="77x-Vb-iE0"/>
                             <constraint firstItem="oFK-c2-IdW" firstAttribute="top" secondItem="NDl-vU-KPk" secondAttribute="top" id="EVi-rn-GQS"/>
                             <constraint firstItem="oFK-c2-IdW" firstAttribute="leading" secondItem="NDl-vU-KPk" secondAttribute="leading" id="GHm-YT-efE"/>
                             <constraint firstAttribute="trailing" secondItem="oFK-c2-IdW" secondAttribute="trailing" id="gDk-Bk-7MR"/>
@@ -95,6 +95,7 @@
                         <viewLayoutGuide key="safeArea" id="321-uB-0Jl"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Navigator" id="wbL-rc-sJD"/>
+                    <navigationItem key="navigationItem" id="QDT-lG-BK2"/>
                     <connections>
                         <outlet property="scrollView" destination="oFK-c2-IdW" id="OkC-3h-BpB"/>
                         <outlet property="textField1" destination="x7R-QX-Lqi" id="Djp-z8-zIi"/>
@@ -105,21 +106,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y7X-1s-Vyu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="-568"/>
+            <point key="canvasLocation" x="1494" y="-1043"/>
+        </scene>
+        <!--Navigator-->
+        <scene sceneID="Zka-c5-SUe">
+            <objects>
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" navigationBarHidden="YES" id="6ni-lf-Vvq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Navigator" id="jzH-0Y-mmv"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CIL-hk-79T">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Z9G-zu-35Z" kind="relationship" relationship="rootViewController" id="2G6-nV-TZu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6OO-VL-LsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="-1043"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ch2-Rp-hwC">
             <objects>
-                <tabBarController id="3Gb-l0-DjY" sceneMemberID="viewController">
+                <tabBarController extendedLayoutIncludesOpaqueBars="YES" id="3Gb-l0-DjY" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hsh-ot-Bbe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Z9G-zu-35Z" kind="relationship" relationship="viewControllers" id="khd-Ft-8eH"/>
-                        <segue destination="a9c-a7-IpZ" kind="relationship" relationship="viewControllers" id="CFd-lD-Byt"/>
-                        <segue destination="jsv-IB-NBe" kind="relationship" relationship="viewControllers" id="ODu-vf-xvQ"/>
+                        <segue destination="6ni-lf-Vvq" kind="relationship" relationship="viewControllers" id="mgH-KK-Zey"/>
+                        <segue destination="EK4-go-FZ9" kind="relationship" relationship="viewControllers" id="Suc-Fd-Ncl"/>
+                        <segue destination="KqX-Qx-dtP" kind="relationship" relationship="viewControllers" id="1M7-oZ-ucH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLy-L1-36b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,13 +146,13 @@
         <!--AutoNavigator-->
         <scene sceneID="bYJ-hQ-CoR">
             <objects>
-                <viewController storyboardIdentifier="AutoNavigatorViewController" id="a9c-a7-IpZ" customClass="AutoNavigatorViewController" customModule="KeyboardSupport_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AutoNavigatorViewController" extendedLayoutIncludesOpaqueBars="YES" id="a9c-a7-IpZ" customClass="AutoNavigatorViewController" customModule="KeyboardSupport_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="acv-N7-5x1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZg-io-oIU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentInsetAdjustmentBehavior="always" translatesAutoresizingMaskIntoConstraints="NO" id="cZg-io-oIU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbR-5z-qjQ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
@@ -203,7 +220,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.70702376359999997" green="0.84351402210000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="RZ8-rW-1b6" firstAttribute="bottom" secondItem="cZg-io-oIU" secondAttribute="bottom" id="5Ym-pY-AM5"/>
+                            <constraint firstAttribute="bottom" secondItem="cZg-io-oIU" secondAttribute="bottom" id="5Ym-pY-AM5"/>
                             <constraint firstAttribute="trailing" secondItem="cZg-io-oIU" secondAttribute="trailing" id="TxM-vN-SUl"/>
                             <constraint firstItem="cZg-io-oIU" firstAttribute="leading" secondItem="acv-N7-5x1" secondAttribute="leading" id="UKv-tk-e2z"/>
                             <constraint firstItem="cZg-io-oIU" firstAttribute="top" secondItem="acv-N7-5x1" secondAttribute="top" id="gk3-nk-tPW"/>
@@ -211,6 +228,7 @@
                         <viewLayoutGuide key="safeArea" id="RZ8-rW-1b6"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="AutoNavigator" id="k3X-XE-3tt"/>
+                    <navigationItem key="navigationItem" id="f1P-ch-9Eb"/>
                     <connections>
                         <outlet property="scrollView" destination="cZg-io-oIU" id="UVm-iJ-4h8"/>
                         <outlet property="textField1" destination="ROV-cH-yiq" id="mC9-Wn-mmc"/>
@@ -221,18 +239,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2mp-3S-SAp" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="128"/>
+            <point key="canvasLocation" x="1494" y="-199"/>
         </scene>
         <!--SingleField-->
         <scene sceneID="FCW-bf-kA5">
             <objects>
-                <viewController storyboardIdentifier="SingleFieldAutoNavViewController" id="jsv-IB-NBe" customClass="SingleFieldAutoNavViewController" customModule="KeyboardSupport_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SingleFieldAutoNavViewController" extendedLayoutIncludesOpaqueBars="YES" id="jsv-IB-NBe" customClass="SingleFieldAutoNavViewController" customModule="KeyboardSupport_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GnU-8L-cC2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUp-dy-D2B">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vUp-dy-D2B">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bw-U1-ilx">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
@@ -267,13 +285,14 @@
                         <color key="backgroundColor" red="0.70702376359999997" green="0.84351402210000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="vUp-dy-D2B" secondAttribute="trailing" id="9t6-Tj-Nwo"/>
-                            <constraint firstItem="Arr-nb-6nc" firstAttribute="bottom" secondItem="vUp-dy-D2B" secondAttribute="bottom" id="PoA-bo-zyM"/>
+                            <constraint firstAttribute="bottom" secondItem="vUp-dy-D2B" secondAttribute="bottom" id="PoA-bo-zyM"/>
                             <constraint firstItem="vUp-dy-D2B" firstAttribute="leading" secondItem="GnU-8L-cC2" secondAttribute="leading" id="a2x-y2-UVg"/>
                             <constraint firstItem="vUp-dy-D2B" firstAttribute="top" secondItem="GnU-8L-cC2" secondAttribute="top" id="iDk-XN-Bt7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Arr-nb-6nc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="SingleField" id="fc1-ZT-Kao"/>
+                    <navigationItem key="navigationItem" id="MIb-pw-SDG"/>
                     <connections>
                         <outlet property="scrollView" destination="vUp-dy-D2B" id="hhs-EP-wGE"/>
                         <outlet property="textField1" destination="zDg-9u-hSB" id="x9q-fK-tPz"/>
@@ -281,7 +300,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5sI-g7-aOG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-519" y="829"/>
+            <point key="canvasLocation" x="1494" y="572"/>
+        </scene>
+        <!--AutoNavigator-->
+        <scene sceneID="eot-zB-vjC">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="EK4-go-FZ9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="AutoNavigator" id="5lE-gP-XRV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QOP-55-DOy">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="a9c-a7-IpZ" kind="relationship" relationship="rootViewController" id="qlE-91-3ho"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l4q-sK-r2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="649" y="-199"/>
+        </scene>
+        <!--SingleAutoNav-->
+        <scene sceneID="1fZ-lk-RqC">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="KqX-Qx-dtP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SingleAutoNav" id="5Ao-FT-65X"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WvQ-sr-SyO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jsv-IB-NBe" kind="relationship" relationship="rootViewController" id="4lz-B0-MHA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wem-wZ-BNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="649" y="572"/>
         </scene>
     </scenes>
 </document>
