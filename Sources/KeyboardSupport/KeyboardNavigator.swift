@@ -25,10 +25,10 @@ public typealias UITextInputView = UIView & UITextInput
 
 /// Base class for KeyboardNavigators that aggregates a KeyboardToolbar instance and a flag that represents the enabled state of return key navigation
 open class KeyboardNavigatorBase {
-    public private(set) var keyboardToolbar: KeyboardToolbar?
+    public private(set) var keyboardToolbar: KeyboardAccessoryView?
     public private(set) var returnKeyNavigationEnabled: Bool
     
-    init(keyboardToolbar: KeyboardToolbar? = nil, returnKeyNavigationEnabled: Bool = false) {
+    init(keyboardToolbar: KeyboardAccessoryView? = nil, returnKeyNavigationEnabled: Bool = false) {
         self.keyboardToolbar = keyboardToolbar
         self.returnKeyNavigationEnabled = returnKeyNavigationEnabled
     }
@@ -45,7 +45,7 @@ open class KeyboardNavigator: KeyboardNavigatorBase {
     
     // MARK: - Init
     
-    public init(textInputs: [UITextInput], keyboardToolbar: KeyboardToolbar? = nil, returnKeyNavigationEnabled: Bool = false) {
+    public init(textInputs: [UITextInput], keyboardToolbar: KeyboardAccessoryView? = nil, returnKeyNavigationEnabled: Bool = false) {
         self.textInputs = textInputs
         
         super.init(keyboardToolbar: keyboardToolbar, returnKeyNavigationEnabled: returnKeyNavigationEnabled)

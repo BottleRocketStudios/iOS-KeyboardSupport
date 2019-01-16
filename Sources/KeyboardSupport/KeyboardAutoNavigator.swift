@@ -109,7 +109,7 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
     ///   - containerView: Containing view of text inputs that can be navigated by the AutoNavigator instance
     ///   - defaultToolbar: Default toolbar to be populated on a textInput when editing begins. If that input implements `KeyboardToolbarProviding` that input's toolbar will be used instead.
     ///   - returnKeyNavigationEnabled: If enabled, the auto navigator will add itself as a target to a `UITextField`'s textFieldEditingDidEndOnExit action and advance to the next field when the return key is tapped.
-    public init(containerView: UIView, defaultToolbar: KeyboardToolbar? = nil, returnKeyNavigationEnabled: Bool = true) {
+    public init(containerView: UIView, defaultToolbar: NavigatingKeyboardAccessoryView? = nil, returnKeyNavigationEnabled: Bool = true) {
         self.containerView = containerView
         
         super.init(keyboardToolbar: defaultToolbar, returnKeyNavigationEnabled: returnKeyNavigationEnabled)
@@ -125,7 +125,7 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
     
     public func refreshCurrentToolbarButtonStates() {
         guard let currentTextInput = currentTextInputView,
-            let currentToolbar = currentTextInputView?.inputAccessoryView as? KeyboardToolbar else { return }
+            let currentToolbar = currentTextInputView?.inputAccessoryView as? NavigatingKeyboardAccessory else { return }
         
         let hasNext = AutoPilot.hasNextField(from: currentTextInput, in: containerView)
         let hasPrevious = AutoPilot.hasPreviousField(from: currentTextInput, in: containerView)
