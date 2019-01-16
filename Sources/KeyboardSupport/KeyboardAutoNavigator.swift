@@ -26,7 +26,7 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
         ///
         /// - Parameters:
         ///   - source: `UITextInputView` to find the next field from
-        ///   - container: Optional form container. If nil, the top-level container of the source will be determine and used.
+        ///   - container: Optional form container. If nil, the top-level container of the source will be determined and used.
         /// - Returns: The next `UITextInputView` from the source, or nil if one could not be found.
         public static func nextField(from source: UITextInputView, in container: UIView?) -> UITextInputView? {
             let fields = sortedFields(around: source, in: container)
@@ -39,11 +39,11 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
         }
         
         /// Returns the "previous" `UITextInputView` from the provided view.
-        /// The previous view is founnd in a right-to-left, bottom-to-top fashion
+        /// The previous view is found in a right-to-left, bottom-to-top fashion
         ///
         /// - Parameters:
         ///   - source: `UITextInputView` to find the previous field from
-        ///   - container: Optional form container. If nil, the top-level container of the source will be determine and used.
+        ///   - container: Optional form container. If nil, the top-level container of the source will be determined and used.
         /// - Returns: The previous `UITextInputView` from the source, or nil if one could not be found.
         public static func previousField(from source: UITextInputView, in container: UIView?) -> UITextInputView? {
             let fields = sortedFields(around: source, in: container)
@@ -59,7 +59,7 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
         ///
         /// - Parameters:
         ///   - source: `UITextInputView` to find the next field from
-        ///   - container: Optional form container. If nil, the top-level container of the source will be determine and used.
+        ///   - container: Optional form container. If nil, the top-level container of the source will be determined and used.
         /// - Returns: True if there is a next field. Otherwise false.
         public static func hasNextField(from source: UITextInputView, in container: UIView?) -> Bool {
             return nextField(from: source, in: container) != nil
@@ -69,7 +69,7 @@ open class KeyboardAutoNavigator: KeyboardNavigatorBase {
         ///
         /// - Parameters:
         ///   - source: `UITextInputView` to find the previous field from
-        ///   - container: Optional form container. If nil, the top-level container of the source will be determine and used.
+        ///   - container: Optional form container. If nil, the top-level container of the source will be determined and used.
         /// - Returns: True if there is a previous field. Otherwise false.
         public static func hasPreviousField(from source: UITextInputView, in container: UIView?) -> Bool {
             return previousField(from: source, in: container) != nil

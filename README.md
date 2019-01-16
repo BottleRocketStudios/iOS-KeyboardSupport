@@ -145,15 +145,15 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: KeyboardAutoNavigatorDelegate {
-    func keyboardNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
+    func keyboardAutoNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
         // Your code here
     }
 
-    func keyboardNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
+    func keyboardAutoNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator) {
         // Your code here
     }
 
-    func keyboardNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
+    func keyboardAutoNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator) {
         // Your code here
     }
 }
