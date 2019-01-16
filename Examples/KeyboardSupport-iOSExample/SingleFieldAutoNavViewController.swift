@@ -9,6 +9,7 @@
 import UIKit
 import KeyboardSupport
 
+/// The `SingleFieldAutoNavViewController` demonstates that a `KeyboardAutoNavigator` will hide the next and back buttons of a `NavigatingKeyboardAccessory` when used in a situation where there are no additional fields to navigate to.
 class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
 
     // IBOutlets

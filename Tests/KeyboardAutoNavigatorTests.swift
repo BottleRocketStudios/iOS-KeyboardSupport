@@ -37,18 +37,18 @@ class KeyboardAutoNavigatorTests: XCTestCase {
     func test_keyboardAutoNavigator_invokesDelegateOnNext() {
         keyboardNavigator?.keyboardAccessoryDidTapNext(keyboardToolbar)
         XCTAssertEqual(delegateMock?.keyboardNavigatorDidTapNextCount, 1)
-        XCTAssertTrue(delegateMock?.keyboardNavigatorDidTapNextLastNavigator === keyboardNavigator )
+        XCTAssertTrue(delegateMock?.keyboardNavigatorDidTapNextLastNavigator === keyboardNavigator)
     }
     
     func test_keyboardAutoNavigator_invokesDelegateOnBack() {
         keyboardNavigator?.keyboardAccessoryDidTapBack(keyboardToolbar)
         XCTAssertEqual(delegateMock?.keyboardNavigatorDidTapBackCount, 1)
-        XCTAssertTrue(delegateMock?.keyboardNavigatorDidTapBackLastNavigator === keyboardNavigator )
+        XCTAssertTrue(delegateMock?.keyboardNavigatorDidTapBackLastNavigator === keyboardNavigator)
     }
     
     func test_keyboardAutoNavigator_invokesDelegateOnDone() {
         keyboardNavigator?.keyboardAccessoryDidTapDone(keyboardToolbar)
         XCTAssertEqual(delegateMock?.keyboardNavigatorDidTapDoneCount, 1)
-        XCTAssertTrue(delegateMock?.keyboardNavigatorDidTapDoneLastNavigator === keyboardNavigator )
+        XCTAssertTrue(delegateMock?.keyboardNavigatorDidTapDoneLastNavigator === keyboardNavigator)
     }
 }

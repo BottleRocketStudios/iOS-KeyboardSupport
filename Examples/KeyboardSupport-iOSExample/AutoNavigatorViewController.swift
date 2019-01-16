@@ -9,6 +9,8 @@
 import UIKit
 import KeyboardSupport
 
+/// The `AutoNavigatorViewController` demonstates the configuration and use of a  `KeyboardAutoNavigator` instance. It is noteworthy that the `KeyboardAutoNavigator` will disable and enable the next back buttons in a `NavigatingKeyboardAccessory` when no previous or next input field is available for navigation.
+
 class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
 
     // IBOutlets
