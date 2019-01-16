@@ -23,7 +23,7 @@ class KeyboardNavigatorTests: XCTestCase {
         
         // Assert
         XCTAssertEqual(keyboardNavigator.textInputs.count, 3)
-        XCTAssertEqual(keyboardNavigator.keyboardToolbar, keyboardToolbar)
+        XCTAssertTrue(keyboardNavigator.keyboardToolbar === keyboardToolbar)
         XCTAssertTrue(keyboardNavigator.returnKeyNavigationEnabled)
         XCTAssertEqual(keyboardNavigator.currentTextInputIndex, 0)
     }
@@ -34,7 +34,7 @@ class KeyboardNavigatorTests: XCTestCase {
         
         // Assert
         XCTAssertEqual(keyboardNavigator.textInputs.count, 3)
-        XCTAssertEqual(keyboardNavigator.keyboardToolbar, keyboardToolbar)
+        XCTAssertTrue(keyboardNavigator.keyboardToolbar === keyboardToolbar)
         XCTAssertTrue(keyboardNavigator.returnKeyNavigationEnabled)
         XCTAssertEqual(keyboardNavigator.currentTextInputIndex, 0)
     }
