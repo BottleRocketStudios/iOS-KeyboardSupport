@@ -126,7 +126,7 @@ class ViewController: UIViewController {
 ```
 
 ### KeyboardAutoNavigator - when using a KeyboardToolbar
-Create a `KeyboardToolbar`, configuring it with back/next/done buttons as appropriate. Then, create a `KeyboardAutoNavigator`, passing in your  toolbar. The position of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardAutoNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`.
+Create a `KeyboardToolbar`, configuring it with back/next/done buttons as appropriate. Then, create a `KeyboardAutoNavigator`, passing in your toolbar. The position of the text inputs determines the navigation order for traversing from one to the next. Optionally, implement `KeyboardAutoNavigatorDelegate` to receive call backs when tapping "Back", "Next", and "Done" in your `KeyboardToolbar`.
 
 ``` swift
 class ViewController: UIViewController {
