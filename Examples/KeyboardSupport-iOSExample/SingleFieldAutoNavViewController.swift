@@ -9,7 +9,7 @@
 import UIKit
 import KeyboardSupport
 
-/// The `SingleFieldAutoNavViewController` demonstates the configuration and use of a `KeyboardAutoNavigator` instance in an environment with only one input field.
+/// The `SingleFieldAutoNavViewController` demonstrates the configuration and use of a `KeyboardAutoNavigator` instance in an environment with only one input field.
 ///
 /// Note that the `KeyboardAutoNavigator` will hide the next and back buttons of a `NavigatingKeyboardAccessory` when used in a situation where there are no additional fields to navigate to.
 class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
