@@ -1,5 +1,15 @@
 ## Master
 
+## 2.0.3 (2019-01-31)
+
+##### Enhancements
+
+* `KeyboardRespondable` and `KeyboardDismissable` setup methods now return the generated gesture recognizer so consumers can work with it.  Also named the gesture recognizer as "KeyboardDismissable" (available iOS 11.0 +).
+
+##### Bug Fixes
+
+* None
+
 ## 2.0.2 (2019-01-09)
 
 ##### Enhancements
