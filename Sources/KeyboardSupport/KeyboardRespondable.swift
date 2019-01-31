@@ -34,9 +34,6 @@ public extension KeyboardDismissable where Self: UIViewController {
     func setupKeyboardDismissalView() -> UIGestureRecognizer {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardDismissalViewTapped))
         tapGestureRecognizer.cancelsTouchesInView = false
-        if #available(iOS 11.0, *) {
-            tapGestureRecognizer.name = String(describing: KeyboardDismissable.self)
-        }
         view.addGestureRecognizer(tapGestureRecognizer)
         return tapGestureRecognizer
     }
