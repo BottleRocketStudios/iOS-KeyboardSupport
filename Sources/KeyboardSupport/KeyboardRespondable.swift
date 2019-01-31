@@ -12,13 +12,13 @@ import UIKit
 
 /// Inherits from both KeyboardDismissable and KeyboardScrollable for convenience.
 public protocol KeyboardRespondable: KeyboardDismissable, KeyboardScrollable {
-    /// Must be called during setup ('viewDidLoad') so keyboard dismissal and responsiveness can be enabled.
-    func setupKeyboardRespondable()
+    /// Must be called during setup ('viewDidLoad') so keyboard dismissal and responsiveness can be enabled.  Returns gesture recognizer used for keyboard dismissal.
+    func setupKeyboardRespondable() -> UIGestureRecognizer
 }
 
 public extension KeyboardRespondable where Self: UIViewController {
-    func setupKeyboardRespondable() {
-        setupKeyboardDismissalView()
+    func setupKeyboardRespondable() -> UIGestureRecognizer {
+        return setupKeyboardDismissalView()
     }
 }
 
@@ -26,15 +26,19 @@ public extension KeyboardRespondable where Self: UIViewController {
 
 /// Enables automatic keyboard dismissal via tapping the screen when the keyboard is displayed.
 public protocol KeyboardDismissable: class {
-    /// Must be called once during setup ('viewDidLoad') to enable dismissal.
-    func setupKeyboardDismissalView()
+    /// Must be called once during setup ('viewDidLoad') to enable dismissal.  Returns gesture recognizer used for keyboard dismissal.
+    func setupKeyboardDismissalView() -> UIGestureRecognizer
 }
 
 public extension KeyboardDismissable where Self: UIViewController {
-    func setupKeyboardDismissalView() {
+    func setupKeyboardDismissalView() -> UIGestureRecognizer {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardDismissalViewTapped))
         tapGestureRecognizer.cancelsTouchesInView = false
+        if #available(iOS 11.0, *) {
+            tapGestureRecognizer.name = String(describing: KeyboardDismissable.self)
+        }
         view.addGestureRecognizer(tapGestureRecognizer)
+        return tapGestureRecognizer
     }
 }
 
