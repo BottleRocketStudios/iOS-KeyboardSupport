@@ -1,5 +1,5 @@
 //
-//  ToolbarProvidingUITextView.swift
+//  ToolbarProvidingTextView.swift
 //  KeyboardSupport-iOS
 //
 //  Created by John Davis on 1/18/19.
@@ -10,7 +10,7 @@ import UIKit
 
 /// UITextView, when used in with the `KeyboardAutoNavigator` has issues accepting it's toolbar being set in the UITextViewDidBeginEditing notification handler.
 /// To workaround this behavior, UITextViews need to set their own inputAccessoryView properties
-class ToolbarProvidingUITextView: UITextView {
+class ToolbarProvidingTextView: UITextView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -24,7 +24,7 @@ class ToolbarProvidingUITextView: UITextView {
     }
 }
 
-extension ToolbarProvidingUITextView: KeyboardToolbarProviding {
+extension ToolbarProvidingTextView: KeyboardToolbarProviding {
     var keyboardToolbar: KeyboardAccessoryView? {
         return self.inputAccessoryView as? KeyboardToolbar
     }

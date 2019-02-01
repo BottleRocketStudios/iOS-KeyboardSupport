@@ -182,6 +182,9 @@ extension KeyboardAutoNavigator {
             textInput.inputAccessoryView = toolbar
         } else if let textInput = textInput as? UITextView {
             textInput.inputAccessoryView = toolbar
+            
+            // UITextView does not display its toolbar if it's set via a textDidBeginEditingNotification handler. Force a reload of the input views to make it display.
+            textInput.reloadInputViews()
         }
     }
 }

@@ -249,7 +249,7 @@ public extension KeyboardScrollable where Self: UIViewController {
 
 extension UIView {
     
-    /// Attempts to return the currentlyActiveFirstResponder
+    /// Attempts to resign first responder from a subview
     ///
     /// - Returns: Result of resignFirstResponder() or false if active first responder can not be found.
     @discardableResult
@@ -257,8 +257,10 @@ extension UIView {
         return activeFirstResponder()?.resignFirstResponder() ?? false
     }
     
-    /// Returns the view that is the first responder
-    func activeFirstResponder() -> UIView? {
+    /// Attempts to return a subview that is first responder
+    ///
+    /// - Returns: The subview that is currently first responder or nil if the first responder can not be found. 
+    public func activeFirstResponder() -> UIView? {
         return UIView.activeFirstResponder(for: self)
     }
     
