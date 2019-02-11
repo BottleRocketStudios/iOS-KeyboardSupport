@@ -113,17 +113,21 @@ public extension KeyboardToolbar {
             removeNextButton()
             removeBackButton()
         } else {
-            let currentNextButtonIndex = nextButton.flatMap { items?.firstIndex(of: $0) }
-            let currentBackButtonIndex = backButton.flatMap { items?.firstIndex(of: $0) }
+            replaceNextAndBackButtons()
+        }
+    }
+    
+    private func replaceNextAndBackButtons() {
+        let currentNextButtonIndex = nextButton.flatMap { items?.firstIndex(of: $0) }
+        let currentBackButtonIndex = backButton.flatMap { items?.firstIndex(of: $0) }
+        
+        // If either button is not present, clean them out, and replace them.
+        if currentBackButtonIndex == nil || currentNextButtonIndex == nil {
+            removeBackButton()
+            removeNextButton()
             
-            // If either button is not present, clean them out, and replace them.
-            if currentBackButtonIndex == nil || currentNextButtonIndex == nil {
-                removeBackButton()
-                removeNextButton()
-                
-                nextButton.flatMap { items?.insert($0, at: 0) }
-                backButton.flatMap { items?.insert($0, at: 0) }
-            }
+            nextButton.flatMap { items?.insert($0, at: 0) }
+            backButton.flatMap { items?.insert($0, at: 0) }
         }
     }
     
