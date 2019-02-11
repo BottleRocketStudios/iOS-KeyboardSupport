@@ -26,8 +26,8 @@ class AutoPilotTests: XCTestCase {
     }
 
     override func tearDown() {
-        super.tearDown()
         viewController = nil
+        super.tearDown()
     }
     
     func test_KeyboardAutoNavigator_AutoPilotDoesNavigateNext() {
