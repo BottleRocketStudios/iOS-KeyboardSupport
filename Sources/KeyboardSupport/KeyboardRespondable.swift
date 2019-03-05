@@ -27,10 +27,12 @@ public extension KeyboardRespondable where Self: UIViewController {
 /// Enables automatic keyboard dismissal via tapping the screen when the keyboard is displayed.
 public protocol KeyboardDismissable: class {
     /// Must be called once during setup ('viewDidLoad') to enable dismissal.  Returns gesture recognizer used for keyboard dismissal.
+    @discardableResult
     func setupKeyboardDismissalView() -> UIGestureRecognizer
 }
 
 public extension KeyboardDismissable where Self: UIViewController {
+    @discardableResult
     func setupKeyboardDismissalView() -> UIGestureRecognizer {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardDismissalViewTapped))
         tapGestureRecognizer.cancelsTouchesInView = false
@@ -43,6 +45,12 @@ extension UIViewController {
     @objc func keyboardDismissalViewTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+}
+
+/// KeyboardScrollable will ask a UITextInputView that conforms to this protocol for preferred distance between the field and the keyboard.
+/// It will be used if it is non-nil and greater than the KeyboardScrollable's `minimumPaddingAroundInput`.
+public protocol KeyboardPaddingProviding {
+    var inputPadding: UIEdgeInsets { get }
 }
 
 // MARK: - KeyboardInfo
@@ -88,6 +96,8 @@ public struct KeyboardInfo {
 
 /// Enables scrolling views to the first responder when a keyboard is shown. Must be used with a UIScrollView or one of its subclasses.
 public protocol KeyboardScrollable: class {
+    var minimumPaddingAroundInput: UIEdgeInsets { get }
+    
     var keyboardScrollableScrollView: UIScrollView? { get }
     var keyboardWillShowObserver: NSObjectProtocol? { get set }
     var keyboardWillHideObserver: NSObjectProtocol? { get set }
@@ -110,6 +120,9 @@ public protocol KeyboardScrollable: class {
 public extension KeyboardScrollable where Self: UIViewController {
     
     // MARK: KeyboardScrollable Conformance
+    public var minimumPaddingAroundInput: UIEdgeInsets {
+        return .zero
+    }
     
     var preservesContentInsetWhenKeyboardVisible: Bool { return true }
     
@@ -132,7 +145,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         }()
         
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: keyboardWillShowNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
-            guard let keyboardInfo = KeyboardInfo(notification: notification), keyboardInfo.isMoving, let activeField = self?.view.activeFirstResponder() else { return }
+            guard let keyboardInfo = KeyboardInfo(notification: notification), let activeField = self?.view.activeFirstResponder() else { return }
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
             self?.keyboardWillShow(keyboardInfo: keyboardInfo)
         })
@@ -185,35 +198,45 @@ public extension KeyboardScrollable where Self: UIViewController {
         
         // If active text field is hidden by keyboard, scroll so it's visible
         if let textView = firstResponder as? UITextView {
-            scrollToSelectedText(for: textView, in: scrollView, keyboardInfo: keyboardInfo)
+            scrollToSelectedText(for: textView, keyboardInfo: keyboardInfo)
         } else {
-            let contentRect = firstResponder.convert(firstResponder.bounds, to: scrollView)
-            scrollToContentRectIfNecessary(contentRect: contentRect, keyboardInfo: keyboardInfo)
+            
+            let preferredPaddingAroundInput = (firstResponder as? KeyboardPaddingProviding)?.inputPadding ?? .zero
+            scrollToRectIfNecessary(rect: firstResponder.frame, of: firstResponder, keyboardInfo: keyboardInfo, preferredPaddingAroundInput: preferredPaddingAroundInput)
         }
     }
     
-    private func scrollToSelectedText(for textView: UITextView, in scrollView: UIScrollView, keyboardInfo: KeyboardInfo) {
+    private func scrollToSelectedText(for textView: UITextView, keyboardInfo: KeyboardInfo) {
         // Get the frame of the cursor/selection to improve scrolling position for UITextView's
         // DispatchQueue.async() is necessary because the selectedTextRange typically hasn't not been updated when UIResponder.keyboardWillShowNotification is posted
         DispatchQueue.main.async {
             guard let textRange = textView.selectedTextRange, let selectionRect = textView.selectionRects(for: textRange).first else { return }
             // Set an arbitray width to the target CGRect in case the width is zero. Otherwise, scrollRectToVisible has no effect.
-            let contentRect = textView.convert(selectionRect.rect, to: scrollView).modifying(width: 30)
-            self.scrollToContentRectIfNecessary(contentRect: contentRect, keyboardInfo: keyboardInfo)
+            self.scrollToRectIfNecessary(rect: selectionRect.rect.modifying(width: 30), of: textView, keyboardInfo: keyboardInfo)
         }
     }
     
-    private func scrollToContentRectIfNecessary(contentRect: CGRect, keyboardInfo: KeyboardInfo) {
-        let keyboardMinY = view.bounds.height - keyboardInfo.finalFrame.height
-        guard let convertedTargetFrame = keyboardScrollableScrollView?.convert(contentRect, to: view), convertedTargetFrame.maxY > keyboardMinY else { return }
+    private func scrollToRectIfNecessary(rect: CGRect, of coordinateSpaceView: UIView, keyboardInfo: KeyboardInfo, preferredPaddingAroundInput: UIEdgeInsets = .zero) {
+        guard let scrollView = keyboardScrollableScrollView else { return }
         
+        let paddingAroundInput = UIEdgeInsets.max(lhs: preferredPaddingAroundInput, rhs: minimumPaddingAroundInput)
+        
+        // Inflate the frame being scrolled into view by the padding
+        let paddedFrameOfFirstResponder = rect.modifying(minY: rect.minY - paddingAroundInput.top)
+            .modifying(minX: rect.minX - paddingAroundInput.left)
+            .modifying(height: rect.height + paddingAroundInput.top + paddingAroundInput.bottom)
+            .modifying(width: rect.width + paddingAroundInput.left + paddingAroundInput.right)
+        
+        // Convert the padded rect to the scrollview coordinate space and scroll it into view
+        let paddedFrameOfFirstResponderInScrollView = coordinateSpaceView.convert(paddedFrameOfFirstResponder, to: scrollView)
         UIView.animate(withDuration: keyboardInfo.animationDuration, delay: 0, options: [UIView.AnimationOptions(rawValue: keyboardInfo.animationCurve)], animations: {
-            self.keyboardScrollableScrollView?.scrollRectToVisible(convertedTargetFrame, animated: false)
+            scrollView.scrollRectToVisible(paddedFrameOfFirstResponderInScrollView, animated: false)
         }, completion: nil)
     }
     
     private func resetViewForKeyboardDisappearance(with keyboardInfo: KeyboardInfo) {
-        guard let originalContentInset = keyboardScrollableScrollView?.originalContentInset else { return }
+        guard let scrollView = keyboardScrollableScrollView else { return }
+        let originalContentInset = scrollView.originalContentInset ?? .zero
         adjustScrollViewInset(originalContentInset, keyboardInfo: keyboardInfo)
     }
     
@@ -229,8 +252,18 @@ public extension KeyboardScrollable where Self: UIViewController {
 
 extension UIView {
     
-    /// Returns the view that is the first responder
-    func activeFirstResponder() -> UIView? {
+    /// Attempts to resign first responder from a subview
+    ///
+    /// - Returns: Result of resignFirstResponder() or false if active first responder can not be found.
+    @discardableResult
+    public func resignActiveFirstResponder() -> Bool {
+        return activeFirstResponder()?.resignFirstResponder() ?? false
+    }
+    
+    /// Attempts to return a subview that is first responder
+    ///
+    /// - Returns: The subview that is currently first responder or nil if the first responder can not be found. 
+    public func activeFirstResponder() -> UIView? {
         return UIView.activeFirstResponder(for: self)
     }
     

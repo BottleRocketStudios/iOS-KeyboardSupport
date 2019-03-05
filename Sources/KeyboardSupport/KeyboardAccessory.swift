@@ -27,7 +27,20 @@ public extension KeyboardAccessoryDelegate {
 @available(*, deprecated: 2.0, renamed: "KeyboardAccessory")
 public typealias KeyboardInputAccessory = KeyboardAccessory
 
-/// Represents something that has keyboard accessory navigation options.
+/// Represents something that contains a done button and a `KeyboardAccessoryDelegate`.
 public protocol KeyboardAccessory: class {
+    var doneButton: UIBarButtonItem? { get set }
+    
     var keyboardAccessoryDelegate: KeyboardAccessoryDelegate? { get set }
 }
+
+/// Represents a keyboard accessory that contains navigation options in addition to the properties of `KeyboardAccessory`.
+public protocol NavigatingKeyboardAccessory: KeyboardAccessory {
+    var nextButton: UIBarButtonItem? { get set }
+    var backButton: UIBarButtonItem? { get set }
+    
+    func setNextAndBackButtonsHidden(_ hidden: Bool)
+}
+
+public typealias KeyboardAccessoryView = KeyboardAccessory & UIView
+public typealias NavigatingKeyboardAccessoryView = NavigatingKeyboardAccessory & UIView

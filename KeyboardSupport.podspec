@@ -21,7 +21,7 @@ s.author           = { 'Bottle Rocket Studios' => 'earl.gaspard@bottlerocketstud
 s.source           = { :git => 'https://github.com/bottlerocketstudios/iOS-KeyboardSupport.git', :tag => s.version.to_s }
 
 s.ios.deployment_target = '9.0'
-s.source_files = 'Sources/KeyboardSupport/*'
+s.source_files = 'Sources/KeyboardSupport/**/*'
 s.frameworks = 'Foundation', 'UIKit'
 
 end

@@ -41,6 +41,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addButton(type: .back, title: "Back")
 
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.backButton)
     }
     
     func test_addBackButtonWithImage() {
@@ -48,6 +49,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addButton(type: .back, image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.backButton)
     }
     
     func test_addNextButtonWithTitle() {
@@ -55,6 +57,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addButton(type: .next, title: "Next")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.nextButton)
     }
     
     func test_addNextButtonWithImage() {
@@ -62,6 +65,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addButton(type: .next, image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.nextButton)
     }
     
     func test_addDoneButtonWithTitle() {
@@ -69,6 +73,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addButton(type: .done, title: "Done")
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.doneButton)
     }
     
     func test_addDoneButtonWithImage() {
@@ -76,6 +81,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addButton(type: .done, image: UIImage())
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.doneButton)
     }
     
     func test_addSystemDoneButton() {
@@ -83,6 +89,7 @@ class KeyboardToolbarTests: XCTestCase {
         keyboardToolbar.addSystemDoneButton()
         
         XCTAssertEqual(keyboardToolbar.items?.count, 1)
+        XCTAssertNotNil(keyboardToolbar.doneButton)
     }
     
     func test_addFlexibleSpace() {
