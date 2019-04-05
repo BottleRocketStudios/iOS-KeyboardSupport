@@ -38,4 +38,32 @@ extension UIView {
         
         return fields
     }
+    
+    /// Attempts to resign first responder from a subview
+    ///
+    /// - Returns: Result of resignFirstResponder() or false if active first responder can not be found.
+    @discardableResult
+    public func resignActiveFirstResponder() -> Bool {
+        return activeFirstResponder()?.resignFirstResponder() ?? false
+    }
+    
+    /// Attempts to return a subview that is first responder
+    ///
+    /// - Returns: The subview that is currently first responder or nil if the first responder can not be found.
+    public func activeFirstResponder() -> UIView? {
+        return UIView.activeFirstResponder(for: self)
+    }
+    
+    /// Static helper method to get the view that is the first responder
+    static func activeFirstResponder(for view: UIView) -> UIView? {
+        guard !view.isFirstResponder else { return view }
+        
+        for subview in view.subviews {
+            if let firstResponder = activeFirstResponder(for: subview) {
+                return firstResponder
+            }
+        }
+        
+        return nil
+    }
 }
