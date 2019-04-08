@@ -172,7 +172,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         DispatchQueue.main.async {
             guard let textRange = textView.selectedTextRange, let selectionRect = textView.selectionRects(for: textRange).first else { return }
             // Set an arbitrary width to the target CGRect in case the width is zero. Otherwise, scrollRectToVisible has no effect.
-            self.scrollToRectIfNecessary(rect: selectionRect.rect.modifying(width: 30), of: textView, keyboardInfo: keyboardInfo)
+            self.scrollToRectIfNecessary(rect: selectionRect.rect.modifying(width: 1), of: textView, keyboardInfo: keyboardInfo)
         }
     }
     
