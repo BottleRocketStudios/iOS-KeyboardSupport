@@ -161,7 +161,6 @@ public extension KeyboardScrollable where Self: UIViewController {
         if let textView = firstResponder as? UITextView {
             scrollToSelectedText(for: textView, keyboardInfo: keyboardInfo)
         } else {
-            
             let preferredPaddingAroundInput = (firstResponder as? KeyboardPaddingProviding)?.inputPadding ?? .zero
             scrollToRectIfNecessary(rect: firstResponder.frame, of: firstResponder, keyboardInfo: keyboardInfo, preferredPaddingAroundInput: preferredPaddingAroundInput)
         }
@@ -172,7 +171,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         // DispatchQueue.async() is necessary because the selectedTextRange typically hasn't not been updated when UIResponder.keyboardWillShowNotification is posted
         DispatchQueue.main.async {
             guard let textRange = textView.selectedTextRange, let selectionRect = textView.selectionRects(for: textRange).first else { return }
-            // Set an arbitray width to the target CGRect in case the width is zero. Otherwise, scrollRectToVisible has no effect.
+            // Set an arbitrary width to the target CGRect in case the width is zero. Otherwise, scrollRectToVisible has no effect.
             self.scrollToRectIfNecessary(rect: selectionRect.rect.modifying(width: 30), of: textView, keyboardInfo: keyboardInfo)
         }
     }
