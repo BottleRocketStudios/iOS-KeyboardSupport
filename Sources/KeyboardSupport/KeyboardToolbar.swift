@@ -108,7 +108,7 @@ private extension KeyboardToolbar {
 
 // MARK: - methods for hiding next and back buttons
 public extension KeyboardToolbar {
-    public func setNextAndBackButtonsHidden(_ hidden: Bool) {
+    func setNextAndBackButtonsHidden(_ hidden: Bool) {
         if hidden {
             removeNextButton()
             removeBackButton()
@@ -144,15 +144,15 @@ public extension KeyboardToolbar {
 
 public extension KeyboardToolbar {
     
-    @objc public func backButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func backButtonTapped(_ sender: UIBarButtonItem) {
         keyboardAccessoryDelegate?.keyboardAccessoryDidTapBack(self)
     }
     
-    @objc public func nextButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func nextButtonTapped(_ sender: UIBarButtonItem) {
         keyboardAccessoryDelegate?.keyboardAccessoryDidTapNext(self)
     }
     
-    @objc public func doneButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func doneButtonTapped(_ sender: UIBarButtonItem) {
         keyboardAccessoryDelegate?.keyboardAccessoryDidTapDone(self)
     }
 }

@@ -38,6 +38,8 @@
 		627D631F21CC3F5C00C98F78 /* KeyboardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D631E21CC3F5C00C98F78 /* KeyboardNavigator.swift */; };
 		627D632A21CC4F1600C98F78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D632621CC4EAC00C98F78 /* ViewController.swift */; };
 		627D632E21CC52CE00C98F78 /* KeyboardToolbarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D632321CC4E6F00C98F78 /* KeyboardToolbarTests.swift */; };
+		62F525692257DE270052B8E7 /* KeyboardDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F525682257DE270052B8E7 /* KeyboardDismissable.swift */; };
+		62F5256B2257DE640052B8E7 /* KeyboardScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F5256A2257DE640052B8E7 /* KeyboardScrollable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		627D632321CC4E6F00C98F78 /* KeyboardToolbarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardToolbarTests.swift; sourceTree = "<group>"; };
 		627D632621CC4EAC00C98F78 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		627D632721CC4EAC00C98F78 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		62F525682257DE270052B8E7 /* KeyboardDismissable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissable.swift; sourceTree = "<group>"; };
+		62F5256A2257DE640052B8E7 /* KeyboardScrollable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardScrollable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,11 +142,11 @@
 		47705A3821EE380800D26BB0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4739511821E65D8F00C58B2F /* UIScrollView+Inset.swift */,
 				4739511321E64DD300C58B2F /* Array+KeyboardSupport.swift */,
-				4739510F21E64BAA00C58B2F /* UIView+KeyboardSupport.swift */,
 				1DAC1AAD2138AC6F001B922E /* CGRect+Modifying.swift */,
 				47705A3621EE318600D26BB0 /* UIEdgeInsets+KeyboardSupport.swift */,
+				4739511821E65D8F00C58B2F /* UIScrollView+Inset.swift */,
+				4739510F21E64BAA00C58B2F /* UIView+KeyboardSupport.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -236,10 +240,12 @@
 			isa = PBXGroup;
 			children = (
 				626DEAAD20BC95A00036D5A6 /* KeyboardAccessory.swift */,
+				62F525682257DE270052B8E7 /* KeyboardDismissable.swift */,
 				627D631E21CC3F5C00C98F78 /* KeyboardNavigator.swift */,
 				4739510D21E64BA900C58B2F /* KeyboardAutoNavigator.swift */,
 				626DEAAC20BC95A00036D5A6 /* KeyboardRespondable.swift */,
 				1DE2F9C4211174D000681063 /* KeyboardSafeAreaAdjustable.swift */,
+				62F5256A2257DE640052B8E7 /* KeyboardScrollable.swift */,
 				627D632021CC3F6300C98F78 /* KeyboardToolbar.swift */,
 				47705A3821EE380800D26BB0 /* Extensions */,
 			);
@@ -345,14 +351,15 @@
 				TargetAttributes = {
 					626DEA6820BC94840036D5A6 = {
 						CreatedOnToolsVersion = 9.3.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 					626DEA7020BC94850036D5A6 = {
 						CreatedOnToolsVersion = 9.3.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 					626DEA8520BC94ED0036D5A6 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -427,9 +434,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DAC1AAE2138AC6F001B922E /* CGRect+Modifying.swift in Sources */,
+				62F525692257DE270052B8E7 /* KeyboardDismissable.swift in Sources */,
 				626DEAB020BC95A00036D5A6 /* KeyboardAccessory.swift in Sources */,
 				4739511421E64DD300C58B2F /* Array+KeyboardSupport.swift in Sources */,
 				4739511021E64BAA00C58B2F /* KeyboardAutoNavigator.swift in Sources */,
+				62F5256B2257DE640052B8E7 /* KeyboardScrollable.swift in Sources */,
 				47705A3721EE318600D26BB0 /* UIEdgeInsets+KeyboardSupport.swift in Sources */,
 				4739510A21E64B5900C58B2F /* KeyboardToolbar.swift in Sources */,
 				4739511221E64BAA00C58B2F /* UIView+KeyboardSupport.swift in Sources */,
@@ -550,6 +559,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSION = 2.0.2;
 			};
 			name = Debug;
@@ -604,6 +614,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				VERSION = 2.0.2;
 			};
@@ -633,7 +644,7 @@
 				PRODUCT_NAME = KeyboardSupport;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -663,7 +674,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.KeyboardSupport-iOS";
 				PRODUCT_NAME = KeyboardSupport;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -684,7 +695,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.KeyboardSupport-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -703,7 +714,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.KeyboardSupport-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -723,7 +734,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.KeyboardSupport-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -743,7 +754,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.KeyboardSupport-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@available(*, deprecated: 2.0, renamed: "KeyboardAccessoryDelegate")
+@available(*, deprecated, renamed: "KeyboardAccessoryDelegate")
 public typealias KeyboardInputAccessoryDelegate = KeyboardAccessoryDelegate
 
 /// Contains callbacks for keyboard accessory navigation options.
@@ -24,7 +24,7 @@ public extension KeyboardAccessoryDelegate {
     func keyboardAccessoryDidTapDone(_ accessory: UIView) {}
 }
 
-@available(*, deprecated: 2.0, renamed: "KeyboardAccessory")
+@available(*, deprecated, renamed: "KeyboardAccessory")
 public typealias KeyboardInputAccessory = KeyboardAccessory
 
 /// Represents something that contains a done button and a `KeyboardAccessoryDelegate`.

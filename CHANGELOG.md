@@ -2,6 +2,11 @@
 
 ##### Enhancements
 
+* Move protocols and extensions in KeyboardRespondable to separate files.
+* Migrate to Swift 5.0.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#41](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/41)
+
 * `KeyboardRespondable` and `KeyboardDismissable` setup methods now return the generated gesture recognizer so consumers can work with it.
 * Modified `KeyboardToolbar` to track the next, back, and done buttons so they can be hidden / enabled / disabled as needed. 
 * Modified `KeyboardScrollable` to support an additional padding around a text input when moving it into view.
