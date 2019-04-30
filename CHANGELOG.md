@@ -2,6 +2,14 @@
 
 ##### Enhancements
 
+##### Bug Fixes
+
+* None
+
+## 2.1.0 (2019-04-30)
+
+##### Enhancements
+
 * Move protocols and extensions in KeyboardRespondable to separate files.
 * Migrate to Swift 5.0.
 [Earl Gaspard](https://github.com/earlgaspard)
@@ -11,6 +19,8 @@
 * Modified `KeyboardToolbar` to track the next, back, and done buttons so they can be hidden / enabled / disabled as needed. 
 * Modified `KeyboardScrollable` to support an additional padding around a text input when moving it into view.
 * Added a `KeyboardAutoNavigator` that is initialized with a toolbar. It will apply this toolbar to all text inputs, unless those inputs provide their own via implementing the `KeyboardToolbarProviding` protocol. The autonavigator will walk the view hiearchy and seek out text inputs before and after the current field to provide navigation via the toolbar. 
+[John Davis](https://github.com/br-johndavis)
+[#36](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/36)
 
 ##### Bug Fixes
 
