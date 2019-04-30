@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
 s.name             = 'KeyboardSupport'
 s.version          = '2.0.2'
 s.summary          = 'Makes dealing with common keyboard tasks simpler and easier.'
+s.swift_version    = '5.0'
 
 s.description      = <<-DESC
 KeyboardSupport makes it easy to automatically handle keyboard dismissal and scrolling to the active text input. With a few lines of code, it’s also easy to implement navigation between text inputs via toolbar back/next buttons or the keyboard’s “Return” key.
