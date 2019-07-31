@@ -4,7 +4,7 @@
 
 * Added Carthage support.
 [Ryan Gant](https://github.com/ganttastic)
-[#44](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/44)
+[#46](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/46)
 
 ##### Bug Fixes
 
