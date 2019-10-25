@@ -35,7 +35,7 @@ class ViewController: UIViewController, KeyboardDismissable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupKeyboardDismissal()
+        setupKeyboardDismissalView()
     }
 }
 ```
