@@ -144,12 +144,16 @@ public extension KeyboardScrollable where Self: UIViewController {
             #endif
         }()
         
+        var isNotPopover: Bool { return popoverPresentationController == nil }
+        
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: keyboardWillShowNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
+            guard isNotPopover else { return }
             guard let keyboardInfo = KeyboardInfo(notification: notification), let activeField = self?.view.activeFirstResponder() else { return }
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
             self?.keyboardWillShow(keyboardInfo: keyboardInfo)
         })
         keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: keyboardWillHideNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
+            guard isNotPopover else { return }
             guard let keyboardInfo = KeyboardInfo(notification: notification) else { return }
             self?.resetViewForKeyboardDisappearance(with: keyboardInfo)
             self?.keyboardWillHide(keyboardInfo: keyboardInfo)
