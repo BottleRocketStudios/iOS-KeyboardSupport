@@ -8,7 +8,9 @@
 
 ##### Bug Fixes
 
-* None
+* Addressed issue where scrolling to the focused text field would not work properly.
+[Daniel Larsen](https://github.com/grandlarseny)
+[#48](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/48)
 
 ## 2.1.0 (2019-04-30)
 

@@ -162,7 +162,7 @@ public extension KeyboardScrollable where Self: UIViewController {
             scrollToSelectedText(for: textView, keyboardInfo: keyboardInfo)
         } else {
             let preferredPaddingAroundInput = (firstResponder as? KeyboardPaddingProviding)?.inputPadding ?? .zero
-            scrollToRectIfNecessary(rect: firstResponder.frame, of: firstResponder, keyboardInfo: keyboardInfo, preferredPaddingAroundInput: preferredPaddingAroundInput)
+            scrollToRectIfNecessary(rect: firstResponder.bounds, of: firstResponder, keyboardInfo: keyboardInfo, preferredPaddingAroundInput: preferredPaddingAroundInput)
         }
     }
     
