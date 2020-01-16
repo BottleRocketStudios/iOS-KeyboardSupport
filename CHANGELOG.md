@@ -2,6 +2,16 @@
 
 ##### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+## 2.1.1 (2020-01-16)
+
+##### Enhancements
+
 * Added Carthage support.
 [Ryan Gant](https://github.com/ganttastic)
 [#46](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/46)
