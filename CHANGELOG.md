@@ -2,6 +2,18 @@
 
 ##### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* Addressed issue where scrolling to the focused text field would not work properly.
+[Daniel Larsen](https://github.com/grandlarseny)
+[#48](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/48)
+
+## 2.1.1 (2020-01-16)
+
+##### Enhancements
+
 * Added Carthage support.
 [Ryan Gant](https://github.com/ganttastic)
 [#46](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/46)
