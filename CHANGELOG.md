@@ -2,7 +2,9 @@
 
 ##### Enhancements
 
-* None
+* Added Swift Package Manager support.
+[Wil Turner](https://github.com/WSTurner)
+[#44](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/issues/44)
 
 ##### Bug Fixes
 
