@@ -4,10 +4,7 @@ import PackageDescription
 let package = Package(
     name: "KeyboardSupport",
     platforms: [
-        .macOS("10.12"),
-        .iOS("10.0"),
-        .tvOS("10.0"),
-        .watchOS("4.2")
+        .iOS("10.0")
     ],
     products: [
         .library(
