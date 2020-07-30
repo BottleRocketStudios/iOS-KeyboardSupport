@@ -6,7 +6,7 @@
 //  Copyright © 2019 Bottle Rocket. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIEdgeInsets {
     /// Constructs and returns a UIEdgeInsets instance using the max edge values from each argument.

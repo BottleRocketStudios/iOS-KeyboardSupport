@@ -110,6 +110,7 @@
 		627D632721CC4EAC00C98F78 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		62F525682257DE270052B8E7 /* KeyboardDismissable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissable.swift; sourceTree = "<group>"; };
 		62F5256A2257DE640052B8E7 /* KeyboardScrollable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardScrollable.swift; sourceTree = "<group>"; };
+		A762F5FD24C7664200F8FC04 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +175,7 @@
 			children = (
 				626DEAC420BC96BC0036D5A6 /* README.md */,
 				621033EB20C4716100473286 /* CHANGELOG.md */,
+				A762F5FD24C7664200F8FC04 /* Package.swift */,
 				626DEAA620BC95070036D5A6 /* Sources */,
 				626DEAA920BC951C0036D5A6 /* Examples */,
 				626DEAA720BC950E0036D5A6 /* Tests */,

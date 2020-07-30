@@ -6,7 +6,7 @@
 //  Copyright © 2018 Bottle Rocket. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - UIView Array Extension
 extension Array where Element: UIView {
