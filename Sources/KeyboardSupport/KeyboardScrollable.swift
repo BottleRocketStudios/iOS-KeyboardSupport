@@ -88,8 +88,6 @@ public extension KeyboardScrollable where Self: UIViewController {
     var preservesContentInsetWhenKeyboardVisible: Bool { return true }
     
     func setupKeyboardObservers() {
-        keyboardScrollableScrollView?.originalContentInset = keyboardScrollableScrollView?.contentInset
-        
         let keyboardWillShowNotificationName: Notification.Name = {
             #if swift(>=4.2)
             return UIResponder.keyboardWillShowNotification
@@ -107,6 +105,10 @@ public extension KeyboardScrollable where Self: UIViewController {
         
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: keyboardWillShowNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
             guard let keyboardInfo = KeyboardInfo(notification: notification), let activeField = self?.view.activeFirstResponder() else { return }
+            if self?.keyboardScrollableScrollView?.originalContentInset == nil {
+                self?.keyboardScrollableScrollView?.originalContentInset = self?.keyboardScrollableScrollView?.adjustedContentInset
+            }
+
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
             self?.keyboardWillShow(keyboardInfo: keyboardInfo)
         })
