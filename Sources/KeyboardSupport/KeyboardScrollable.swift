@@ -106,7 +106,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: keyboardWillShowNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
             guard let keyboardInfo = KeyboardInfo(notification: notification), let activeField = self?.view.activeFirstResponder() else { return }
             if self?.keyboardScrollableScrollView?.originalContentInset == nil {
-                self?.keyboardScrollableScrollView?.originalContentInset = self?.keyboardScrollableScrollView?.adjustedContentInset
+                self?.keyboardScrollableScrollView?.originalContentInset = self?.keyboardScrollableScrollView?.contentInset
             }
 
             self?.adjustViewForKeyboardAppearance(with: keyboardInfo, firstResponder: activeField)
