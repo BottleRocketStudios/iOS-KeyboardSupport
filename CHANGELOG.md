@@ -8,7 +8,9 @@
 
 ##### Bug Fixes
 
-* None
+* Allowed setting the originalContentInsets before and after setting up the kyboard observers in KeyboardScrollable. This allows us to do things like setting content insets in viewDidLayoutSubviews() and such
+[Fernando Arocho](https://github.com/Specialist17)
+[#57](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/57)
 
 ## 2.1.1 (2020-01-16)
 
