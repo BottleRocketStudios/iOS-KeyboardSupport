@@ -12,6 +12,10 @@
 [Fernando Arocho](https://github.com/Specialist17)
 [#57](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/57)
 
+* Fix issue with calculating content inset when scrollview is not constrained to bottom of safe area
+[Dimitar Milinski](https://github.com/dmilinski08)
+[#58](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/58)
+
 ## 2.1.1 (2020-01-16)
 
 ##### Enhancements
