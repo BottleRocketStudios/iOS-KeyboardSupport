@@ -157,7 +157,7 @@ public extension KeyboardScrollable where Self: UIViewController {
             mutableInset.bottom += keyboardHeight
         }
 
-        let scrollViewConvertedFrame = view.window?.convert(scrollView.frame, from: view) ?? .zero
+        let scrollViewConvertedFrame = view.window?.convert(scrollView.frame, from: scrollView.superview) ?? .zero
         let bottomGap = (view.window?.frame.height ?? 0) - scrollViewConvertedFrame.maxY
         mutableInset.bottom -= min(bottomGap, mutableInset.bottom)
         
