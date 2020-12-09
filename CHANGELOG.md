@@ -2,6 +2,16 @@
 
 ##### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+## 2.1.2 (2020-12-09)
+
+##### Enhancements
+
 * Added Swift Package Manager support.
 [Wil Turner](https://github.com/WSTurner)
 [#44](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/issues/44)
