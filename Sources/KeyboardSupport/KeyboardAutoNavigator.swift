@@ -6,7 +6,7 @@
 //  Copyright © 2018 Bottle Rocket. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Contains callbacks for `KeyboardAutoNavigator` navigation events.
 public protocol KeyboardAutoNavigatorDelegate: class {

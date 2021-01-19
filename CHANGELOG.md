@@ -2,10 +2,59 @@
 
 ##### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+## 2.1.2 (2020-12-09)
+
+##### Enhancements
+
+* Added Swift Package Manager support.
+[Wil Turner](https://github.com/WSTurner)
+[#44](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/issues/44)
+
+##### Bug Fixes
+
+* Allowed setting the originalContentInsets before and after setting up the kyboard observers in KeyboardScrollable. This allows us to do things like setting content insets in viewDidLayoutSubviews() and such
+[Fernando Arocho](https://github.com/Specialist17)
+[#57](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/57)
+
+* Fix issue with calculating content inset when scrollview is not constrained to bottom of safe area
+[Dimitar Milinski](https://github.com/dmilinski08)
+[#58](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/58)
+
+## 2.1.1 (2020-01-16)
+
+##### Enhancements
+
+* Added Carthage support.
+[Ryan Gant](https://github.com/ganttastic)
+[#46](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/46)
+
+##### Bug Fixes
+
+* Addressed issue where scrolling to the focused text field would not work properly.
+[Daniel Larsen](https://github.com/grandlarseny)
+[#48](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/48)
+
+## 2.1.0 (2019-04-30)
+
+##### Enhancements
+
+* Move protocols and extensions in KeyboardRespondable to separate files.
+* Migrate to Swift 5.0.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#41](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/41)
+
 * `KeyboardRespondable` and `KeyboardDismissable` setup methods now return the generated gesture recognizer so consumers can work with it.
 * Modified `KeyboardToolbar` to track the next, back, and done buttons so they can be hidden / enabled / disabled as needed. 
 * Modified `KeyboardScrollable` to support an additional padding around a text input when moving it into view.
 * Added a `KeyboardAutoNavigator` that is initialized with a toolbar. It will apply this toolbar to all text inputs, unless those inputs provide their own via implementing the `KeyboardToolbarProviding` protocol. The autonavigator will walk the view hiearchy and seek out text inputs before and after the current field to provide navigation via the toolbar. 
+[John Davis](https://github.com/br-johndavis)
+[#36](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/36)
 
 ##### Bug Fixes
 

@@ -1,6 +1,7 @@
 # KeyboardSupport
 [![CI Status](http://img.shields.io/travis/BottleRocketStudios/iOS-KeyboardSupport.svg?style=flat)](https://travis-ci.org/BottleRocketStudios/iOS-KeyboardSupport)
 [![Version](https://img.shields.io/cocoapods/v/KeyboardSupport.svg?style=flat)](http://cocoapods.org/pods/KeyboardSupport)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/KeyboardSupport.svg?style=flat)](http://cocoapods.org/pods/KeyboardSupport)
 [![Platform](https://img.shields.io/cocoapods/p/KeyboardSupport.svg?style=flat)](http://cocoapods.org/pods/KeyboardSupport)
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-KeyboardSupport/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-KeyboardSupport)
@@ -34,7 +35,7 @@ class ViewController: UIViewController, KeyboardDismissable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupKeyboardDismissal()
+        setupKeyboardDismissalView()
     }
 }
 ```
@@ -166,9 +167,19 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 * iOS 9.0+
-* Swift 4.1
+* Swift 5.0
 
 ## Installation
+
+### Swift Package Manager
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/BottleRocketStudios/iOS-KeyboardSupport.git", from: "2.1.1")
+]
+```
+
+### Cocoapods
 
 KeyboardSupport is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -176,6 +187,16 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'KeyboardSupport'
 ```
+
+### Carthage
+
+Add the following to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile):
+
+```
+github "BottleRocketStudios/iOS-KeyboardSupport"
+```
+
+Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
 ## Author
 

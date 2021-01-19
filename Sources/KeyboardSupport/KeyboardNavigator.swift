@@ -8,7 +8,7 @@
 
 import UIKit
 
-@available(*, deprecated: 2.0, renamed: "KeyboardNavigatorDelegate")
+@available(*, deprecated, renamed: "KeyboardNavigatorDelegate")
 public typealias KeyboardManagerDelegate = KeyboardNavigatorDelegate
 
 /// Contains callbacks for `KeyboardNavigator` navigation options.
@@ -18,7 +18,7 @@ public protocol KeyboardNavigatorDelegate: class {
     func keyboardNavigatorDidTapDone(_ navigator: KeyboardNavigator)
 }
 
-@available(*, deprecated: 2.0, renamed: "KeyboardNavigator")
+@available(*, deprecated, renamed: "KeyboardNavigator")
 public typealias KeyboardManager = KeyboardNavigator
 
 public typealias UITextInputView = UIView & UITextInput
@@ -111,7 +111,7 @@ private extension KeyboardNavigator {
     }
         
     @objc func textFieldEditingDidBegin(_ textField: UITextField) {
-        if let index = textInputs.index(where: { $0 as? UITextField == textField }) {
+        if let index = textInputs.firstIndex(where: { $0 as? UITextField == textField }) {
             currentTextInputIndex = index
         }
     }
