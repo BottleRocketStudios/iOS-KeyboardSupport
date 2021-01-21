@@ -8,6 +8,17 @@
 
 * None
 
+
+## 2.1.3 (2021-01-21)
+
+##### Enhancements
+
+* Adds support to not offset a KeyboardScrollable view if the viewController is presented in a popover.
+
+##### Bug Fixes
+
+* None
+
 ## 2.1.2 (2020-12-09)
 
 ##### Enhancements
