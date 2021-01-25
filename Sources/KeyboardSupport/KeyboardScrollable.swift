@@ -86,7 +86,9 @@ public extension KeyboardScrollable where Self: UIViewController {
     }
     
     var preservesContentInsetWhenKeyboardVisible: Bool { return true }
-    
+
+    private var isPopover: Bool { return popoverPresentationController != nil }
+
     func setupKeyboardObservers() {
         let keyboardWillShowNotificationName: Notification.Name = {
             #if swift(>=4.2)
@@ -104,6 +106,7 @@ public extension KeyboardScrollable where Self: UIViewController {
         }()
         
         keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: keyboardWillShowNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
+            guard (self?.isPopover ?? false) == false else { return }
             guard let keyboardInfo = KeyboardInfo(notification: notification), let activeField = self?.view.activeFirstResponder() else { return }
             if self?.keyboardScrollableScrollView?.originalContentInset == nil {
                 self?.keyboardScrollableScrollView?.originalContentInset = self?.keyboardScrollableScrollView?.contentInset
@@ -113,6 +116,7 @@ public extension KeyboardScrollable where Self: UIViewController {
             self?.keyboardWillShow(keyboardInfo: keyboardInfo)
         })
         keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: keyboardWillHideNotificationName, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
+            guard (self?.isPopover ?? false) == false else { return }
             guard let keyboardInfo = KeyboardInfo(notification: notification) else { return }
             self?.resetViewForKeyboardDisappearance(with: keyboardInfo)
             self?.keyboardWillHide(keyboardInfo: keyboardInfo)
