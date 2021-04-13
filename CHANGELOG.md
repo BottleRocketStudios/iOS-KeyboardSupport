@@ -6,8 +6,8 @@
 
 ##### Bug Fixes
 
- * Only update contentInset if the new insets are different from the existing insets. This avoids triggering unnecessary table/collectionview reloads.
- [Dimitar Milinski](https://github.com/dmilinski08)
+* Only update contentInset if the new insets are different from the existing insets. This avoids triggering unnecessary table/collectionview reloads.
+[Dimitar Milinski](https://github.com/dmilinski08)
 [#62](https://github.com/BottleRocketStudios/iOS-KeyboardSupport/pull/62)
 
 ## 2.1.2 (2020-12-09)
