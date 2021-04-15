@@ -212,8 +212,12 @@ public extension KeyboardScrollable where Self: UIViewController {
     
     private func adjustScrollViewInset(_ inset: UIEdgeInsets, keyboardInfo: KeyboardInfo) {
         UIView.animate(withDuration: keyboardInfo.animationDuration, delay: 0, options: [UIView.AnimationOptions(rawValue: keyboardInfo.animationCurve)], animations: {
-            self.keyboardScrollableScrollView?.contentInset = inset
-            self.keyboardScrollableScrollView?.scrollIndicatorInsets = inset
+            if self.keyboardScrollableScrollView?.contentInset != inset {
+                self.keyboardScrollableScrollView?.contentInset = inset
+            }
+            if self.keyboardScrollableScrollView?.scrollIndicatorInsets != inset {
+                self.keyboardScrollableScrollView?.scrollIndicatorInsets = inset
+            }
         }, completion: nil)
     }
 }
