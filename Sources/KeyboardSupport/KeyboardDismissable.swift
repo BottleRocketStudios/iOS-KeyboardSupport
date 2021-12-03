@@ -9,7 +9,7 @@
 import UIKit
 
 /// Enables automatic keyboard dismissal via tapping the screen when the keyboard is displayed.
-public protocol KeyboardDismissable: class {
+public protocol KeyboardDismissable: AnyObject {
     /// Must be called once during setup ('viewDidLoad') to enable dismissal.  Returns gesture recognizer used for keyboard dismissal.
     @discardableResult
     func setupKeyboardDismissalView() -> UIGestureRecognizer

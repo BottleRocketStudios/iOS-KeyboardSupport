@@ -9,7 +9,7 @@
 import UIKit
 
 /// Contains callbacks for `KeyboardAutoNavigator` navigation events.
-public protocol KeyboardAutoNavigatorDelegate: class {
+public protocol KeyboardAutoNavigatorDelegate: AnyObject {
     func keyboardAutoNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator)
     func keyboardAutoNavigatorDidTapNext(_ navigator: KeyboardAutoNavigator)
     func keyboardAutoNavigatorDidTapDone(_ navigator: KeyboardAutoNavigator)
