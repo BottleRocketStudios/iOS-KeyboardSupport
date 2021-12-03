@@ -16,7 +16,7 @@ jobs:
         name: ["iOS"]
         include:
             - name: "iOS"
-              scheme: "KeyboardSupport_iOS"
+              scheme: "KeyboardSupport-iOS"
               destination: "platform=iOS Simulator,OS=15.0,name=iPhone 12 Pro"
               test: true
               lint: true
