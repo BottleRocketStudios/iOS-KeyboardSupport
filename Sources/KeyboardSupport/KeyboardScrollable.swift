@@ -56,7 +56,7 @@ public struct KeyboardInfo {
 // MARK: - KeyboardScrollable
 
 /// Enables scrolling views to the first responder when a keyboard is shown. Must be used with a UIScrollView or one of its subclasses.
-public protocol KeyboardScrollable: class {
+public protocol KeyboardScrollable: AnyObject {
     var minimumPaddingAroundInput: UIEdgeInsets { get }
     
     var keyboardScrollableScrollView: UIScrollView? { get }

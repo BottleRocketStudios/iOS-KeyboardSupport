@@ -12,7 +12,7 @@ import UIKit
 public typealias KeyboardManagerDelegate = KeyboardNavigatorDelegate
 
 /// Contains callbacks for `KeyboardNavigator` navigation options.
-public protocol KeyboardNavigatorDelegate: class {
+public protocol KeyboardNavigatorDelegate: AnyObject {
     func keyboardNavigatorDidTapBack(_ navigator: KeyboardNavigator)
     func keyboardNavigatorDidTapNext(_ navigator: KeyboardNavigator)
     func keyboardNavigatorDidTapDone(_ navigator: KeyboardNavigator)

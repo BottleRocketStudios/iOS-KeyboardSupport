@@ -12,7 +12,7 @@ import UIKit
 public typealias KeyboardInputAccessoryDelegate = KeyboardAccessoryDelegate
 
 /// Contains callbacks for keyboard accessory navigation options.
-public protocol KeyboardAccessoryDelegate: class {
+public protocol KeyboardAccessoryDelegate: AnyObject {
     func keyboardAccessoryDidTapBack(_ accessory: UIView)
     func keyboardAccessoryDidTapNext(_ accessory: UIView)
     func keyboardAccessoryDidTapDone(_ accessory: UIView)
@@ -28,7 +28,7 @@ public extension KeyboardAccessoryDelegate {
 public typealias KeyboardInputAccessory = KeyboardAccessory
 
 /// Represents something that contains a done button and a `KeyboardAccessoryDelegate`.
-public protocol KeyboardAccessory: class {
+public protocol KeyboardAccessory: AnyObject {
     var doneButton: UIBarButtonItem? { get set }
     
     var keyboardAccessoryDelegate: KeyboardAccessoryDelegate? { get set }
