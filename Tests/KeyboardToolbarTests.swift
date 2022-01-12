@@ -1,6 +1,6 @@
 //
 //  KeyboardToolbarTests.swift
-//  KeyboardSupport-iOSTests
+//  Tests
 //
 //  Created by Earl Gaspard on 7/31/18.
 //  Copyright © 2018 Bottle Rocket. All rights reserved.

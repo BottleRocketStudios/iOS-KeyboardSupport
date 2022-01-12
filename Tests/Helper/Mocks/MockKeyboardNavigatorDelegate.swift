@@ -1,6 +1,6 @@
 //
 //  MockKeyboardNavigatorDelegate.swift
-//  KeyboardSupport-iOSTests
+//  Tests
 //
 //  Created by John Davis on 1/15/19.
 //  Copyright © 2019 Bottle Rocket. All rights reserved.

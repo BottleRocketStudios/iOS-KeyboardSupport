@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  KeyboardSupport-iOSExample
+//  Example
 //
 //  Created by Earl Gaspard on 7/30/18.
 //  Copyright © 2018 Bottle Rocket. All rights reserved.

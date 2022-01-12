@@ -1,6 +1,6 @@
 //
 //  KeyboardDismissable.swift
-//  KeyboardSupport-iOS
+//  KeyboardSupport
 //
 //  Created by Earl Gaspard on 4/5/19.
 //  Copyright © 2019 Bottle Rocket. All rights reserved.
