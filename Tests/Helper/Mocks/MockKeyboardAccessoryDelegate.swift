@@ -6,7 +6,7 @@
 //  Copyright © 2019 Bottle Rocket. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import KeyboardSupport
 
 enum TapType {

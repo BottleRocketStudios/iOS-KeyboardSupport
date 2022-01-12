@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1310"
+   LastUpgradeVersion = "1320"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "626DEA6820BC94840036D5A6"
+               BlueprintIdentifier = "0E3F8F9A278F8D2700C9E69A"
                BuildableName = "KeyboardSupport.framework"
-               BlueprintName = "KeyboardSupport-iOS"
+               BlueprintName = "KeyboardSupport iOS"
                ReferencedContainer = "container:KeyboardSupport.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,25 +26,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "626DEA6820BC94840036D5A6"
-            BuildableName = "KeyboardSupport.framework"
-            BlueprintName = "KeyboardSupport-iOS"
-            ReferencedContainer = "container:KeyboardSupport.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "626DEA7020BC94850036D5A6"
-               BuildableName = "KeyboardSupport-iOSTests.xctest"
-               BlueprintName = "KeyboardSupport-iOSTests"
+               BlueprintIdentifier = "0E3F8FA2278F8D2700C9E69A"
+               BuildableName = "KeyboardSupport iOS Tests.xctest"
+               BlueprintName = "KeyboardSupport iOS Tests"
                ReferencedContainer = "container:KeyboardSupport.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -60,15 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "626DEA6820BC94840036D5A6"
-            BuildableName = "KeyboardSupport.framework"
-            BlueprintName = "KeyboardSupport-iOS"
-            ReferencedContainer = "container:KeyboardSupport.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -79,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "626DEA6820BC94840036D5A6"
+            BlueprintIdentifier = "0E3F8F9A278F8D2700C9E69A"
             BuildableName = "KeyboardSupport.framework"
-            BlueprintName = "KeyboardSupport-iOS"
+            BlueprintName = "KeyboardSupport iOS"
             ReferencedContainer = "container:KeyboardSupport.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
