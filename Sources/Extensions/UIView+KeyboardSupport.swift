@@ -2,7 +2,6 @@
 //  UIView+KeyboardSupport.swift
 //  KeyboardSupport
 //
-//  Created by John Davis on 12/3/18.
 //  Copyright © 2018 Bottle Rocket. All rights reserved.
 //
 
