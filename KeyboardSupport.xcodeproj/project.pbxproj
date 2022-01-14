@@ -175,9 +175,9 @@
 		0E3F8FE9278F8D7E00C9E69A /* Deployment */ = {
 			isa = PBXGroup;
 			children = (
+				0E3F8FEA278F8D8B00C9E69A /* Package.swift */,
 				0E3F8FEB278F8D8B00C9E69A /* KeyboardSupport.podspec */,
 				0E3F8FEC278F8D8B00C9E69A /* LICENSE */,
-				0E3F8FEA278F8D8B00C9E69A /* Package.swift */,
 			);
 			name = Deployment;
 			sourceTree = "<group>";
