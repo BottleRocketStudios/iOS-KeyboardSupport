@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'KeyboardSupport'
-s.version          = '2.1.2'
+s.version          = '2.2.0'
 s.summary          = 'Makes dealing with common keyboard tasks simpler and easier.'
 
 s.description      = <<-DESC
@@ -20,8 +20,8 @@ s.license          = { :type => 'Apache', :file => 'LICENSE' }
 s.author           = { 'Bottle Rocket Studios' => 'earl.gaspard@bottlerocketstudios.com' }
 s.source           = { :git => 'https://github.com/bottlerocketstudios/iOS-KeyboardSupport.git', :tag => s.version.to_s }
 
-s.swift_version = '5.5'
-s.ios.deployment_target = '9.0'
+s.swift_version = '5.0'
+s.ios.deployment_target = '12.0'
 s.source_files = 'Sources/**/*'
 s.frameworks = 'Foundation', 'UIKit'
 
