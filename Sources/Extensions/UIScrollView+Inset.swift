@@ -2,7 +2,6 @@
 //  UIScrollView+Inset.swift
 //  KeyboardSupport
 //
-//  Created by Cuong Ngo on 7/24/18.
 //  Copyright © 2018 Bottle Rocket. All rights reserved.
 //
 

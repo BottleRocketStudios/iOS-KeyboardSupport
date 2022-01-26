@@ -4,20 +4,13 @@ import PackageDescription
 let package = Package(
     name: "KeyboardSupport",
     platforms: [
-        .iOS("12.0")
+        .iOS(.v12)
     ],
     products: [
-        .library(
-            name: "KeyboardSupport",
-            targets: ["KeyboardSupport"])
+        .library(name: "KeyboardSupport", targets: ["KeyboardSupport"])
     ],
     targets: [
-        .target(
-            name: "KeyboardSupport",
-            path: "Sources"),
-        .testTarget(
-            name: "KeyboardSupport-iOSTests",
-            dependencies: ["KeyboardSupport"],
-            path: "Tests")
+        .target(name: "KeyboardSupport", path: "Sources"),
+        .testTarget(name: "KeyboardSupportTests", dependencies: ["KeyboardSupport"], path: "Tests")
     ]
 )

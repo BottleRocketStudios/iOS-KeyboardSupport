@@ -22,7 +22,7 @@ s.source           = { :git => 'https://github.com/bottlerocketstudios/iOS-Keybo
 
 s.swift_version = '5.0'
 s.ios.deployment_target = '12.0'
-s.source_files = 'Sources/KeyboardSupport/**/*'
+s.source_files = 'Sources/**/*'
 s.frameworks = 'Foundation', 'UIKit'
 
 end

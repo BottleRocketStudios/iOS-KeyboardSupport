@@ -1,12 +1,11 @@
 //
 //  MockKeyboardAccessoryDelegate.swift
-//  KeyboardSupport-iOSTests
+//  Tests
 //
-//  Created by Earl Gaspard on 1/4/19.
 //  Copyright © 2019 Bottle Rocket. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import KeyboardSupport
 
 enum TapType {

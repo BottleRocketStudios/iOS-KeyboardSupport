@@ -1,8 +1,7 @@
 //
 //  AppDelegate.swift
-//  KeyboardSupport-iOSExample
+//  Example
 //
-//  Created by Earl Gaspard on 5/28/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

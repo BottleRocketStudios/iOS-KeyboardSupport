@@ -1,36 +1,29 @@
 //
-//  AutoNavigatorViewController.swift
-//  KeyboardSupport
+//  SingleFieldAutoNavViewController.swift
+//  Example
 //
-//  Created by John Davis on 12/18/18.
 //  Copyright © 2018 Bottle Rocket. All rights reserved.
 //
 
 import UIKit
 import KeyboardSupport
 
-/// The `AutoNavigatorViewController` demonstrates the configuration and use of a `KeyboardAutoNavigator` instance.
+/// The `SingleFieldAutoNavViewController` demonstrates the configuration and use of a `KeyboardAutoNavigator` instance in an environment with only one input field.
 ///
-/// Note that the `KeyboardAutoNavigator` will disable and enable the next back buttons in a `NavigatingKeyboardAccessory` when no previous or next input field is available for navigation.
-class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
+/// Note that the `KeyboardAutoNavigator` will hide the next and back buttons of a `NavigatingKeyboardAccessory` when used in a situation where there are no additional fields to navigate to.
+class SingleFieldAutoNavViewController: UIViewController, KeyboardRespondable {
 
     // IBOutlets
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private(set) var textField1: UITextField!
-    @IBOutlet private(set) var textField2: UITextField!
-    @IBOutlet private(set) var textField3: UITextField!
-    @IBOutlet private(set) var textView: UITextView!
-    
+
     // KeyboardScrollable
-    var keyboardScrollableScrollView: UIScrollView? {
-        return scrollView
-    }
-    
+    var keyboardScrollableScrollView: UIScrollView?
     var keyboardWillShowObserver: NSObjectProtocol?
     var keyboardWillHideObserver: NSObjectProtocol?
     
     // KeyboardNavigator
-    private var keyboardNavigator: KeyboardAutoNavigator?
+    private(set) var keyboardNavigator: KeyboardAutoNavigator?
     
     // MARK: - Lifecycle
     
@@ -39,6 +32,10 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
         
         // KeyboardDismissable setup
         setupKeyboardDismissalView()
+        
+        // KeyboardScrollable setup
+        keyboardScrollableScrollView = scrollView
+        setupKeyboardObservers()
         
         // KeyboardToolbar setup
         let keyboardToolbar = KeyboardToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0))
@@ -63,9 +60,9 @@ class AutoNavigatorViewController: UIViewController, KeyboardRespondable {
     }
 }
 
-// MARK: - KeyboardAutoNavigatorDelegate
+// MARK: - KeyboardNavigatorDelegate
 
-extension AutoNavigatorViewController: KeyboardAutoNavigatorDelegate {
+extension SingleFieldAutoNavViewController: KeyboardAutoNavigatorDelegate {
     
     func keyboardAutoNavigatorDidTapBack(_ navigator: KeyboardAutoNavigator) {
         print("keyboardAutoNavigatorDidTapBack")
