@@ -5,7 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/KeyboardSupport.svg?style=flat)](http://cocoapods.org/pods/KeyboardSupport)
 [![Platform](https://img.shields.io/cocoapods/p/KeyboardSupport.svg?style=flat)](http://cocoapods.org/pods/KeyboardSupport)
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-KeyboardSupport/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-KeyboardSupport)
-[![codebeat badge](https://codebeat.co/badges/3ef15dda-15d5-4bb6-a7f1-13f22da10813)](https://codebeat.co/projects/github-com-bottlerocketstudios-ios-keyboardsupport-master)
 
 ## Purpose
 
